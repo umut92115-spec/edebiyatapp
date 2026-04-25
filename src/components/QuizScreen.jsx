@@ -10,6 +10,7 @@ export function QuizScreen({ categories, onBack }) {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [answerState, setAnswerState] = useState(null); // null, 'CORRECT', 'WRONG'
   const [streak, setStreak] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState('ALL');
 
   // Veriden rastgele yazar ve eser seçimi
   const allAuthors = useMemo(() => {
@@ -17,22 +18,29 @@ export function QuizScreen({ categories, onBack }) {
     categories.forEach(cat => {
       cat.periods.forEach(period => {
         period.authors.forEach(author => {
-          authors.push({ ...author, periodName: period.name });
+          authors.push({ ...author, categoryId: cat.id, periodName: period.name });
         });
       });
     });
     return authors;
   }, [categories]);
 
-  const examAuthors = useMemo(() => {
-    return allAuthors.filter(a => a.examCount > 0);
-  }, [allAuthors]);
+  const filteredAuthors = useMemo(() => {
+    if (selectedCategory === 'ALL') return allAuthors;
+    return allAuthors.filter(a => a.categoryId === selectedCategory);
+  }, [allAuthors, selectedCategory]);
 
-  const generateQuestion = () => {
+  const examAuthors = useMemo(() => {
+    return filteredAuthors.filter(a => a.examCount > 0);
+  }, [filteredAuthors]);
+
+  const generateQuestion = (forcedMode) => {
     setAnswerState(null);
-    const pool = mode === 'EXAM' ? examAuthors : allAuthors;
+    const activeMode = forcedMode || mode;
+    const pool = activeMode === 'EXAM' ? examAuthors : filteredAuthors;
+    
     if (pool.length < 4) {
-      alert("Yeterli veri bulunamadı!");
+      alert("Seçilen kategoride yeterli yazar bulunamadı! Lütfen başka bir kategori seçin.");
       setGameState('START');
       return;
     }
@@ -41,12 +49,48 @@ export function QuizScreen({ categories, onBack }) {
     const correctAuthor = pool[Math.floor(Math.random() * pool.length)];
     const work = correctAuthor.works[Math.floor(Math.random() * correctAuthor.works.length)];
     
-    // Yanlış cevaplar
+    // Yanlış cevaplar - Aynı tag (akım) ve döneme sahip olanları önceliklendir
     const distractors = [];
-    while (distractors.length < 3) {
-      const randomAuthor = allAuthors[Math.floor(Math.random() * allAuthors.length)];
-      if (randomAuthor.id !== correctAuthor.id && !distractors.some(d => d.id === randomAuthor.id)) {
-        distractors.push(randomAuthor);
+    const correctMovements = (correctAuthor.movements || []).map(m => m.name);
+    
+    // Aday havuzlarını oluştur (Tüm yazarlar arasından seçebiliriz ama aynı kategoriden olanları yine önceliklendirmeliyiz)
+    const sameMovementAuthors = allAuthors.filter(a => 
+      a.id !== correctAuthor.id && 
+      (a.movements || []).some(m => correctMovements.includes(m.name))
+    );
+    
+    const samePeriodAuthors = allAuthors.filter(a => 
+      a.id !== correctAuthor.id && 
+      a.periodName === correctAuthor.periodName &&
+      !sameMovementAuthors.some(sa => sa.id === a.id)
+    );
+
+    const sameCategoryAuthors = allAuthors.filter(a => 
+      a.id !== correctAuthor.id && 
+      a.categoryId === correctAuthor.categoryId &&
+      !sameMovementAuthors.some(sa => sa.id === a.id) &&
+      !samePeriodAuthors.some(sa => sa.id === a.id)
+    );
+
+    const otherAuthors = allAuthors.filter(a => 
+      a.id !== correctAuthor.id &&
+      !sameMovementAuthors.some(sa => sa.id === a.id) &&
+      !samePeriodAuthors.some(sa => sa.id === a.id) &&
+      !sameCategoryAuthors.some(sa => sa.id === a.id)
+    );
+
+    // Öncelik sırasına göre doldur
+    const combinedPool = [
+      ...sameMovementAuthors.sort(() => Math.random() - 0.5),
+      ...samePeriodAuthors.sort(() => Math.random() - 0.5),
+      ...sameCategoryAuthors.sort(() => Math.random() - 0.5),
+      ...otherAuthors.sort(() => Math.random() - 0.5)
+    ];
+
+    while (distractors.length < 3 && combinedPool.length > 0) {
+      const candidate = combinedPool.shift();
+      if (!distractors.some(d => d.id === candidate.id)) {
+        distractors.push(candidate);
       }
     }
 
@@ -58,6 +102,11 @@ export function QuizScreen({ categories, onBack }) {
       options
     });
     setGameState('PLAYING');
+  };
+
+  const handleStartQuiz = (m) => {
+    setMode(m);
+    generateQuestion(m);
   };
 
   const handleAnswer = (authorId) => {
@@ -111,19 +160,40 @@ export function QuizScreen({ categories, onBack }) {
               <p>Bilgini test et, edebiyat atlasında ustalaş!</p>
             </div>
 
+            <div className="category-selector-wrap">
+              <span className="selector-label">Soru Havuzu Seçin</span>
+              <div className="category-chips">
+                <button 
+                  className={`chip ${selectedCategory === 'ALL' ? 'active' : ''}`}
+                  onClick={() => setSelectedCategory('ALL')}
+                >
+                  🌐 Tüm Dönemler
+                </button>
+                {categories.map(cat => (
+                  <button 
+                    key={cat.id}
+                    className={`chip ${selectedCategory === cat.id ? 'active' : ''}`}
+                    onClick={() => setSelectedCategory(cat.id)}
+                  >
+                    {cat.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="quiz-modes">
               <button 
                 className="quiz-mode-card glass"
-                onClick={() => { setMode('NORMAL'); generateQuestion(); }}
+                onClick={() => handleStartQuiz('NORMAL')}
               >
                 <BookOpen size={32} />
                 <h3>Eser-Yazar Eşleştirme</h3>
-                <p>Tüm dönemlerden karma sorular.</p>
+                <p>Seçili kategoriden karma sorular.</p>
               </button>
 
               <button 
                 className="quiz-mode-card glass premium"
-                onClick={() => { setMode('EXAM'); generateQuestion(); }}
+                onClick={() => handleStartQuiz('EXAM')}
               >
                 <Target size={32} />
                 <h3>Sınav Maratonu</h3>
@@ -236,6 +306,49 @@ export function QuizScreen({ categories, onBack }) {
           color: var(--text-muted);
           font-size: 1.2rem;
           margin-bottom: 48px;
+        }
+        .category-selector-wrap {
+          margin-bottom: 48px;
+          text-align: left;
+          background: var(--bg-card);
+          padding: 24px;
+          border-radius: var(--radius-xl);
+          border: 1px solid var(--border);
+        }
+        .selector-label {
+          display: block;
+          font-size: 0.9rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          color: var(--text-muted);
+          margin-bottom: 16px;
+        }
+        .category-chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+        .chip {
+          padding: 10px 20px;
+          border-radius: var(--radius-full);
+          border: 1px solid var(--border);
+          background: var(--bg-surface);
+          color: var(--text-primary);
+          font-size: 0.95rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+        .chip:hover {
+          border-color: var(--amber);
+          background: var(--bg-card-hover);
+        }
+        .chip.active {
+          background: var(--amber);
+          color: white;
+          border-color: var(--amber);
+          box-shadow: 0 4px 12px var(--amber-dim);
         }
         .quiz-modes {
           display: grid;

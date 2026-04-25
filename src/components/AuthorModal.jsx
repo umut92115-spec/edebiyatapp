@@ -22,14 +22,70 @@ const periodColorVar = {
 };
 
 const ASIK_KOLLARI = {
-  "Âşık Şenlik": "Şenlik Kolu", "Bala Kişi": "Şenlik Kolu", "İbrahim": "Şenlik Kolu", "Gazeli": "Şenlik Kolu", "Ali": "Şenlik Kolu", "Bala Mehmet": "Şenlik Kolu", "Namaz": "Şenlik Kolu", "Kasım": "Şenlik Kolu", "Asker": "Şenlik Kolu", "Mevlüt": "Şenlik Kolu", "Nesib": "Şenlik Kolu", "Süleyman": "Şenlik Kolu", "Hüseyin": "Şenlik Kolu", "Gülistan": "Şenlik Kolu",
-  "Sümmani": "Sümmani Kolu", "Şevki Çavuş": "Sümmani Kolu", "Fahri Çavuş": "Sümmani Kolu", "Ahmet Çavuş": "Sümmani Kolu",
-  "Ruhsati": "Ruhsatî Kolu", "Meslekî": "Ruhsatî Kolu", "Minhacî": "Ruhsatî Kolu", "Emsalî": "Ruhsatî Kolu",
-  "Erzurumlu Emrah": "Emrah Kolu", "Gedaî": "Emrah Kolu", "Meydanî": "Emrah Kolu", "Tokatlı Nuri": "Emrah Kolu",
-  "Dertli": "Dertli Kolu", "Geredeli Figanî": "Dertli Kolu", "Pinhani": "Dertli Kolu", "Yorgansız Hakkı": "Dertli Kolu",
-  "Huzuri": "Huzuri Kolu", "İzharî": "Huzuri Kolu", "Zuhurî": "Huzuri Kolu", "Fahrî": "Huzuri Kolu",
-  "Derviş Muhammed": "Derviş Muhammed Kolu", "Âşıkî": "Derviş Muhammed Kolu", "Şah Sultan": "Derviş Muhammed Kolu", "Bektaş Kaymaz": "Derviş Muhammed Kolu", "Hasan Hüseyin": "Derviş Muhammed Kolu",
-  "Deli Derviş Feryadi": "Deli Derviş Feryadi Kolu", "Fahri (Süleyman)": "Deli Derviş Feryadi Kolu", "Suzanî": "Deli Derviş Feryadi Kolu", "Revanî": "Deli Derviş Feryadi Kolu", "Efganî": "Deli Derviş Feryadi Kolu", "Figanî (Abidin Şimşek)": "Deli Derviş Feryadi Kolu", "Cemal Koçak": "Deli Derviş Feryadi Kolu", "Cemal Özcan": "Deli Derviş Feryadi Kolu"
+  // Şenlik Kolu
+  "Âşık Şenlik": { kol: "Şenlik Kolu", usta: "Âşık Şenlik" },
+  "Aşık Şenlik": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Bala Kişi": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "İbrahim": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Gazeli": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Ali": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Bala Mehmet": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Namaz": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Kasım": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Asker": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Mevlüt": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Nesib": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Süleyman": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Hüseyin": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+  "Gülistan": { kol: "Şenlik Kolu", usta: "Aşık Şenlik" },
+
+  // Sümmani Kolu
+  "Sümmani": { kol: "Sümmani Kolu", usta: "Sümmani" },
+  "Şevki Çavuş": { kol: "Sümmani Kolu", usta: "Sümmani" },
+  "Fahri Çavuş": { kol: "Sümmani Kolu", usta: "Sümmani" },
+  "Ahmet Çavuş": { kol: "Sümmani Kolu", usta: "Sümmani" },
+
+  // Ruhsatî Kolu
+  "Ruhsati": { kol: "Ruhsatî Kolu", usta: "Ruhsati" },
+  "Meslekî": { kol: "Ruhsatî Kolu", usta: "Ruhsati" },
+  "Minhacî": { kol: "Ruhsatî Kolu", usta: "Ruhsati" },
+  "Emsalî": { kol: "Ruhsatî Kolu", usta: "Ruhsati" },
+
+  // Emrah Kolu
+  "Erzurumlu Emrah": { kol: "Emrah Kolu", usta: "Erzurumlu Emrah" },
+  "Gedaî": { kol: "Emrah Kolu", usta: "Erzurumlu Emrah" },
+  "Meydanî": { kol: "Emrah Kolu", usta: "Erzurumlu Emrah" },
+  "Tokatlı Nuri": { kol: "Emrah Kolu", usta: "Erzurumlu Emrah" },
+
+  // Dertli Kolu
+  "Dertli": { kol: "Dertli Kolu", usta: "Dertli" },
+  "Geredeli Figanî": { kol: "Dertli Kolu", usta: "Dertli" },
+  "Pinhani": { kol: "Dertli Kolu", usta: "Dertli" },
+  "Yorgansız Hakkı": { kol: "Dertli Kolu", usta: "Dertli" },
+
+  // Huzuri Kolu
+  "Huzuri": { kol: "Huzuri Kolu", usta: "Huzuri" },
+  "İzharî": { kol: "Huzuri Kolu", usta: "Huzuri" },
+  "Zuhurî": { kol: "Huzuri Kolu", usta: "Huzuri" },
+  "Fahrî": { kol: "Huzuri Kolu", usta: "Huzuri" },
+
+  // Derviş Muhammed Kolu
+  "Derviş Muhammed": { kol: "Derviş Muhammed Kolu", usta: "Derviş Muhammed" },
+  "Âşıkî": { kol: "Derviş Muhammed Kolu", usta: "Derviş Muhammed" },
+  "Aşıkî": { kol: "Derviş Muhammed Kolu", usta: "Derviş Muhammed" },
+  "Şah Sultan": { kol: "Derviş Muhammed Kolu", usta: "Derviş Muhammed" },
+  "Bektaş Kaymaz": { kol: "Derviş Muhammed Kolu", usta: "Derviş Muhammed" },
+  "Hasan Hüseyin": { kol: "Derviş Muhammed Kolu", usta: "Derviş Muhammed" },
+
+  // Deli Derviş Feryadi Kolu
+  "Deli Derviş Feryadi": { kol: "Deli Derviş Feryadi Kolu", usta: "Deli Derviş Feryadi" },
+  "Fahri (Süleyman)": { kol: "Deli Derviş Feryadi Kolu", usta: "Deli Derviş Feryadi" },
+  "Suzanî": { kol: "Deli Derviş Feryadi Kolu", usta: "Deli Derviş Feryadi" },
+  "Revanî": { kol: "Deli Derviş Feryadi Kolu", usta: "Deli Derviş Feryadi" },
+  "Efganî": { kol: "Deli Derviş Feryadi Kolu", usta: "Deli Derviş Feryadi" },
+  "Figanî (Abidin Şimşek)": { kol: "Deli Derviş Feryadi Kolu", usta: "Deli Derviş Feryadi" },
+  "Cemal Koçak": { kol: "Deli Derviş Feryadi Kolu", usta: "Deli Derviş Feryadi" },
+  "Cemal Özcan": { kol: "Deli Derviş Feryadi Kolu", usta: "Deli Derviş Feryadi" }
 };
 
 const isValidInfo = (info) => {
@@ -68,7 +124,7 @@ const RELEVANT_TAGS = {
 function AuthorInfoBox({ author, isEditing, isCumhuriyet, isTanzimat, periodId }) {
   const examWorks = author.works?.filter(w => isValidInfo(w.examInfo)) || [];
   const awards = (author.awards || []).filter(a => isValidInfo(a));
-  const asikKolu = ASIK_KOLLARI[author.name];
+  const asikInfo = ASIK_KOLLARI[author.name];
   const examCount = author.examCount || 0;
   
   // Filtreleme mantığı: Eğer periodId varsa sadece o döneme ait tagleri göster
@@ -79,15 +135,22 @@ function AuthorInfoBox({ author, isEditing, isCumhuriyet, isTanzimat, periodId }
 
   const hasMovements = filteredMovements.length > 0;
 
-  if (examWorks.length === 0 && awards.length === 0 && !asikKolu && examCount === 0 && !hasMovements && !isEditing) return null;
+  if (examWorks.length === 0 && awards.length === 0 && !asikInfo && examCount === 0 && !hasMovements && !isEditing) return null;
 
   return (
-    <div className="author-infobox animate-in-fast glass-premium" style={{ padding: '24px', borderRadius: '16px', marginBottom: '24px' }}>
-      {asikKolu && (
+    <div className="author-infobox animate-in-fast glass-premium">
+      {asikInfo && (
         <div className="infobox-section infobox-asik">
           <div className="infobox-label">🌳 Âşıklık Kolu</div>
           <div className="infobox-items">
-            <span className="infobox-badge infobox-badge-asik" style={{ background: 'var(--emerald)', color: '#fff' }}>🪕 {asikKolu}</span>
+            <span className="infobox-badge infobox-badge-asik" style={{ background: 'var(--emerald)', color: '#fff' }}>
+              🪕 {asikInfo.kol}
+            </span>
+            {asikInfo.usta && asikInfo.usta !== author.name && (
+              <span className="infobox-badge" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', marginLeft: '8px' }}>
+                👨‍🏫 Ustası: {asikInfo.usta}
+              </span>
+            )}
           </div>
         </div>
       )}
@@ -279,8 +342,8 @@ export function AuthorModal({ author: initialAuthor, period, onClose }) {
 
   if (!author) return null;
 
-  const periodEmoji = period?.name.match(/^(\p{Emoji})/u)?.[1] ?? '📖';
-  const periodName  = period?.name.replace(/^[\p{Emoji}\s]+/u, '') ?? '';
+  const periodEmoji = period?.name?.match(/^(\p{Emoji})/u)?.[1] ?? '📖';
+  const periodName  = period?.name?.replace(/^[\p{Emoji}\s]+/u, '') ?? '';
   const displayPhoto = author.image || wikipediaData?.imageUrl;
 
   const { categorySlug, periodSlug } = useParams();

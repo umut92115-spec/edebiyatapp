@@ -1945,17 +1945,79 @@ body::after {
 @media (max-width: 640px) {
   .modal-overlay { padding: 0; align-items: flex-end; }
   .modal-panel { 
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0; 
+    border-radius: 28px 28px 0 0; 
     max-width: 100%; 
-    max-height: 92vh; 
+    max-height: 94vh; 
     overflow-y: auto !important; 
     -webkit-overflow-scrolling: touch;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
   }
-  .modal-content-grid { grid-template-columns: 1fr; gap: 24px; }
+  .modal-hero {
+    height: 280px;
+    padding: 30px 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .modal-hero-photo-wrap {
+    width: 110px;
+    height: 110px;
+    transform: rotate(0) translateY(-10px);
+    border-width: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .modal-hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .modal-hero-name {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    line-height: 1.1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  .modal-content-grid { 
+    grid-template-columns: 1fr; 
+    gap: 0; 
+  }
   .modal-header { padding: 24px 20px 20px; flex-wrap: wrap; }
-  .modal-body { padding: 20px 20px 28px; }
+  .modal-body { padding: 0 0 60px; gap: 0; }
+  .modal-section { padding: 24px 20px; border-bottom: 1px solid var(--border-light); }
+  .modal-section:last-child { border-bottom: none; }
   .modal-author-name { font-size: 1.5rem; }
   .author-photo, .author-photo-fallback, .author-photo-skeleton { width: 72px; height: 72px; font-size: 1.8rem; }
+  
+  .author-infobox {
+    margin: 20px;
+    padding: 20px !important;
+    border-radius: 20px !important;
+    border: 1px solid var(--border) !important;
+  }
+
+  .modal-close {
+    top: 16px !important;
+    right: 16px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.2) !important;
+    backdrop-filter: blur(10px);
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    z-index: 100;
+  }
+  
+  .edit-sticky-bar {
+    padding: 12px 20px !important;
+    flex-wrap: wrap;
+    justify-content: center !important;
+  }
 }
 
 /* ===========================

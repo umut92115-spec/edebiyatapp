@@ -39,7 +39,7 @@ function AuthorsView({ categories }) {
   const period = category?.periods.find(p => p.id === periodSlug);
   const author = period?.authors.find(a => a.id === authorSlug);
 
-  const cleanPeriodName = period?.name.replace(/^[\p{Emoji}\s]+/u, '') ?? '';
+  const cleanPeriodName = period?.name?.replace(/^[\p{Emoji}\s]+/u, '') ?? '';
   const authorName = author?.name ?? '';
   const currentUrl = `https://edebiyatdonemler.com.tr${location.pathname}`;
 
@@ -49,8 +49,8 @@ function AuthorsView({ categories }) {
     : `${cleanPeriodName} Edebiyatı — Yazarlar ve Eserler | edebiyatdonemler.com.tr`;
   
   const pageDesc = authorSlug && author
-    ? `${authorName}'nın tüm eserleri, hayatı ve ${cleanPeriodName} edebiyatındaki yeri. ${author.works.slice(0, 3).map(w => w.name).join(', ')} hakkında bilgi.`
-    : `${cleanPeriodName} edebiyatının genel özellikleri, ${period?.authors.slice(0, 3).map(a => a.name).join(', ')} gibi temsilci yazarlar ve eserleri.`;
+    ? `${authorName}'nın tüm eserleri, hayatı ve ${cleanPeriodName} edebiyatındaki yeri. ${author?.works?.slice(0, 3).map(w => w.name).join(', ')} hakkında bilgi.`
+    : `${cleanPeriodName} edebiyatının genel özellikleri, ${period?.authors?.slice(0, 3).map(a => a.name).join(', ')} gibi temsilci yazarlar ve eserleri.`;
 
   // JSON-LD for Author
   const schemaOrg = authorSlug && author ? {
@@ -117,7 +117,7 @@ function PeriodsView({ categories }) {
   const location = useLocation();
 
   const category = categories.find(c => c.id === categorySlug);
-  const cleanCatName = category?.name.replace(/^[\p{Emoji}\s]+/u, '') ?? '';
+  const cleanCatName = category?.name?.replace(/^[\p{Emoji}\s]+/u, '') ?? '';
   const currentUrl = `https://edebiyatdonemler.com.tr${location.pathname}`;
 
   const pageTitle = `${cleanCatName} — Türk Edebiyatı Dönemleri | edebiyatdonemler.com.tr`;
