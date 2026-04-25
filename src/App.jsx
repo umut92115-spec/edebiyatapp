@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Trophy } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { Analytics } from '@vercel/analytics/react';
 import literatureData from './data/literatureData.json';
 
@@ -11,6 +12,9 @@ function App() {
   // This is only for the initial HTML render. Hydration will take care of the rest.
   return (
     <div className="app">
+      <Helmet>
+        <meta name="google-site-verification" content="AhxNlnpyVY7QJPb8_MkFHI_3DfpMYKLExbqf-0bDXEA" />
+      </Helmet>
       <header className="app-header">
         <div className="header-left">
           <Link to="/" className="logo" style={{ textDecoration: 'none', color: 'inherit' }}>

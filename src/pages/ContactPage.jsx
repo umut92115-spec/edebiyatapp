@@ -16,8 +16,13 @@ export default function ContactPage() {
       }}
     >
       <Helmet>
-        <title>İletişim — edebiyatdonemler.com.tr</title>
-        <meta name="description" content="Sorularınız, önerileriniz veya iş birliği talepleriniz için bizimle iletişime geçin. Size en kısa sürede dönüş sağlayacağız." />
+        <title>İletişim | Türk Edebiyatı Atlası</title>
+        <meta name="description" content="Sorularınız, önerileriniz veya iş birliği talepleriniz için bizimle iletişime geçin. Türk Edebiyatı Atlası ekibi size en kısa sürede dönüş yapacaktır." />
+        <link rel="canonical" href="https://edebiyatapp.vercel.app/iletisim" />
+        <meta property="og:title" content="İletişim | Türk Edebiyatı Atlası" />
+        <meta property="og:description" content="Bizimle iletişime geçin." />
+        <meta property="og:url" content="https://edebiyatapp.vercel.app/iletisim" />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>

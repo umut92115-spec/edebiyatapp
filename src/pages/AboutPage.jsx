@@ -21,8 +21,13 @@ export default function AboutPage() {
       }}
     >
       <Helmet>
-        <title>Hakkımızda — edebiyatdonemler.com.tr</title>
-        <meta name="description" content="edebiyatdonemler.com.tr'nin kuruluş amacı, vizyonu ve ekibi hakkında bilgi alın. Türk edebiyatını dijitalleştiriyoruz." />
+        <title>Hakkımızda | Türk Edebiyatı Atlası</title>
+        <meta name="description" content="Türk Edebiyatı Atlası'nın kuruluş amacı, vizyonu ve edebiyatı dijitalleştirme yolculuğu hakkında bilgi alın." />
+        <link rel="canonical" href="https://edebiyatapp.vercel.app/hakkimizda" />
+        <meta property="og:title" content="Hakkımızda | Türk Edebiyatı Atlası" />
+        <meta property="og:description" content="Türk Edebiyatı Atlası'nın kuruluş amacı ve vizyonu." />
+        <meta property="og:url" content="https://edebiyatapp.vercel.app/hakkimizda" />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <div style={{ textAlign: 'center', marginBottom: '60px' }}>
@@ -54,7 +59,7 @@ export default function AboutPage() {
           <Heart style={{ color: 'var(--rose)', marginBottom: '16px' }} size={24} />
           <h3 style={{ marginBottom: '12px' }}>Neden Biz?</h3>
           <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-            YKS, AYT ve okul sınavlarına hazırlanan öğrenciler için en güncel ve en rafine bilgiyi interaktif bir kullanıcı deneyimiyle sunuyoruz.
+            YKS, AYT and school exams, preparing students for the most up-to-date and most refined information with an interactive user experience.
           </p>
         </div>
       </div>

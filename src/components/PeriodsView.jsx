@@ -10,14 +10,44 @@ function PeriodsView({ categories }) {
 
   const category = categories.find(c => c.id === categorySlug);
   const cleanCatName = category?.name?.replace(/^[\p{Emoji}\s]+/u, '') ?? '';
-  const currentUrl = `https://edebiyatdonemler.com.tr${location.pathname}`;
+  const currentUrl = `https://edebiyatapp.vercel.app${location.pathname}`;
 
-  const pageTitle = `${cleanCatName} — Türk Edebiyatı Dönemleri | edebiyatdonemler.com.tr`;
-  const pageDesc = `${cleanCatName} döneminin özellikleri, temsilci yazarları ve önemli eserleri.`;
+  const pageTitle = `${cleanCatName} Yazarları ve Eserleri | Türk Edebiyatı Atlası`;
+  const pageDesc = `${cleanCatName} döneminin temsilci yazarları, eserleri ve genel özellikleri.`;
 
   if (!category) {
     return <div className="screen-error">Kategori bulunamadı.</div>;
   }
+
+  // JSON-LD BreadcrumbList Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": "https://edebiyatapp.vercel.app/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": cleanCatName,
+        "item": currentUrl
+      }
+    ]
+  };
+
+  // JSON-LD EducationalResource Schema
+  const eduSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalResource",
+    "name": `${cleanCatName} Edebiyatı`,
+    "description": pageDesc,
+    "educationalLevel": "Lise",
+    "inLanguage": "tr"
+  };
 
   const handleSelectPeriod = (period) => {
     navigate(`/${categorySlug}/${period.id}`);
@@ -37,6 +67,9 @@ function PeriodsView({ categories }) {
         <meta property="og:description" content={pageDesc} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={currentUrl} />
+        <meta property="og:site_name" content="Türk Edebiyatı Atlası" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(eduSchema)}</script>
       </Helmet>
       <PeriodsScreen
         category={category}

@@ -1,7 +1,8 @@
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { GlobalSearch } from './GlobalSearch';
-import { Map, ChevronRight, Book, Feather, Scroll, Compass, Trophy } from 'lucide-react';
-
+import { ChevronRight, Book, Trophy } from 'lucide-react';
 
 export default function HomeScreen({ categories, onSelectCategory, onSelectAuthor, onStartQuiz }) {
   const navigate = useNavigate();
@@ -19,8 +20,38 @@ export default function HomeScreen({ categories, onSelectCategory, onSelectAutho
     }
   });
 
+  const pageTitle = "Türk Edebiyatı Dönemleri — Yazarlar ve Eserler | Türk Edebiyatı Atlası";
+  const pageDesc = "Türk edebiyatının tüm dönemleri, yazarları ve eserleri. YKS AYT edebiyat için interaktif kaynak.";
+  const currentUrl = "https://edebiyatapp.vercel.app";
+
+  // JSON-LD BreadcrumbList Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": currentUrl
+      }
+    ]
+  };
+
   return (
     <div className="animate-in">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDesc} />
+        <link rel="canonical" href={currentUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDesc} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:site_name" content="Türk Edebiyatı Atlası" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+      </Helmet>
+
       <div className="home-hero">
         
         <div className="hero-parallax">
@@ -29,8 +60,6 @@ export default function HomeScreen({ categories, onSelectCategory, onSelectAutho
             <span className="gradient-text">Yazarlar ve Eserler</span>
           </h1>
         </div>
-
-
 
         <p className="hero-desc">
           Yüzyıllık edebiyat tarihini keşfet. Dönemleri, yazarları

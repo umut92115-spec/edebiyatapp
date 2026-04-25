@@ -14,32 +14,77 @@ function AuthorsView({ categories }) {
   const period = category?.periods.find(p => p.id === periodSlug);
   const author = period?.authors.find(a => a.id === authorSlug);
 
-  const cleanPeriodName = period?.name?.replace(/^[\p{Emoji}\s]+/u, '') ?? '';
+  if (!category || !period) {
+    return <div className="screen-error">Dönem bulunamadı.</div>;
+  }
+
+  const cleanCatName = category.name.replace(/^[\p{Emoji}\s]+/u, '');
+  const cleanPeriodName = period.name.replace(/^[\p{Emoji}\s]+/u, '');
   const authorName = author?.name ?? '';
-  const currentUrl = `https://edebiyatdonemler.com.tr${location.pathname}`;
+  const currentUrl = `https://edebiyatapp.vercel.app${location.pathname}`;
 
   // SEO Titles & Descriptions
   const pageTitle = authorSlug && author 
-    ? `${authorName} Eserleri ve Hayatı — ${cleanPeriodName} | edebiyatdonemler.com.tr`
-    : `${cleanPeriodName} Edebiyatı — Yazarlar ve Eserler | edebiyatdonemler.com.tr`;
+    ? `${authorName} Eserleri ve Hayatı — ${cleanPeriodName} | Türk Edebiyatı Atlası`
+    : `${cleanPeriodName} Yazarları ve Eserleri | Türk Edebiyatı Atlası`;
   
   const pageDesc = authorSlug && author
-    ? `${authorName}'nın tüm eserleri, hayatı ve ${cleanPeriodName} edebiyatındaki yeri. ${author?.works?.slice(0, 3).map(w => w.name).join(', ')} hakkında bilgi.`
-    : `${cleanPeriodName} edebiyatının genel özellikleri, ${period?.authors?.slice(0, 3).map(a => a.name).join(', ')} gibi temsilci yazarlar ve eserleri.`;
+    ? `${authorName}'nın tüm eserleri, hayatı ve ${cleanPeriodName} edebiyatındaki yeri.`
+    : `${cleanPeriodName} döneminin temsilci yazarları, eserleri ve genel özellikleri.`;
 
-  // JSON-LD for Author
-  const schemaOrg = authorSlug && author ? {
+  // JSON-LD Person Schema
+  const personSchema = authorSlug && author ? {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": author.name,
-    "description": author.bio?.substring(0, 160),
+    "description": author.bio || `${author.name} hayatı ve eserleri.`,
     "nationality": "Turkish",
-    "knowsAbout": `${cleanPeriodName} edebiyatı`,
-    "sameAs": author.wikiPage || undefined
+    "knowsAbout": `${cleanPeriodName} edebiyatı`
   } : null;
 
-  if (!category || !period) {
-    return <div className="screen-error">Dönem bulunamadı.</div>;
+  // JSON-LD EducationalResource Schema
+  const eduSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalResource",
+    "name": `${cleanPeriodName} Edebiyatı`,
+    "description": `${cleanPeriodName} döneminin temsilci yazarları, eserleri ve genel özellikleri.`,
+    "educationalLevel": "Lise",
+    "inLanguage": "tr"
+  };
+
+  // JSON-LD BreadcrumbList Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": "https://edebiyatapp.vercel.app/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": cleanCatName,
+        "item": `https://edebiyatapp.vercel.app/${categorySlug}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": cleanPeriodName,
+        "item": `https://edebiyatapp.vercel.app/${categorySlug}/${periodSlug}`
+      }
+    ]
+  };
+
+  if (authorSlug && author) {
+    breadcrumbSchema.itemListElement.push({
+      "@type": "ListItem",
+      "position": 4,
+      "name": author.name,
+      "item": currentUrl
+    });
   }
 
   const handleSelectAuthor = (selectedAuthor) => {
@@ -64,7 +109,10 @@ function AuthorsView({ categories }) {
         <meta property="og:description" content={pageDesc} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={currentUrl} />
-        {schemaOrg && <script type="application/ld+json">{JSON.stringify(schemaOrg)}</script>}
+        <meta property="og:site_name" content="Türk Edebiyatı Atlası" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        {!authorSlug && <script type="application/ld+json">{JSON.stringify(eduSchema)}</script>}
+        {personSchema && <script type="application/ld+json">{JSON.stringify(personSchema)}</script>}
       </Helmet>
       
       <AuthorsScreen
