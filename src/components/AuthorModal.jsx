@@ -345,6 +345,7 @@ export default function AuthorModal({ author: initialAuthor, period, onClose }) 
   const periodEmoji = period?.name?.match(/^(\p{Emoji})/u)?.[1] ?? '📖';
   const periodName  = period?.name?.replace(/^[\p{Emoji}\s]+/u, '') ?? '';
   const displayPhoto = author.image || wikipediaData?.imageUrl;
+  const heroBgUrl = displayPhoto || 'https://images.unsplash.com/photo-1457369804590-52c616b78c4d?auto=format&fit=crop&q=80';
 
   const { categorySlug, periodSlug } = useParams();
 
@@ -359,13 +360,18 @@ export default function AuthorModal({ author: initialAuthor, period, onClose }) 
       >
         {/* PREMIUM HERO SECTION */}
         <div className="modal-hero">
-          <div className="modal-hero-bg">
-            <img 
-              src={displayPhoto || 'https://images.unsplash.com/photo-1457369804590-52c616b78c4d?auto=format&fit=crop&q=80'} 
-              alt={`${author.name} Arka Plan`} 
-              loading="lazy"
-            />
-          </div>
+          <div 
+            className="modal-hero-bg" 
+            style={{ 
+              backgroundImage: `url(${heroBgUrl})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'blur(20px) brightness(0.6)',
+              position: 'absolute',
+              inset: 0,
+              zIndex: -1
+            }} 
+          />
           
           <button className="modal-close glass" onClick={onClose} style={{ top: '24px', right: '24px', position: 'absolute', zIndex: 10 }}>
             <X size={20} />
@@ -376,7 +382,7 @@ export default function AuthorModal({ author: initialAuthor, period, onClose }) 
               {displayPhoto ? (
                 <img 
                   src={displayPhoto} 
-                  alt={author.name} 
+                  alt={`${author.name} fotoğrafı`} 
                   className="modal-hero-photo" 
                   loading="lazy"
                 />
@@ -471,9 +477,9 @@ export default function AuthorModal({ author: initialAuthor, period, onClose }) 
                         <Settings size={14} /> Admin: Düzenle
                       </button>
                     )}
-                  </div>
-                </>
-              )}
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>

@@ -195,7 +195,7 @@ export default function BlogPostPage() {
                   }}>
                     <img 
                       src={auth.image} 
-                      alt={auth.name} 
+                      alt={`${auth.name} fotoğrafı`} 
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       onError={(e) => e.target.style.display = 'none'}
                     />

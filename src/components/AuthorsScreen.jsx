@@ -85,7 +85,7 @@ function AuthorCard({ author, periodId, colorVar, bgVar, onSelect, onSelectMovem
           ) : displayUrl ? (
             <img
               src={displayUrl}
-              alt={author.name}
+              alt={`${author.name} fotoğrafı`}
               className="author-avatar-img"
               loading="lazy"
               onError={e => {

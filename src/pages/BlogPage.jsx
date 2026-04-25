@@ -125,7 +125,7 @@ export default function BlogPage() {
             {featuredImage ? (
               <img 
                 src={featuredImage} 
-                alt="Öne Çıkan" 
+                alt={`${featuredPost.title} - Kapak Görseli`} 
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} 
               />
             ) : (
@@ -207,7 +207,7 @@ export default function BlogPage() {
               {getRepresentativeImage(post) ? (
                 <img 
                   src={getRepresentativeImage(post)} 
-                  alt={post.title} 
+                  alt={`${post.title} özeti`} 
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} 
                 />
               ) : (
