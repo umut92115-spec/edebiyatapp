@@ -40,7 +40,7 @@ export default defineConfig({
     })
   ],
   build: {
-    target: 'modules',
+    target: 'esnext',
     minify: 'esbuild',
     rollupOptions: {
       output: {
