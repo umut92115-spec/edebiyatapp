@@ -1,0 +1,20 @@
+Plautus | Çömlek | Komedya |  | - | Antik Roma halkının yaşamını yalın sahne dili ve kurguyla aktardığı komedyalarındandır. | Plautus (MÖ 2-3. yy), Eski Latince döneminin ünlü komedya yazarıdır. Roma'da Yunan komedyası benzeri bir komedi anlayışı oluşturmuştur. Kendinden sonra gelen Klasisist birçok sanatçıyı, özellikle Moliere ve Shakespeare'i etkilemiştir.
+Plautus | İkizler | Komedya |  | - | Yanlış anlamalar üzerine kurulu komedyasıdır. | -
+Plautus | Palavracı Asker | Komedya |  | - | Dalkavukluk, çıkarcılık ve insan zaaflarının hicvedildiği oyunudur. | -
+Plautus | Esirler | Komedya |  | - | - | -
+Terentius | Andros Güzeli | Komedya |  | - | Yunan komedyası (Menandros) etkisiyle Latinceye yapılmış başarılı uyarlamadır. | Terentius (MÖ 2. yy), Roma komedyasının öncülerindendir. Tiyatro tarihinde Prologus'a gerçek anlamda önsöz niteliğini vermesiyle ün kazanmıştır. Rönesans'tan başlayarak gelişen Avrupa töre komedyasına gerek biçim gerek içerik bakımından öncülük etmiştir.
+Terentius | Hadım Ağası | Komedya |  | - | - | -
+Vergilius | Aeneis (Aeneis Destanı) | Epik Şiir / Destan |  |  |  | 
+Vergilius | Çoban Şiirleri | Pastoral Şiir |  |  |  | 
+Vergilius | Georgica | Didaktik Şiir |  |  |  | 
+Seneca | Troialı Kadınlar | Tragedya |  | - | Savaşın acımasızlığını, sınırsız isteklerin ağır bedellerini, hayatın bilinmezlikleri karşısında insanın güçsüzlüğünü yakılan ağıtlarla anlatır. | Seneca (MÖ 1. yy - MS 65), felsefe ve tragedya alanlarında tanınır. Pratik felsefeyi öne çıkarmış, gerçek erdem ve değerin insanın içinde olduğunu belirtmiştir. Antik Yunan tragedyalarına ait temaları Roma'ya özgü süslemelerle bir kez daha ele almıştır. Tragedyaları sahnelenmek için değil, okunmak için yazılmıştır. Neron döneminde yaşamıştır.
+Seneca | Medea | Tragedya |  | - | Euripides'in eserinden uyarlanmıştır. | -
+Seneca | Phaedra | Tragedya |  | - | Yunan mitolojisinden uyarlanmış trajedisidir. | -
+Seneca | Mutlu Yaşam Üzerine | Felsefe |  | - | Stoa felsefesini günlük yaşamla birleştirerek mutluluğun doğasını sorgular. | -
+Seneca | Ahlak Mektupları | Felsefe / Mektup |  | - | Stoacı düşünceyi günlük yaşamla birleştirerek okuyucuya sunan felsefi mektuplarıdır. | -
+Tacitus | (Tarih yazıları) | Tarih |  | - | Roma İmparatorluğu'nun tarihini yazmıştır. | Tacitus (MS 1. yy), Romalı hatip, avukat, senatör ve tarihçidir.
+Cicero | Dostluk Üzerine | Felsefe / Hitabet |  | - | Dostluk kavramını ele aldığı felsefi içerikli eseridir. | Cicero (MÖ 1. yy), devlet adamı, şair, eleştirmen ve hitabet türünün en önemli temsilcisidir. Latin düzyazısının ve hitabetin en önemli ismidir. Toplum sorunları üzerinde durmuştur. Pek çok mektubu vardır.
+Cicero | Devlet Üzerine | Felsefe |  | - | Devlet yönetimi ve cumhuriyet üzerine yazdığı felsefi eseridir. | -
+Cicero | Yasalar Üzerine | Felsefe |  | - | Roma hukukunu ve yasaları konu alır. | -
+Ovidius | Metamorfozlar (Dönüşümler) | Şiir / Mitoloji |  | - | Mitolojik öyküleri şiir formunda yeniden anlatmıştır. Aşk, doğa ve mitoloji sıkça yer alır. Dünyanın yaratılışından başlayarak çeşitli mitolojik dönüşüm hikâyelerini içerir. | Ovidius (MÖ 1. yy), lirik şiir ve mitoloji alanında öne çıkan Romalı şairdir. Sürgün hayatı yaşamış ve eserlerinde duygusal yoğunluk barındırmıştır.
+Ovidius | Aşk Sanatı | Şiir / Didaktik |  | - | Dönemin aşk ilişkilerine mizahi ve didaktik bir bakış sunar. | -

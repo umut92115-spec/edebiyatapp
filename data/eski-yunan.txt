@@ -1,0 +1,31 @@
+Homeros | İlyada | Destan |  |  |  | 
+Homeros | Odysseia | Destan |  |  |  | 
+Hesiodos | İşler ve Günler | Didaktik Şiir |  | - | Çalışkanlık, adalet ve üretkenlik gibi temaları işleyen didaktik bir eserdir. | Hesiodos (MÖ 7. yy), didaktik şiir türünün kurucularındandır. Toplumsal düzen ve ahlâk şiirlerinde ön plandadır.
+Hesiodos | Theogonia (Tanrıların Yaratılışı) | Didaktik Şiir |  | - | Tanrıların ve evrenin doğuşunu anlatan eseridir; mitolojik düşüncenin sistemleştirilmesine katkı sunmuştur. | -
+Sappho | (Lirik şiirleri) | Lirik Şiir |  | - | Şiirlerinde en çok aşk konusunu işlemiştir. | Sappho (MÖ 7. yy), lirik şiirin öncüsü olan kadın şairdir. Lesbos (Midilli) adasında doğmuştur.
+Aisopos (Ezop) | Fabllar | Fabl |  | - | Fabl türünün kurucularından olan Ezop'un tek eseridir. Fransız yazar La Fontaine, 12 kitapta topladığı masallarının bazılarında Ezop'tan esinlenmiştir. | Aisopos (Ezop) (MÖ 6. yy), fabl türünün kurucularındandır.
+Aiskhylos | Agamemnon | Tragedya |  | - | Truva'yı kuşatıp ele geçiren Yunan Argos kenti kralını anlatır. | Aiskhylos (MÖ 5-6. yy), dünyanın ilk ve en büyük tragedya şairidir. Tragediyadaki aktör sayısını ikiye çıkarıp koro yerine diyalogu ön plana çıkarmıştır. Eserlerinde adaletin gerekliliği üzerinde durmuş, hak meselesini konunun ağırlık merkezine yerleştirmiştir.
+Aiskhylos | Zincire Vurulmuş Prometheus | Tragedya |  | - | Olympos tanrılarına başkaldıran Titan Prometheus'un ateşi tanrılardan çalıp insanlara vermesi ve bu yüzden zincire vurulmasını anlatır. Akıl gücünün kaba kuvvete üstünlüğünü, akla ve özgür düşünceye verilmesi gereken önemi vurgular. | -
+Aiskhylos | Persler | Tragedya |  | - | Pers Savaşları'nı konu alan tragedyasıdır. | -
+Sophokles | Kral Oidipus | Tragedya |  | - | Oidipus, Apollo tarafından lanetlenmiştir; yazgısında babasını öldürüp annesiyle evlenmek vardır. Atalarının işlediği suçların bedelini ödeyen bireyin trajedisini anlatır. Freud'un "Oidipus Kompleksi" adlı psikanalitik kavramı bu eserden gelir. | Sophokles (MÖ 5-6. yy), tragedyaya ahlaki bir derinlik kazandırmıştır. Tragedyadaki aktör sayısını üçe, korodaki şarkıcı sayısını 12'den 15'e çıkarmıştır. Eserlerinde insanlar alınyazılarıyla ve tanrılarla mücadele eder, ancak sonunda yenilen yine insandır. Karakter çözümlemeleri güçlüdür.
+Sophokles | Antigone | Tragedya |  | - | Devlet yasaları ile tanrıların kurallarının çatışmasını ve bireysel özgürlüğe inanan kahramanın otoriteye başkaldırışını ele alır. | -
+Sophokles | Elektra | Tragedya |  | - | Agamemnon ile Klytaimnestra'nın kızı Elektra'nın, babasını öldüren annesine duyduğu nefreti anlatır. Freud'un "Elektra Kompleksi" bu eserden gelir. | -
+Sophokles | Aias | Tragedya |  | - | - | -
+Euripides | İphigeneia Aulis'te | Tragedya |  | - | - | Euripides (MÖ 5. yy), üçüncü büyük tragedya şairidir. İnsan-tanrı mücadelesi yerine insanın kendi kendisiyle mücadelesine yer vermiştir. Eserlerine güçlü kadın karakterler ve akıllı köleler katarak geleneksel Yunan tragedyasına yeni bir şekil vermiştir.
+Euripides | Troyalı Kadınlar | Tragedya |  | - | Savaşın acımasızlığını, sınırsız isteklerin ağır bedellerini, hayatın bilinmezlikleri karşısında insanın güçsüzlüğünü yakılan ağıtlar arasında binlerce yıl öteden günümüze taşır. | -
+Euripides | Andromaque | Tragedya |  | - | - | -
+Euripides | Medea | Tragedya |  | - | Seneca tarafından Latinceye uyarlanmıştır; ihanete uğrayan bir kadının intikamını anlatır. | -
+Aristophanes | Atlılar | Komedya |  | - | Siyasal ve yergisel komedileridir; Atina yöneticilerini eleştirir. | Aristophanes (MÖ 4-5. yy), ilk büyük komedya şairidir. Demokrasi, savaş karşıtlığı ve kadın-erkek ilişkilerini hiciv aracılığıyla işlemiştir.
+Aristophanes | Eşek Arıları | Komedya |  | - | Siyasal yergi içerir. | -
+Aristophanes | Kuşlar | Komedya |  | - | Dönemin politik ve sosyal yapısını hicivsel bir dille eleştirir. | -
+Aristophanes | Kurbağalar | Komedya |  | - | - | -
+Aristophanes | Bulutlar | Komedya |  | - | Savaş karşıtlığı ve dönemin felsefe akımlarına eleştiri içerir. | -
+Aristophanes | Lysistrata | Komedya |  | - | Kadınların savaşı durdurmak için başlattığı cinsel grevi konu alır. | -
+Sokrates | (Yazılı eseri yoktur) | Felsefe |  | - | Düşünceleri öğrencisi Platon tarafından yazıya geçirilmiştir. Atina demokrasisi tarafından şehir tanrılarına inanmamak ve gençlerin ahlakını bozmak suçlamasıyla idama mahkûm edilmiştir. | Sokrates (MÖ 4-5. yy), Yunan filozofudur. Platon'un hocasıdır.
+Platon (Eflatun) | Devlet | Felsefe / Ütopya |  | - | Platon'un toplum ve devlet hakkındaki görüşlerini içeren, dünyadaki ilk ütopik eserdir. Platon devleti bireyden daha önemli görür. Öğrencisi Aristoteles bu düşünceye katılmaz. | Platon (Eflatun) (MÖ 4-5. yy), Yunan filozofudur. Sokrates'in öğrencisi ve Aristoteles'in hocasıdır. Felsefe ve sanat alanındaki düşünceleriyle tanınır.
+Platon (Eflatun) | Sokrates'in Savunması | Diyalog |  | - | Sokrates'in bir grup Atinalı tarafından şehrin tanrılarına inanmayışı ve gençlerin ahlakını bozması gerekçesiyle suçlanışını, Atina demokrasisi tarafından yargılanışını ve idama mahkûm ediliş sürecini konu alan diyalogdur. | -
+Platon (Eflatun) | Şölen (Ziyafet) | Diyalog |  | - | Sevgi ve güzellik kavramlarının tartışıldığı diyalogdur. | -
+Aristoteles (Aristo) | Poetika | Felsefe / Estetik |  | - | Aristoteles'in sanat hakkındaki görüşlerini dile getirdiği, şiir sanatı ile ilgili kuramlarını içeren eseridir. Estetik tarihi yönünden önemlidir. Komedya ve tragedyanın ilkelerini ortaya koymuştur. | Aristoteles (Aristo) (MÖ 4. yy), Yunan filozofudur. Platon'un öğrencisidir. Hocası Platon'un aksine sanata ve sanatçıya ilk kez değer vermiştir.
+Aristoteles (Aristo) | Retorik | Felsefe |  | - | Konuşma sanatı üzerine yazılmış bir eserdir. | -
+Aristoteles (Aristo) | Organon | Felsefe / Mantık |  | - | Aristoteles'in 6 ciltlik klasik mantık üzerine olan kitap serisidir. | -
+Aristoteles (Aristo) | Politika | Felsefe |  | - | Devlet yönetimi ve siyaset felsefesi üzerine eseridir. | -
