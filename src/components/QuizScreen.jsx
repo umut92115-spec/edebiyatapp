@@ -11,8 +11,8 @@ export default function QuizScreen({ categories, onBack }) {
   const { scores, updateScore } = useQuizScores();
   
   const currentUrl = "https://edebiyatapp.vercel.app/quiz";
-  const pageTitle = "Edebiyat Quiz — Bilgini Test Et | Türk Edebiyatı Atlası";
-  const pageDesc = "Türk edebiyatı yazarları ve eserleri üzerine interaktif quiz. YKS AYT edebiyat hazırlığı için kendinizi test edin.";
+  const pageTitle = "🖋️ Edebiyat Quiz — Bilgini Test Et | Türk Edebiyatı Atlası";
+  const pageDesc = "Türk edebiyatı yazarları ve eserleri üzerine interaktif quiz. 🖋️ YKS AYT edebiyat hazırlığı için kendinizi test edin.";
 
   const [gameState, setGameState] = useState('START'); // START, PLAYING, RESULT
   const [mode, setMode] = useState('NORMAL'); // NORMAL, EXAM
@@ -148,6 +148,7 @@ export default function QuizScreen({ categories, onBack }) {
         <meta property="og:description" content={pageDesc} />
         <meta property="og:url" content={currentUrl} />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://edebiyatapp.vercel.app/og-image.png" />
         <meta property="og:site_name" content="Türk Edebiyatı Atlası" />
       </Helmet>
 

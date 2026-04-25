@@ -12,8 +12,8 @@ function PeriodsView({ categories }) {
   const cleanCatName = category?.name?.replace(/^[\p{Emoji}\s]+/u, '') ?? '';
   const currentUrl = `https://edebiyatapp.vercel.app${location.pathname}`;
 
-  const pageTitle = `${cleanCatName} Yazarları ve Eserleri | Türk Edebiyatı Atlası`;
-  const pageDesc = `${cleanCatName} döneminin temsilci yazarları, eserleri ve genel özellikleri.`;
+  const pageTitle = `🖋️ ${cleanCatName} Yazarları ve Eserleri | Türk Edebiyatı Atlası`;
+  const pageDesc = `${cleanCatName} döneminin temsilci yazarları, eserleri ve genel özellikleri. 🖋️`;
 
   if (!category) {
     return <div className="screen-error">Kategori bulunamadı.</div>;
@@ -67,6 +67,7 @@ function PeriodsView({ categories }) {
         <meta property="og:description" content={pageDesc} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={currentUrl} />
+        <meta property="og:image" content="https://edebiyatapp.vercel.app/og-image.png" />
         <meta property="og:site_name" content="Türk Edebiyatı Atlası" />
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(eduSchema)}</script>

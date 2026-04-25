@@ -59,13 +59,14 @@ export default function BlogPage() {
   return (
     <div className="blog-page-container animate-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', position: 'relative' }}>
       <Helmet>
-        <title>Edebiyat Blogu | Türk Edebiyatı Atlası</title>
+        <title>🖋️ Edebiyat Blogu | Türk Edebiyatı Atlası</title>
         <meta name="description" content="AYT Edebiyat hazırlık, yazar özetleri, eser analizleri ve sınav stratejileri hakkında güncel içerikler." />
         <link rel="canonical" href={currentUrl} />
         <meta property="og:title" content="Edebiyat Blogu | Türk Edebiyatı Atlası" />
         <meta property="og:description" content="Edebiyat dünyasından güncel yazılar." />
         <meta property="og:url" content={currentUrl} />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://edebiyatapp.vercel.app/og-image.png" />
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 

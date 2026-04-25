@@ -20,8 +20,8 @@ export default function HomeScreen({ categories, onSelectCategory, onSelectAutho
     }
   });
 
-  const pageTitle = "Türk Edebiyatı Dönemleri — Yazarlar ve Eserler | Türk Edebiyatı Atlası";
-  const pageDesc = "Türk edebiyatının tüm dönemleri, yazarları ve eserleri. YKS AYT edebiyat için interaktif kaynak.";
+  const pageTitle = "🖋️ Türk Edebiyatı Dönemleri — Yazarlar ve Eserler | Türk Edebiyatı Atlası";
+  const pageDesc = "Türk edebiyatının tüm dönemleri, yazarları ve eserleri. 🖋️ YKS AYT edebiyat için interaktif kaynak.";
   const currentUrl = "https://edebiyatapp.vercel.app";
 
   // JSON-LD BreadcrumbList Schema
@@ -48,6 +48,7 @@ export default function HomeScreen({ categories, onSelectCategory, onSelectAutho
         <meta property="og:description" content={pageDesc} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={currentUrl} />
+        <meta property="og:image" content={`${currentUrl}/og-image.png`} />
         <meta property="og:site_name" content="Türk Edebiyatı Atlası" />
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>

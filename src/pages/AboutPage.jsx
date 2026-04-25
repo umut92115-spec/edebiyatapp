@@ -21,13 +21,14 @@ export default function AboutPage() {
       }}
     >
       <Helmet>
-        <title>Hakkımızda | Türk Edebiyatı Atlası</title>
+        <title>🖋️ Hakkımızda | Türk Edebiyatı Atlası</title>
         <meta name="description" content="Türk Edebiyatı Atlası'nın kuruluş amacı, vizyonu ve edebiyatı dijitalleştirme yolculuğu hakkında bilgi alın." />
         <link rel="canonical" href="https://edebiyatapp.vercel.app/hakkimizda" />
         <meta property="og:title" content="Hakkımızda | Türk Edebiyatı Atlası" />
         <meta property="og:description" content="Türk Edebiyatı Atlası'nın kuruluş amacı ve vizyonu." />
         <meta property="og:url" content="https://edebiyatapp.vercel.app/hakkimizda" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://edebiyatapp.vercel.app/og-image.png" />
       </Helmet>
 
       <div style={{ textAlign: 'center', marginBottom: '60px' }}>

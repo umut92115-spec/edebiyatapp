@@ -25,12 +25,12 @@ function AuthorsView({ categories }) {
 
   // SEO Titles & Descriptions
   const pageTitle = authorSlug && author 
-    ? `${authorName} Eserleri ve Hayatı — ${cleanPeriodName} | Türk Edebiyatı Atlası`
-    : `${cleanPeriodName} Yazarları ve Eserleri | Türk Edebiyatı Atlası`;
+    ? `🖋️ ${authorName} Eserleri ve Hayatı — ${cleanPeriodName} | Türk Edebiyatı Atlası`
+    : `🖋️ ${cleanPeriodName} Yazarları ve Eserleri | Türk Edebiyatı Atlası`;
   
   const pageDesc = authorSlug && author
-    ? `${authorName}'nın tüm eserleri, hayatı ve ${cleanPeriodName} edebiyatındaki yeri.`
-    : `${cleanPeriodName} döneminin temsilci yazarları, eserleri ve genel özellikleri.`;
+    ? `${authorName}'nın tüm eserleri, hayatı ve ${cleanPeriodName} edebiyatındaki yeri. 🖋️`
+    : `${cleanPeriodName} döneminin temsilci yazarları, eserleri ve genel özellikleri. 🖋️`;
 
   // JSON-LD Person Schema
   const personSchema = authorSlug && author ? {
@@ -109,6 +109,7 @@ function AuthorsView({ categories }) {
         <meta property="og:description" content={pageDesc} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={currentUrl} />
+        <meta property="og:image" content="https://edebiyatapp.vercel.app/og-image.png" />
         <meta property="og:site_name" content="Türk Edebiyatı Atlası" />
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         {!authorSlug && <script type="application/ld+json">{JSON.stringify(eduSchema)}</script>}

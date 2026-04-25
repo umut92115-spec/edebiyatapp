@@ -123,13 +123,14 @@ export default function BlogPostPage() {
     <div style={{ background: 'var(--bg-base)', minHeight: '100vh', paddingBottom: '100px' }}>
       <article style={{ maxWidth: '850px', margin: '0 auto', padding: '60px 20px' }}>
         <Helmet>
-          <title>{post.title} | Türk Edebiyatı Atlası</title>
+          <title>🖋️ {post.title} | Türk Edebiyatı Atlası</title>
           <meta name="description" content={post.excerpt} />
           <link rel="canonical" href={currentUrl} />
           <meta property="og:title" content={post.title} />
           <meta property="og:description" content={post.excerpt} />
           <meta property="og:url" content={currentUrl} />
           <meta property="og:type" content="article" />
+          <meta property="og:image" content="https://edebiyatapp.vercel.app/og-image.png" />
           <meta property="og:site_name" content="Türk Edebiyatı Atlası" />
           <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         </Helmet>
