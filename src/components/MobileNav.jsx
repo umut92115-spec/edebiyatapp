@@ -17,10 +17,6 @@ export default function MobileNav() {
         <BookOpen size={22} />
         <span>Blog</span>
       </NavLink>
-      <NavLink to="/hakkimizda" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-        <Info size={22} />
-        <span>Biz kimiz?</span>
-      </NavLink>
       <div className="nav-indicator" />
     </nav>
   );
