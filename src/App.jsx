@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import React, { Suspense, useEffect } from 'react';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Trophy } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Analytics } from '@vercel/analytics/react';
@@ -8,6 +8,17 @@ import literatureData from './data/literatureData.json';
 const allCategories = literatureData.categories;
 
 function App() {
+  const location = useLocation();
+
+  // Google Analytics Page View Tracking
+  useEffect(() => {
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('config', 'G-RSGJRM3V9B', {
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location]);
+
   // SSR-safe way to check for home without hooks
   // This is only for the initial HTML render. Hydration will take care of the rest.
   return (
