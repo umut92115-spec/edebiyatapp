@@ -1,13 +1,19 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Trophy, ArrowLeft, RefreshCcw, CheckCircle2, XCircle, Brain, Target, BookOpen } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { Trophy, ArrowLeft, CheckCircle2, XCircle, Brain, Target, BookOpen } from 'lucide-react';
 import { useQuizScores } from '../hooks/useLocalStorage';
 
 export default function QuizScreen({ categories, onBack }) {
   const navigate = useNavigate();
   const handleBack = onBack || (() => navigate('/'));
   const { scores, updateScore } = useQuizScores();
+  
+  const currentUrl = "https://edebiyatapp.vercel.app/quiz";
+  const pageTitle = "Edebiyat Quiz — Bilgini Test Et | Türk Edebiyatı Atlası";
+  const pageDesc = "Türk edebiyatı yazarları ve eserleri üzerine interaktif quiz. YKS AYT edebiyat hazırlığı için kendinizi test edin.";
+
   const [gameState, setGameState] = useState('START'); // START, PLAYING, RESULT
   const [mode, setMode] = useState('NORMAL'); // NORMAL, EXAM
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -134,6 +140,17 @@ export default function QuizScreen({ categories, onBack }) {
 
   return (
     <div className="quiz-container animate-in">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDesc} />
+        <link rel="canonical" href={currentUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDesc} />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Türk Edebiyatı Atlası" />
+      </Helmet>
+
       <header className="quiz-header">
         <button className="header-back-btn" onClick={handleBack}>
           <ArrowLeft size={20} />
@@ -227,9 +244,6 @@ export default function QuizScreen({ categories, onBack }) {
                 let btnClass = "option-btn glass";
                 if (answerState) {
                   if (isCorrect) btnClass += " correct";
-                  else if (answerState === 'WRONG' && option.id !== currentQuestion.correctAuthor.id) {
-                    // Opsiyonel: yanlış seçileni işaretle
-                  }
                 }
 
                 return (
@@ -279,7 +293,7 @@ export default function QuizScreen({ categories, onBack }) {
         .stat-item {
           background: var(--bg-card);
           padding: 8px 16px;
-          border-radius: var(--radius-full);
+          border-radius: 99px;
           font-size: 0.9rem;
           font-weight: 600;
           display: flex;
@@ -315,7 +329,7 @@ export default function QuizScreen({ categories, onBack }) {
           text-align: left;
           background: var(--bg-card);
           padding: 24px;
-          border-radius: var(--radius-xl);
+          border-radius: 24px;
           border: 1px solid var(--border);
         }
         .selector-label {
@@ -334,7 +348,7 @@ export default function QuizScreen({ categories, onBack }) {
         }
         .chip {
           padding: 10px 20px;
-          border-radius: var(--radius-full);
+          border-radius: 99px;
           border: 1px solid var(--border);
           background: var(--bg-surface);
           color: var(--text-primary);
@@ -345,13 +359,12 @@ export default function QuizScreen({ categories, onBack }) {
         }
         .chip:hover {
           border-color: var(--amber);
-          background: var(--bg-card-hover);
         }
         .chip.active {
           background: var(--amber);
           color: white;
           border-color: var(--amber);
-          box-shadow: 0 4px 12px var(--amber-dim);
+          box-shadow: 0 4px 12px rgba(193, 127, 42, 0.3);
         }
         .quiz-modes {
           display: grid;
@@ -360,10 +373,10 @@ export default function QuizScreen({ categories, onBack }) {
         }
         .quiz-mode-card {
           padding: 40px 32px;
-          border-radius: var(--radius-xl);
+          border-radius: 24px;
           border: 1px solid var(--border);
           cursor: pointer;
-          transition: var(--transition);
+          transition: all 0.3s ease;
           text-align: center;
           display: flex;
           flex-direction: column;
@@ -373,7 +386,6 @@ export default function QuizScreen({ categories, onBack }) {
         .quiz-mode-card:hover {
           transform: translateY(-8px);
           border-color: var(--amber);
-          background: var(--bg-card-hover);
         }
         .quiz-mode-card.premium {
           background: linear-gradient(135deg, var(--bg-card) 0%, var(--amber-dim) 100%);
@@ -389,7 +401,7 @@ export default function QuizScreen({ categories, onBack }) {
         }
         .question-card {
           padding: 64px 40px;
-          border-radius: var(--radius-xl);
+          border-radius: 24px;
           text-align: center;
           margin-bottom: 32px;
           border: 2px solid var(--border);
@@ -422,7 +434,7 @@ export default function QuizScreen({ categories, onBack }) {
         }
         .option-btn {
           padding: 24px;
-          border-radius: var(--radius-lg);
+          border-radius: 16px;
           font-family: var(--font-body);
           font-size: 1.1rem;
           font-weight: 600;
@@ -436,7 +448,6 @@ export default function QuizScreen({ categories, onBack }) {
           position: relative;
         }
         .option-btn:hover:not(:disabled) {
-          background: var(--bg-card-hover);
           border-color: var(--amber);
           transform: translateY(-2px);
         }
@@ -451,7 +462,7 @@ export default function QuizScreen({ categories, onBack }) {
         .wrong-feedback {
           margin-top: 24px;
           text-align: center;
-          color: var(--rose);
+          color: #be123c;
           display: flex;
           align-items: center;
           justify-content: center;
