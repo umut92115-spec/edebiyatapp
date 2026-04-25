@@ -4,12 +4,10 @@ import sitemap from 'vite-plugin-sitemap'
 import fs from 'fs'
 import persistencePlugin from './persistence-plugin'
 
-// Generate dynamic routes for sitemap
 const getDynamicRoutes = () => {
   try {
     const data = JSON.parse(fs.readFileSync('./src/data/literatureData.json', 'utf-8'));
     const routes = ['/quiz', '/admin'];
-    
     data.categories.forEach(cat => {
       routes.push(`/${cat.id}`);
       cat.periods.forEach(period => {
@@ -46,10 +44,10 @@ export default defineConfig({
     minify: 'esbuild',
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom'],
-          'vendor-router': ['react-router-dom'],
-          'vendor-utils': ['framer-motion', 'lucide-react', 'react-helmet-async']
+        manualChunks: (id) => {
+          if (id.includes('react-dom') || id.includes('react/')) return 'vendor-react';
+          if (id.includes('react-router-dom')) return 'vendor-router';
+          if (id.includes('framer-motion') || id.includes('lucide-react') || id.includes('react-helmet-async')) return 'vendor-utils';
         }
       }
     }
