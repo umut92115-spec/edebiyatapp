@@ -34,7 +34,7 @@ const periodBgVar = {
 };
 
 
-export function PeriodsScreen({ category, onSelectPeriod, onBack }) {
+export default function PeriodsScreen({ category, onSelectPeriod, onBack }) {
   const { categorySlug } = useParams();
   const cleanCatName = category.name.replace(/^[\p{Emoji}\s]+/u, '');
   

@@ -140,7 +140,7 @@ function AuthorCard({ author, periodId, colorVar, bgVar, onSelect, onSelectMovem
   );
 }
 
-export function AuthorsScreen({ period, onSelectAuthor, onBack }) {
+export default function AuthorsScreen({ period, onSelectAuthor, onBack }) {
   const cleanPeriodName = period.name.replace(/^[\p{Emoji}\s]+/u, '');
   
 

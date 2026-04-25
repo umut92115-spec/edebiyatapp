@@ -1,9 +1,12 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Trophy, ArrowLeft, RefreshCcw, CheckCircle2, XCircle, Brain, Target, BookOpen } from 'lucide-react';
 import { useQuizScores } from '../hooks/useLocalStorage';
 
-export function QuizScreen({ categories, onBack }) {
+export default function QuizScreen({ categories, onBack }) {
+  const navigate = useNavigate();
+  const handleBack = onBack || (() => navigate('/'));
   const { scores, updateScore } = useQuizScores();
   const [gameState, setGameState] = useState('START'); // START, PLAYING, RESULT
   const [mode, setMode] = useState('NORMAL'); // NORMAL, EXAM
@@ -132,7 +135,7 @@ export function QuizScreen({ categories, onBack }) {
   return (
     <div className="quiz-container animate-in">
       <header className="quiz-header">
-        <button className="header-back-btn" onClick={onBack}>
+        <button className="header-back-btn" onClick={handleBack}>
           <ArrowLeft size={20} />
         </button>
         <div className="quiz-stats">

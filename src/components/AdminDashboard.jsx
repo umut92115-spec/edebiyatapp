@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { 
   ArrowLeft, Save, FileText, Package, 
   Trash2, Plus, Database, Settings, 
@@ -7,7 +8,9 @@ import {
 } from 'lucide-react';
 import { dataService } from '../services/dataService';
 
-export function AdminDashboard({ onBack }) {
+export default function AdminDashboard({ onBack }) {
+  const navigate = useNavigate();
+  const handleBack = onBack || (() => navigate('/'));
   const [sourceData, setSourceData] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -52,7 +55,7 @@ export function AdminDashboard({ onBack }) {
               autoFocus
             />
             <button type="submit">Giriş Yap</button>
-            <button type="button" className="btn-cancel" onClick={onBack}>Vazgeç</button>
+            <button type="button" className="btn-cancel" onClick={handleBack}>Vazgeç</button>
           </form>
           {message && <div className="admin-message error">{message.text}</div>}
         </motion.div>
@@ -114,7 +117,7 @@ export function AdminDashboard({ onBack }) {
       className="admin-dashboard animate-in"
     >
       <div className="admin-header">
-        <button className="btn-back" onClick={onBack}>
+        <button className="btn-back" onClick={handleBack}>
           <ArrowLeft size={16} /> Uygulamaya Dön
         </button>
         <h2><Settings size={20} /> Veri Yönetim Paneli</h2>

@@ -39,6 +39,17 @@ export default defineConfig({
       }
     })
   ],
+  ssgOptions: {
+    script: 'async',
+    formatting: 'minify',
+    includedRoutes(paths, routes) {
+      // Re-use our dynamic routes helper
+      return getDynamicRoutes();
+    },
+    onFinished() {
+      console.log('SSG finished!');
+    }
+  },
   build: {
     target: 'esnext',
     minify: 'esbuild',

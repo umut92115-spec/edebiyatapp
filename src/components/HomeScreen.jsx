@@ -1,10 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GlobalSearch } from './GlobalSearch';
 import { Map, ChevronRight, Book, Feather, Scroll, Compass, Trophy } from 'lucide-react';
 
 
-export function HomeScreen({ categories, onSelectCategory, onSelectAuthor, onStartQuiz }) {
+export default function HomeScreen({ categories, onSelectCategory, onSelectAuthor, onStartQuiz }) {
+  const navigate = useNavigate();
+
+  const handleStartQuiz = onStartQuiz || (() => navigate('/quiz'));
+  const handleSelectAuthor = onSelectAuthor || ((author) => {
+    // Find path for author
+    for (const cat of categories) {
+      for (const p of cat.periods) {
+        if (p.authors.some(a => a.id === author.id)) {
+          navigate(`/${cat.id}/${p.id}/${author.id}`);
+          return;
+        }
+      }
+    }
+  });
+
   return (
     <div className="animate-in">
       <div className="home-hero">
@@ -76,13 +90,13 @@ export function HomeScreen({ categories, onSelectCategory, onSelectAuthor, onSta
         `}</style>
         
         <div className="hero-search-container">
-          <GlobalSearch allCategories={categories} onSelectAuthor={onSelectAuthor} />
+          <GlobalSearch allCategories={categories} onSelectAuthor={handleSelectAuthor} />
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '48px' }}>
           <button 
             className="btn-quiz-hero glass"
-            onClick={onStartQuiz}
+            onClick={handleStartQuiz}
             style={{
               padding: '12px 32px',
               borderRadius: '30px',

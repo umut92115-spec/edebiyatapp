@@ -211,7 +211,7 @@ function AuthorInfoBox({ author, isEditing, isCumhuriyet, isTanzimat, periodId }
   );
 }
 
-export function AuthorModal({ author: initialAuthor, period, onClose }) {
+export default function AuthorModal({ author: initialAuthor, period, onClose }) {
   const { wikipediaData, isLoading: wikiLoading, fetchAuthor, clearAuthor } = useWikipedia();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { isAuthorFavorite, toggleAuthorFavorite } = useAuthorFavorites();
@@ -228,7 +228,7 @@ export function AuthorModal({ author: initialAuthor, period, onClose }) {
   const [showTagSelect, setShowTagSelect] = useState(false);
   const [showNotes, setShowNotes] = useState(!!getAuthorNotes(initialAuthor?.id)); // Not varsa açık gelsin
 
-  const isAdmin = localStorage.getItem('is_admin_active') === 'true';
+  const isAdmin = typeof window !== 'undefined' && localStorage.getItem('is_admin_active') === 'true';
 
   useEffect(() => {
     setAuthor(initialAuthor);

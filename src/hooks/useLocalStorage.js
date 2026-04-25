@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
  */
 export function useLocalStorage(key, initialValue) {
   const [stored, setStored] = useState(() => {
+    if (typeof window === 'undefined') return initialValue;
     try {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : initialValue;
@@ -18,7 +19,9 @@ export function useLocalStorage(key, initialValue) {
     try {
       const toStore = value instanceof Function ? value(stored) : value;
       setStored(toStore);
-      window.localStorage.setItem(key, JSON.stringify(toStore));
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem(key, JSON.stringify(toStore));
+      }
     } catch (err) {
       console.warn('LocalStorage yazma hatası:', err);
     }
