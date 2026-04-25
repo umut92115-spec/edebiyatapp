@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { 
   ArrowLeft, Save, FileText, Package, 
   Trash2, Plus, Database, Settings, 
@@ -38,6 +39,10 @@ export default function AdminDashboard({ onBack }) {
   if (!isAuthorized) {
     return (
       <div className="admin-login-overlay">
+        <Helmet>
+          <meta name="robots" content="noindex, nofollow" />
+          <title>Admin Girişi | Türk Edebiyatı Atlası</title>
+        </Helmet>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -116,6 +121,10 @@ export default function AdminDashboard({ onBack }) {
       animate={{ opacity: 1 }}
       className="admin-dashboard animate-in"
     >
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Admin Paneli | Türk Edebiyatı Atlası</title>
+      </Helmet>
       <div className="admin-header">
         <button className="btn-back" onClick={handleBack}>
           <ArrowLeft size={16} /> Uygulamaya Dön

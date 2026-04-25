@@ -44,6 +44,33 @@ export default function BlogPostPage() {
 
   if (!post) return <div className="screen-error">Yazı bulunamadı.</div>;
 
+  const currentUrl = `https://edebiyatapp.vercel.app/blog/${post.id}`;
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": "https://edebiyatapp.vercel.app/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://edebiyatapp.vercel.app/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": currentUrl
+      }
+    ]
+  };
+
   const renderContent = (text) => {
     return text.split('\n').map((line, i) => {
       // Always handle bolding for every line
@@ -96,8 +123,15 @@ export default function BlogPostPage() {
     <div style={{ background: 'var(--bg-base)', minHeight: '100vh', paddingBottom: '100px' }}>
       <article style={{ maxWidth: '850px', margin: '0 auto', padding: '60px 20px' }}>
         <Helmet>
-          <title>{post.title} — Edebiyat Blogu</title>
+          <title>{post.title} | Türk Edebiyatı Atlası</title>
           <meta name="description" content={post.excerpt} />
+          <link rel="canonical" href={currentUrl} />
+          <meta property="og:title" content={post.title} />
+          <meta property="og:description" content={post.excerpt} />
+          <meta property="og:url" content={currentUrl} />
+          <meta property="og:type" content="article" />
+          <meta property="og:site_name" content="Türk Edebiyatı Atlası" />
+          <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         </Helmet>
 
         <Link 

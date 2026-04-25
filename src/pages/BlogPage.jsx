@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import blogData from '../data/blogData.json';
 import literatureData from '../data/literatureData.json';
-import { Calendar, User, ChevronRight, BookOpen, PenTool, Scroll as ScrollIcon, Search } from 'lucide-react';
+import { Calendar, User, ChevronRight, BookOpen, PenTool, Scroll as ScrollIcon } from 'lucide-react';
 
 export default function BlogPage() {
   const slugify = (text) => {
@@ -35,12 +35,38 @@ export default function BlogPage() {
   const featuredPost = blogData[0];
   const featuredImage = featuredPost ? getRepresentativeImage(featuredPost) : null;
   const remainingPosts = blogData.slice(1);
+  const currentUrl = "https://edebiyatapp.vercel.app/blog";
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Ana Sayfa",
+        "item": "https://edebiyatapp.vercel.app/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": currentUrl
+      }
+    ]
+  };
 
   return (
     <div className="blog-page-container animate-in" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', position: 'relative' }}>
       <Helmet>
-        <title>Edebiyat Blogu — Sınav İpuçları ve Yazar Analizleri | edebiyatdonemler.com.tr</title>
+        <title>Edebiyat Blogu | Türk Edebiyatı Atlası</title>
         <meta name="description" content="AYT Edebiyat hazırlık, yazar özetleri, eser analizleri ve sınav stratejileri hakkında güncel içerikler." />
+        <link rel="canonical" href={currentUrl} />
+        <meta property="og:title" content="Edebiyat Blogu | Türk Edebiyatı Atlası" />
+        <meta property="og:description" content="Edebiyat dünyasından güncel yazılar." />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
       {/* Decorative Background Elements */}
