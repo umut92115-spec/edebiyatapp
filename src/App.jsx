@@ -5,6 +5,8 @@ import { Helmet } from 'react-helmet-async';
 import { Analytics } from '@vercel/analytics/react';
 import literatureData from './data/literatureData.json';
 
+import MobileNav from './components/MobileNav';
+
 const allCategories = literatureData.categories;
 
 function App() {
@@ -34,12 +36,10 @@ function App() {
           </Link>
         </div>
         <div className="header-actions">
-          <Link to="/quiz" className="header-quiz-btn" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Link to="/quiz" className="header-quiz-btn desktop-only" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Trophy size={18} />
             <span>Quiz</span>
           </Link>
-          {/* We'll use CSS to hide complex components during SSR if needed, 
-              but for now we keep it simple to ensure SSG build success */}
           <div className="header-badge">Beta v1.0</div>
         </div>
       </header>
@@ -81,6 +81,7 @@ function App() {
           </p>
         </div>
       </footer>
+      <MobileNav />
       <Analytics />
     </div>
   );

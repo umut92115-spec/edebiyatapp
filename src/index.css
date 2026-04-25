@@ -3091,4 +3091,180 @@ article li::before {
   article h3 {
     font-size: 1.6rem !important;
   }
+
+  /* ===========================
+     MOBILE-FIRST REFINEMENTS
+  =========================== */
+  .desktop-only { display: none !important; }
+  
+  .app-header {
+    padding: 12px 20px;
+  }
+  
+  .app-header .logo {
+    font-size: 1.1rem;
+  }
+  
+  .app-header .logo span {
+    font-size: 0.75rem;
+  }
+  
+  .main-content {
+    padding: 32px 20px 100px; /* Space for mobile nav */
+  }
+  
+  .home-hero {
+    padding: 40px 0 60px;
+  }
+  
+  .home-hero .hero-title {
+    font-size: 2.4rem;
+  }
+  
+  .home-hero .hero-desc {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+  
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .category-card {
+    padding: 24px;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .card-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  
+  .category-card .card-title {
+    font-size: 1.2rem;
+  }
+  
+  .category-card .card-arrow {
+    display: none;
+  }
+
+  /* Premium Mobile Nav */
+  .mobile-nav {
+    position: fixed;
+    bottom: 24px;
+    left: 20px;
+    right: 20px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(139, 111, 71, 0.2);
+    border-radius: 24px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 12px;
+    z-index: 2000;
+    box-shadow: 
+      0 10px 30px rgba(139, 111, 71, 0.15),
+      0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 1;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .nav-item svg {
+    transition: transform 0.3s var(--transition-liquid);
+  }
+
+  .nav-item.active {
+    color: var(--amber);
+  }
+
+  .nav-item.active svg {
+    transform: translateY(-4px) scale(1.1);
+    color: var(--amber);
+  }
+
+  .nav-item span {
+    opacity: 0.7;
+    transition: all 0.3s;
+  }
+
+  .nav-item.active span {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  /* Period & Author Views Mobile */
+  .period-card {
+    padding: 20px !important;
+  }
+  
+  .author-card-mini {
+    padding: 12px !important;
+  }
+
+  /* Footer Mobile */
+  .app-footer {
+    padding-bottom: 120px !important; /* Extra space for nav */
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .footer-logo {
+    justify-content: center;
+  }
+
+  /* Modal Mobile */
+  .modal-content {
+    width: 95% !important;
+    max-height: 90vh !important;
+    padding: 24px !important;
+    margin: 10px !important;
+  }
+
+  .modal-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px !important;
+  }
+
+  /* Utility for mobile touch */
+  .btn-primary, .btn-secondary, .btn-quiz-hero {
+    width: 100%;
+    justify-content: center;
+    padding: 16px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none;
+  }
 }
