@@ -435,7 +435,7 @@ export function AuthorModal({ author: initialAuthor, period, onClose }) {
 
         <div className="modal-body" style={{ background: 'var(--bg-glass)', paddingTop: '40px' }}>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '32px' }}>
+          <div className="modal-content-grid">
             
             <div className="modal-main-column">
               {/* ÇALIŞMA NOTLARI BÖLÜMÜ */}

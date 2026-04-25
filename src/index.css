@@ -1423,6 +1423,12 @@ body::after {
   position: relative;
 }
 
+.modal-content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 32px;
+}
+
 .modal-panel-premium {
   max-width: 900px;
   background: var(--bg-glass);
@@ -1937,8 +1943,15 @@ body::after {
 
 /* ── MODAL RESPONSIVE ── */
 @media (max-width: 640px) {
-  .modal-overlay { padding: 16px 8px; align-items: flex-end; }
-  .modal-panel { border-radius: var(--radius-lg) var(--radius-lg) 0 0; max-width: 100%; }
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal-panel { 
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0; 
+    max-width: 100%; 
+    max-height: 92vh; 
+    overflow-y: auto !important; 
+    -webkit-overflow-scrolling: touch;
+  }
+  .modal-content-grid { grid-template-columns: 1fr; gap: 24px; }
   .modal-header { padding: 24px 20px 20px; flex-wrap: wrap; }
   .modal-body { padding: 20px 20px 28px; }
   .modal-author-name { font-size: 1.5rem; }
@@ -2890,13 +2903,15 @@ body::after {
   /* Modal responsiveness */
   .modal-panel {
     width: 100% !important;
-    height: 100% !important;
-    max-height: none !important;
-    border-radius: 0 !important;
+    height: auto !important;
+    max-height: 92vh !important;
+    overflow-y: auto !important;
+    border-radius: 20px 20px 0 0 !important;
   }
 
   .modal-content-grid {
     grid-template-columns: 1fr !important;
+    gap: 24px !important;
   }
 
   .author-hero-section {

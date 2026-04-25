@@ -27,6 +27,7 @@ const allCategories = literatureData.categories;
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { Helmet } from 'react-helmet-async';
+import { Analytics } from '@vercel/analytics/react';
 
 // Helper component for Authors view with Modal
 function AuthorsView({ categories }) {
@@ -372,6 +373,7 @@ function App() {
           </p>
         </div>
       </footer>
+      <Analytics />
     </div>
   );
 }
