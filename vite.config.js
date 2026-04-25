@@ -7,7 +7,7 @@ import persistencePlugin from './persistence-plugin'
 const getDynamicRoutesAndPriorities = () => {
   try {
     const data = JSON.parse(fs.readFileSync('./src/data/literatureData.json', 'utf-8'));
-    const routes = ['/quiz', '/admin', '/blog', '/hakkimizda', '/iletisim'];
+    const routes = ['/', '/quiz', '/admin', '/blog', '/hakkimizda', '/iletisim'];
     const priorities = {
       '/': 1.0,
       '/quiz': 0.8,
