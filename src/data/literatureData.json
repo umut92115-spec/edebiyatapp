@@ -305,10 +305,22 @@
                   "description": "Şiir."
                 },
                 {
+                  "id": "vatan-mersiyesi",
+                  "name": "Vatan Mersiyesi",
+                  "type": "Şiir",
+                  "description": "Şiir."
+                },
+                {
                   "id": "vaveyla",
                   "name": "Vaveyla",
                   "type": "Şiir",
                   "description": "Şiir."
+                },
+                {
+                  "id": "hurriyet-kasidesi-besalet-i-osmaniye-ve-hamiyyet-i-insaniyye",
+                  "name": "Hürriyet Kasidesi (Besalet-i Osmaniye ve Hamiyyet-i İnsaniyye)",
+                  "type": "Şiir",
+                  "description": "Namık Kemal'in en ünlü şiirlerinden olan bu kaside, vatan, hürriyet, millet ve adalet gibi kavramları coşkulu bir dille işler. Çağın değer yargılarını doğruluktan ve samimiyetten sapmış görerek devlet kapısından ayrılan şair, milletin hor görülmesinin onun şanına eksiklik getirmeyeceğini, cevherin yere düşmekle değerinden bir şey kaybetmeyeceğini belirtir."
                 }
               ]
             },
@@ -440,7 +452,7 @@
                   "id": "let-if-i-riv-y-t",
                   "name": "Letâif-i Rivâyât",
                   "type": "Hikâye",
-                  "description": "25 hikâyeden oluşan seridir. Türk edebiyatında modern hikâyeciliğin ilk örneklerindendir. İçinde 'Bahtiyarlık'"
+                  "description": "Ahmet Mithat Efendi'nin 25 hikâyeden oluşan bu serisi, Türk edebiyatında modern hikâyeciliğin ilk ve en önemli örneklerinden biridir. İçinde 'Bahtiyarlık' gibi önemli örnekler yer alır."
                 },
                 {
                   "id": "bahtiyarlik",
@@ -483,12 +495,6 @@
                   "name": "Daniş Çelebi ve Çengi Sümbül",
                   "type": "Tiyatro",
                   "description": "Çengi adlı romanından uyarlanmıştır."
-                },
-                {
-                  "id": "letaif-i-rivayat",
-                  "name": "Letaif-i Rivayat",
-                  "type": "Öykü (Serisi)",
-                  "description": "Ahmet Mithat Efendi'nin 25 hikâyeden oluşan bu serisi, Türk edebiyatında modern hikâyeciliğin ilk ve en önemli örneklerinden biridir."
                 }
               ]
             },
@@ -1556,19 +1562,7 @@
                   "id": "numune-i-edebiyy-t-i-osm-niyye",
                   "name": "Numüne-i Edebiyyât-ı Osmâniyye",
                   "type": "Antoloji",
-                  "description": "Batılı tarzda hazırlanmış ilk edebiyat antolojisidir. Türk nesrindeki gelişmeyi göstermeyi amaçlar."
-                },
-                {
-                  "id": "mecm-a-i-ebuzziy",
-                  "name": "Mecmûa-i Ebüzziyâ",
-                  "type": "Dergi",
-                  "description": "Tanzimat devri edebiyatçılarının sesini duyuran önemli bir dergidir."
-                },
-                {
-                  "id": "ecel-i-kaza",
-                  "name": "Ecel-i Kaza",
-                  "type": "Tiyatro",
-                  "description": "Ön sözünde tiyatronun İslam ülkelerindeki önemine değinir."
+                  "description": "Türk nesrindeki gelişmeyi göstermek amacıyla Batılı tarzda hazırlanmış ilk edebiyat antolojisidir. Tanzimat devri edebiyatçılarının sesini duyuran \"Mecmûa-i Ebüzziyâ\"yı da yayımlayan Ebüzziya Tevfik, \"Ecel-i Kaza\" adlı piyesinin ön sözünde tiyatronun edebiyatın önde gelen türlerinden biri olduğunu ancak İslam ülkelerinde bu türe gereken önemin verilmediğini vurgulamıştır."
                 }
               ]
             },
@@ -5663,7 +5657,7 @@
     },
     {
       "id": "cumhuriyet-edebiyati",
-      "name": "🏛 Cumhuriyet Edebiyatı",
+      "name": "🏛️ Cumhuriyet Edebiyatı",
       "periods": [
         {
           "id": "cumhuriyet-donemi",
@@ -15179,9 +15173,9 @@
       "periods": [
         {
           "id": "eski-yunan-edebiyati",
-          "name": "🏛 Eski Yunan Edebiyatı",
+          "name": "🏛️ Eski Yunan Edebiyatı",
           "description": {
-            "name": "🏛 Eski Yunan Edebiyatı",
+            "name": "🏛️ Eski Yunan Edebiyatı",
             "description": "Antik Yunan döneminde ortaya çıkan felsefi, lirik ve epik eserlerin bütünü.",
             "wikipedia": "https://tr.wikipedia.org/wiki/Antik_Yunan_edebiyat%C4%B1"
           },
@@ -17438,9 +17432,9 @@
         },
         {
           "id": "norvec-edebiyati",
-          "name": "🏔 Norveç Edebiyatı",
+          "name": "🏔️ Norveç Edebiyatı",
           "description": {
-            "name": "🏔 Norveç Edebiyatı",
+            "name": "🏔️ Norveç Edebiyatı",
             "description": "İskandinav kültürünün izlerini taşıyan Norveç edebi eserleri.",
             "wikipedia": "https://tr.wikipedia.org/wiki/Norve%C3%A7_edebiyat%C4%B1"
           },
@@ -17606,9 +17600,9 @@
         },
         {
           "id": "danimarka-edebiyati",
-          "name": "🧜 Danimarka Edebiyatı",
+          "name": "🧜‍♀️ Danimarka Edebiyatı",
           "description": {
-            "name": "🧜 Danimarka Edebiyatı",
+            "name": "🧜‍♀️ Danimarka Edebiyatı",
             "description": "Masallar ve destanlarla öne çıkan Danimarka edebiyatı.",
             "wikipedia": "https://tr.wikipedia.org/wiki/Danimarka_edebiyat%C4%B1"
           },

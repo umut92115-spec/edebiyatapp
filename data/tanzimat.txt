@@ -58,7 +58,7 @@ Ahmet Mithat Efendi | Şeytankaya Tılsımı | Roman |  |  | - |
 Ahmet Mithat Efendi | Hikmet-i Peder | Roman |  |  | - | 
 Ahmet Mithat Efendi | Jön Türk | Roman |  |  | - | 
 Ahmet Mithat Efendi | Haydut Montari | Roman |  |  | 6 kitaptan oluşan macera romanıdır. | 
-Ahmet Mithat Efendi | Letâif-i Rivâyât | Hikâye |  |  | "25 hikâyeden oluşan seridir. Türk edebiyatında modern hikâyeciliğin ilk örneklerindendir. İçinde 'Bahtiyarlık' | 
+Ahmet Mithat Efendi | Letâif-i Rivâyât | Hikâye |  |  | Ahmet Mithat Efendi'nin 25 hikâyeden oluşan bu serisi, Türk edebiyatında modern hikâyeciliğin ilk ve en önemli örneklerinden biridir. İçinde 'Bahtiyarlık' gibi önemli örnekler yer alır. | 
 Ahmet Mithat Efendi | Bahtiyarlık | Hikâye/Roman |  |  | Letaif-i Rivayat başlıklı hikâyeler derlemesi içinde yayımlanmıştır. Tür olarak hikâye mi roman mı olduğu tartışmalıdır. Türk edebiyatında köy romanının ilk örneği olarak kabul görür. Senai ve Şinasi adlı iki zıt karakter üzerinden alafranga ve alaturka tiplerin karşılaştırması yapılır. Senai Batılı bir yaşam hayal ederken, Şinasi köye yerleşip tarım ve hayvancılıkla uğraşmayı planlar. | 
 Ahmet Mithat Efendi | Kıssadan Hisse | Hikâye |  |  | Çeşitli hikâyelerden oluşur. | 
 Ahmet Mithat Efendi | Menfa | Otobiyografi / Anı |  |  | Yazarın sürgün anılarını anlatır. | 
@@ -148,11 +148,7 @@ Abdülhak Hamit Tarhan | Finten | Tiyatro |  |  | - |
 Abdülhak Hamit Tarhan | Bir Şairin Hezeyânı | Şiir (Eleştiri) |  |  | Şiir anlayışını açıkça ortaya koyduğu ilk metindir. Eski şiir anlayışını reddeder. | 
 Abdülhak Hamit Tarhan | Nâ-kâfi | Şiir (Eleştiri) |  |  | Eski edebiyatın yetersizliğini ve bu zihniyeti savunanları eleştirir. | 
 Abdülhak Hamit Tarhan | Makber Mukaddimesi | Eleştiri (Ön Söz) |  |  | Makber'in yazılış amacını ve şairin ruh halini anlatan ünlü ön sözdür. | 
-Sampiaşazade Sezai | Sergüzeşt | Roman |  |  | Romantizmden Realizme geçiş eseridir. Esaret temasını işler. Kafkasya'dan getirilen cariye Dilber'in acıklı hikâyesini anlatır. | 
-Sampiaşazade Sezai | Küçük Şeyler | Hikâye |  |  | Batılı anlamda ilk Türk hikâye kitabıdır. | 
-Sampiaşazade Sezai | Şîr | Tiyatro |  |  | - | 
-Sampiaşazade Sezai | Rûmuzul Edep | Düz Yazı |  |  | Seyahat notları ve hatıralarını içerir. | 
-Sampiaşazade Sezai | İclal | Mersiye |  |  | Yeğeni İclal için yazdığı mersiyedir. | 
+# Removed Duplicate Sampiaşazade
 Muallim Naci | Ateşpare | Şiir |  |  | - | 
 Muallim Naci | Şerâre | Şiir |  |  | - | 
 Muallim Naci | Fûruzan | Şiir |  |  | - | 
@@ -200,14 +196,12 @@ Beşir Fuad | Beşer | Bilimsel/Fizyoloji |  |  | Fizyoloji biliminin temellerin
 Beşir Fuad | Haver | Dergi |  |  | Çıkardığı dergilerdendir. | 
 Beşir Fuad | Güneş | Dergi |  |  | Çıkardığı dergilerdendir. | 
 Ömer Ali Bey | Türkmen Kızı | Roman |  |  | Edebiyatımızın ilk köy romanlarından biridir. Erçiş Dağı'nın Bingöl Yaylası'ndaki Türkmen aşiretleri ve obaları arasında geçen bir aşk ve mücadele hikâyesidir. Altmış yaşındaki Hamza Bey'in on dört yaşındaki Kumru'ya talip olması ve Kumru'nun gönlünün başkasında olmasıyla gelişen olaylar, gençlerin trajik ölümüyle sonuçlanır. | 
-Ebuzziya Tevfik | Numüne-i Edebiyyât-ı Osmâniyye | Antoloji |  |  | "Batılı tarzda hazırlanmış ilk edebiyat antolojisidir. Türk nesrindeki gelişmeyi göstermeyi amaçlar." | 
-Ebuzziya Tevfik | Mecmûa-i Ebüzziyâ | Dergi |  |  | Tanzimat devri edebiyatçılarının sesini duyuran önemli bir dergidir. | 
-Ebuzziya Tevfik | Ecel-i Kaza | Tiyatro |  |  | Ön sözünde tiyatronun İslam ülkelerindeki önemine değinir. | 
+# Removed Duplicate Ebuzziya
 Sadullah Paşa | 19. Asır Manzumesi (Ondokuzuncu Asır Manzumesi) | Şiir |  |  | Batı'daki teknolojik ve bilimsel gelişmeleri, pozitivist düşünceyi överek Orta Çağ'a özgü geleneksel dünya görüşünü eleştiren bir manzumedir. Akıl, anlayış, eşitlik, insan hakları, medeniyet, cumhuriyet ve bilim gibi kavramların altını çizer; ilerlemek için Batı'nın örnek alınması gerektiğini savunur. | 
 Ziya Paşa | Zafername | Hiciv |  |  | Tanzimat Dönemi'nin en başarılı hiciv eseri olarak kabul edilir. Girit Savaşı'nda donanmaya büyük yenilgi yaşatan Sadrazam Ali Paşa'yı, ustalıklı bir dille över gibi görünüp aslında acımasızca hicveder. 
 Ebüzziya Tevfik | Numüne-i Edebiyyât-ı Osmâniyye | Antoloji |  |  | Türk nesrindeki gelişmeyi göstermek amacıyla Batılı tarzda hazırlanmış ilk edebiyat antolojisidir. Tanzimat devri edebiyatçılarının sesini duyuran "Mecmûa-i Ebüzziyâ"yı da yayımlayan Ebüzziya Tevfik, "Ecel-i Kaza" adlı piyesinin ön sözünde tiyatronun edebiyatın önde gelen türlerinden biri olduğunu ancak İslam ülkelerinde bu türe gereken önemin verilmediğini vurgulamıştır. | 
 Namık Kemal | Hürriyet Kasidesi (Besalet-i Osmaniye ve Hamiyyet-i İnsaniyye) | Şiir |  |  | Namık Kemal'in en ünlü şiirlerinden olan bu kaside, vatan, hürriyet, millet ve adalet gibi kavramları coşkulu bir dille işler. Çağın değer yargılarını doğruluktan ve samimiyetten sapmış görerek devlet kapısından ayrılan şair, milletin hor görülmesinin onun şanına eksiklik getirmeyeceğini, cevherin yere düşmekle değerinden bir şey kaybetmeyeceğini belirtir. | 
-Ahmet Mithat Efendi | Letaif-i Rivayat | Öykü (Serisi) |  |  | Ahmet Mithat Efendi'nin 25 hikâyeden oluşan bu serisi, Türk edebiyatında modern hikâyeciliğin ilk ve en önemli örneklerinden biridir. | 
+# Duplicate Removed
 Recaizade Mahmut Ekrem | Araba Sevdası (Bihruz Bey'in Âşıklığı) | Roman |  |  | Türk edebiyatının ilk realist romanı sayılan bu eserde, Batılılaşmayı yüzeysel bir şekilde anlayan ve Avrupa uygarlığının sadece süs, giyiniş gibi dış yönlerini taklit eden 'tatlısu Frenkleri'nin (levantenler) toplum içindeki gülünç durumları gösterilir. Nazlı büyütülmüş, yarım yamalak Fransızca bilen ve mirasyedi bir tip olan Bihruz Bey, Çamlıca Tepesi'nde gördüğü Periveş adlı bir kadına sırılsıklam âşık olur. Hayalinde onu soylu bir aile kızı olarak yücelten Bihruz, onun aslında bir sokak kadını (kortezan) olduğunu öğrenince büyük bir hayal kırıklığı yaşar. Romandaki olayların günlük yaşamdan seçilmesi, tiplerin gerçeğe uygunluğu ve tasvirlerin gözleme dayalı olması eseri realist yapan unsurlardır. | 
 Recaizade Mahmut Ekrem | Zemzeme III Mukaddimesi | Eleştiri/Ön Söz |  |  | Recaizade Mahmut Ekrem, şiir kitabının bu ön sözünde şiir ile ilgili görüşlerini ayrıntılı olarak dile getirir. Alfred de Musset'nin bir sözünden hareketle, en güzel eserlerin insana hüzün veren ve okuduktan sonra düşünmeye mecbur eden eserler olduğunu savunur. Eser, sanat için sanat anlayışının bir manifestosu niteliğindedir. | 
 Samipaşazade Sezai | Sergüzeşt | Roman |  |  | Romantizmden realizme geçişte bir köprü sayılan roman, "esaret" temasını işler. Kafkasya'dan getirilip cariye olarak satılan küçük Dilber'in acıklı yaşam öyküsünü realist tarzda anlatır. Farklı konaklarda eziyet gören, sonunda genç bir bey olan Celal'in aşkıyla karşılaşan ancak sınıfsal farklar nedeniyle mutluluğa ulaşamayan Dilber, çareyi kendini Nil Nehri'ne atmakta bulur. "Acaba Nil'in bu müdhiş, bu mühlik girdab ve seylabeleri bu zavallı Dilber'i bu bedbaht esiri nereye götürüyor? Hürriyetine!" cümlesiyle son bulur. | Roman ve öykücülüğümüzü realizme yönelten öncü sanatçıdır. Öykülerindeki teknik romanlarından daha güçlüdür. Küçük, şaşırtıcı, önemsiz konu ve olayları ruh çözümlemeleriyle, doğal ve günlük konuşma diliyle işler; gözleme büyük önem vermiştir. "Küçük Şeyler" adlı eseriyle Türk edebiyatında Batılı anlamda ilk öykü örneklerini vermiştir.

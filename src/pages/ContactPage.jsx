@@ -58,7 +58,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <div style={{ fontWeight: 700 }}>Konum</div>
-                <div style={{ color: 'var(--text-secondary)' }}>İstanbul, Türkiye</div>
+                <div style={{ color: 'var(--text-secondary)' }}>Gaziantep, Türkiye</div>
               </div>
             </div>
           </div>
