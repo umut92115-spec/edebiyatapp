@@ -12,6 +12,8 @@ export default function MatchingGame({ categories }) {
   const [matchedWorks, setMatchedWorks] = useState(new Set());
   const [currentLevel, setCurrentLevel] = useState(1);
 
+  const [currentCategory, setCurrentCategory] = useState('ALL'); // 'ALL' or Category ID
+
   // Veriden rastgele yazar ve eser seçimi
   const allAuthors = useMemo(() => {
     const authors = [];
@@ -19,7 +21,7 @@ export default function MatchingGame({ categories }) {
       cat.periods.forEach(period => {
         period.authors.forEach(author => {
           if (author.works && author.works.length > 0) {
-            authors.push({ ...author, categoryName: cat.name });
+            authors.push({ ...author, categoryId: cat.id, categoryName: cat.name });
           }
         });
       });
@@ -29,9 +31,20 @@ export default function MatchingGame({ categories }) {
 
   const [levelData, setLevelData] = useState({ authors: [], works: [] });
 
-  const generateLevel = () => {
+  const generateLevel = (catId = currentCategory) => {
+    // Kategoriye göre filtrele
+    const filteredAuthors = catId === 'ALL' 
+      ? allAuthors 
+      : allAuthors.filter(a => a.categoryId === catId);
+
+    if (filteredAuthors.length < 3) {
+      alert("Bu kategoride yeterli yazar bulunamadı! Lütfen başka bir kategori seçin.");
+      setGameState('START');
+      return;
+    }
+
     // 3 Rastgele yazar seç
-    const shuffledAuthors = [...allAuthors].sort(() => Math.random() - 0.5);
+    const shuffledAuthors = [...filteredAuthors].sort(() => Math.random() - 0.5);
     const selectedAuthors = shuffledAuthors.slice(0, 3);
     
     // Her yazardan 1 eser + 1 tane de çeldirici veya ekstra eser
@@ -41,8 +54,8 @@ export default function MatchingGame({ categories }) {
       selectedWorks.push({ ...randomWork, authorId: author.id, authorName: author.name });
     });
 
-    // 4. Eser: Ya seçilen yazarlardan birinin başka eseri, ya da tamamen farklı bir yazarın eseri
-    const fourthWorkSource = Math.random() > 0.5 ? selectedAuthors[Math.floor(Math.random() * 3)] : shuffledAuthors[3];
+    // 4. Eser: Seçilen kategorideki yazarlardan birinin başka eseri
+    const fourthWorkSource = filteredAuthors[Math.floor(Math.random() * filteredAuthors.length)];
     const fourthWork = fourthWorkSource.works[Math.floor(Math.random() * fourthWorkSource.works.length)];
     selectedWorks.push({ ...fourthWork, authorId: fourthWorkSource.id, authorName: fourthWorkSource.name });
 
@@ -80,12 +93,7 @@ export default function MatchingGame({ categories }) {
     if (droppedOnAuthorId === correctAuthorId) {
       // Doğru eşleşme!
       setMatchedWorks(prev => new Set([...prev, workId]));
-      // Eğer bu yazarın tüm eserleri (bu turdaki) eşleştiyse yazarı da sil
-      // Şimdilik basitleştirmek için: Eser her türlü silinsin, yazarın işi bittiyse o da silinsin
       setScore(s => s + 10);
-      
-      // Kontrol: Bu turda başka doğru yazar-eser eşleşmesi kaldı mı?
-      // (Not: 4. eser çeldiriciyse o eşleşmeyebilir, ama biz tüm doğru eşleşmeleri bekliyoruz)
     }
   };
 
@@ -181,21 +189,32 @@ export default function MatchingGame({ categories }) {
           font-size: 1rem;
           margin-top: 8px;
         }
-        .match-success-overlay {
-          position: absolute;
-          inset: 0;
-          background: var(--emerald);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          z-index: 5;
-        }
         .game-won-card {
           text-align: center;
           padding: 60px;
           border-radius: 32px;
+        }
+        .cat-select-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 12px;
+          width: 100%;
+          margin-top: 24px;
+        }
+        .cat-select-btn {
+          padding: 12px;
+          border-radius: 12px;
+          border: 1px solid var(--border);
+          background: var(--bg-card);
+          cursor: pointer;
+          transition: all 0.2s;
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+        .cat-select-btn.active {
+          border-color: var(--amber);
+          background: var(--amber-dim);
+          color: var(--text-primary);
         }
       `}</style>
 
@@ -214,11 +233,32 @@ export default function MatchingGame({ categories }) {
             <Hand size={48} color="var(--amber)" />
           </div>
           <h1 className="hero-title" style={{ fontSize: '2.5rem', marginBottom: '16px' }}>Eser Eşleştirme</h1>
-          <p style={{ color: 'var(--text-secondary)', maxWidth: '500px', marginBottom: '32px', fontSize: '1.1rem' }}>
+          <p style={{ color: 'var(--text-secondary)', maxWidth: '500px', marginBottom: '12px', fontSize: '1.1rem' }}>
             Aşağıdaki eser kartlarını doğru yazarların üzerine sürükle. 
-            Bakalım ne kadar hızlısın?
           </p>
-          <button className="btn-save-all" onClick={generateLevel} style={{ fontSize: '1.2rem', padding: '16px 48px' }}>
+          
+          <div style={{ width: '100%', maxWidth: '600px' }}>
+            <p style={{ fontSize: '0.9rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)' }}>Kategori Seçin</p>
+            <div className="cat-select-grid">
+              <button 
+                className={`cat-select-btn ${currentCategory === 'ALL' ? 'active' : ''}`}
+                onClick={() => setCurrentCategory('ALL')}
+              >
+                Tüm Kategoriler
+              </button>
+              {categories.map(cat => (
+                <button 
+                  key={cat.id}
+                  className={`cat-select-btn ${currentCategory === cat.id ? 'active' : ''}`}
+                  onClick={() => setCurrentCategory(cat.id)}
+                >
+                  {cat.name.replace(/^[\p{Emoji}\s]+/u, '')}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <button className="btn-save-all" onClick={() => generateLevel()} style={{ fontSize: '1.2rem', padding: '16px 48px', marginTop: '40px' }}>
             Oyunu Başlat
           </button>
         </div>
@@ -231,11 +271,14 @@ export default function MatchingGame({ categories }) {
           <Trophy size={80} color="var(--amber)" style={{ margin: '0 auto 24px' }} />
           <h2 style={{ fontSize: '2.5rem', marginBottom: '8px' }}>Tebrikler!</h2>
           <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '32px' }}>Tüm eserleri doğru eşleştirdin.</p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
-            <button className="btn-save-all" onClick={generateLevel}>
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button className="btn-save-all" onClick={() => generateLevel()}>
               <RefreshCcw size={18} /> Sonraki Seviye
             </button>
-            <button className="btn-back glass" onClick={() => navigate('/')}>
+            <button className="btn-secondary glass" onClick={() => setGameState('START')} style={{ borderRadius: '16px', padding: '12px 24px' }}>
+              Kategori Değiştir
+            </button>
+            <button className="btn-back glass" onClick={() => navigate('/')} style={{ borderRadius: '16px', padding: '12px 24px' }}>
               Ana Sayfaya Dön
             </button>
           </div>

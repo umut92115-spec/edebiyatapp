@@ -123,46 +123,72 @@ export default function HomeScreen({ categories, onSelectCategory, onSelectAutho
           <GlobalSearch allCategories={categories} onSelectAuthor={handleSelectAuthor} />
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '48px', flexWrap: 'wrap' }}>
-          <button 
-            className="btn-quiz-hero glass"
-            onClick={handleStartQuiz}
-            style={{
-              padding: '12px 32px',
-              borderRadius: '30px',
-              border: '2px solid var(--amber)',
-              background: 'var(--amber-dim)',
-              color: 'var(--text-primary)',
-              fontWeight: '700',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
-            }}
-          >
-            <Trophy size={20} color="var(--amber)" /> Edebiyat Quiz
-          </button>
+        <div className="interactive-section" style={{ 
+          marginTop: '60px', 
+          marginBottom: '60px',
+          padding: '40px',
+          borderRadius: '40px',
+          background: 'var(--bg-glass)',
+          border: '1px solid var(--border)',
+          width: '100%',
+          maxWidth: '800px',
+          margin: '40px auto'
+        }}>
+          <h2 style={{ 
+            fontSize: '1rem', 
+            textTransform: 'uppercase', 
+            letterSpacing: '0.2em', 
+            color: 'var(--amber)', 
+            fontWeight: 800,
+            marginBottom: '24px',
+            textAlign: 'center'
+          }}>
+            Quiz & İnteraktif Oyunlar
+          </h2>
+          
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
+            <button 
+              className="btn-quiz-hero glass"
+              onClick={handleStartQuiz}
+              style={{
+                padding: '16px 36px',
+                borderRadius: '24px',
+                border: '2px solid var(--amber)',
+                background: 'var(--amber-dim)',
+                color: 'var(--text-primary)',
+                fontWeight: '700',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                cursor: 'pointer',
+                transition: 'all 0.3s',
+                fontSize: '1.1rem'
+              }}
+            >
+              <Trophy size={22} color="var(--amber)" /> Edebiyat Quiz
+            </button>
 
-          <button 
-            className="btn-quiz-hero glass"
-            onClick={() => navigate('/oyun')}
-            style={{
-              padding: '12px 32px',
-              borderRadius: '30px',
-              border: '2px solid var(--teal)',
-              background: 'var(--teal-dim)',
-              color: 'var(--text-primary)',
-              fontWeight: '700',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
-            }}
-          >
-            <Hand size={20} color="var(--teal)" /> Eser Eşleştirme
-          </button>
+            <button 
+              className="btn-quiz-hero glass"
+              onClick={() => navigate('/oyun')}
+              style={{
+                padding: '16px 36px',
+                borderRadius: '24px',
+                border: '2px solid var(--teal)',
+                background: 'var(--teal-dim)',
+                color: 'var(--text-primary)',
+                fontWeight: '700',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                cursor: 'pointer',
+                transition: 'all 0.3s',
+                fontSize: '1.1rem'
+              }}
+            >
+              <Hand size={22} color="var(--teal)" /> Eser Eşleştirme
+            </button>
+          </div>
         </div>
 
         <div className="categories-grid stagger">
