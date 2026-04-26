@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Trophy } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Analytics } from '@vercel/analytics/react';
 import literatureData from './data/literatureData.json';
 
@@ -31,10 +31,11 @@ function App() {
   // SSR-safe way to check for home without hooks
   // This is only for the initial HTML render. Hydration will take care of the rest.
   return (
-    <div className="app">
-      <Helmet>
-        <meta name="google-site-verification" content="AhxNlnpyVY7QJPb8_MkFHI_3DfpMYKLExbqf-0bDXEA" />
-      </Helmet>
+    <HelmetProvider>
+      <div className="app">
+        <Helmet>
+          <meta name="google-site-verification" content="AhxNlnpyVY7QJPb8_MkFHI_3DfpMYKLExbqf-0bDXEA" />
+        </Helmet>
 
       <div className="bg-decorations" aria-hidden="true">
         <div className="ambient-blob blob-1"></div>
@@ -95,6 +96,7 @@ function App() {
       <MobileNav />
       <Analytics />
     </div>
+    </HelmetProvider>
   );
 }
 

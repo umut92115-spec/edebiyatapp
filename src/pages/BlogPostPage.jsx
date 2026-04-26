@@ -79,6 +79,8 @@ export default function BlogPostPage() {
   if (!post) return <div className="screen-error">Yazı bulunamadı.</div>;
 
   const currentUrl = `https://edebiyatapp.vercel.app/blog/${post.id}`;
+  const metaDescription = post.excerpt || (post.content ? post.content.replace(/[#*]/g, '').substring(0, 150).trim() + '...' : '');
+  const pageTitle = `${post.title} | Türk Edebiyatı Atlası`;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -157,11 +159,11 @@ export default function BlogPostPage() {
     <div style={{ background: 'var(--bg-base)', minHeight: '100vh', paddingBottom: '100px' }}>
       <article style={{ maxWidth: '850px', margin: '0 auto', padding: '60px 20px' }}>
         <Helmet>
-          <title>{post.title} | Türk Edebiyatı Atlası</title>
-          <meta name="description" content={post.excerpt} />
+          <title>{pageTitle}</title>
+          <meta name="description" content={metaDescription} />
           <link rel="canonical" href={currentUrl} />
-          <meta property="og:title" content={post.title} />
-          <meta property="og:description" content={post.excerpt} />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={metaDescription} />
           <meta property="og:url" content={currentUrl} />
           <meta property="og:type" content="article" />
           <meta property="og:image" content="https://edebiyatapp.vercel.app/og-image.png" />
