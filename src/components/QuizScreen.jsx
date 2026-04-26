@@ -44,26 +44,49 @@ export default function QuizScreen({ categories, onBack }) {
     return filteredAuthors.filter(a => a.examCount > 0);
   }, [filteredAuthors]);
 
-  const generateQuestion = (forcedMode) => {
-    setAnswerState(null);
-    const activeMode = forcedMode || mode;
-    const pool = activeMode === 'EXAM' ? examAuthors : filteredAuthors;
+  // 1. Tüm Soru Havuzunu Oluştur (Daha adil ve tekrarsız dağılım için)
+  const questionPool = useMemo(() => {
+    const questions = [];
+    const poolAuthors = mode === 'EXAM' ? examAuthors : filteredAuthors;
     
-    if (pool.length < 4) {
-      alert("Seçilen kategoride yeterli yazar bulunamadı! Lütfen başka bir kategori seçin.");
+    poolAuthors.forEach(author => {
+      author.works.forEach(work => {
+        questions.push({
+          work,
+          correctAuthor: author
+        });
+      });
+    });
+
+    // Rastgele karıştır (Fisher-Yates shuffle can be used for better randomness but this is fine)
+    return questions.sort(() => Math.random() - 0.5);
+  }, [filteredAuthors, examAuthors, mode]);
+
+  // 2. Havuzdaki mevcut soru sırasını takip et
+  const [poolIndex, setPoolIndex] = useState(0);
+
+  const generateQuestion = () => {
+    const pool = questionPool;
+    if (pool.length === 0) {
+      alert("Seçilen kategoride yeterli soru bulunamadı! Lütfen başka bir kategori seçin.");
       setGameState('START');
       return;
     }
 
-    // Doğru cevap
-    const correctAuthor = pool[Math.floor(Math.random() * pool.length)];
-    const work = correctAuthor.works[Math.floor(Math.random() * correctAuthor.works.length)];
+    setAnswerState(null);
+    setShowExplanation(false);
     
-    // Yanlış cevaplar - Aynı tag (akım) ve döneme sahip olanları önceliklendir
+    let currentIndex = poolIndex;
+    if (currentIndex >= pool.length) {
+      currentIndex = 0;
+    }
+
+    const { work, correctAuthor } = pool[currentIndex];
+    
+    // Yanlış cevaplar logic...
     const distractors = [];
     const correctMovements = (correctAuthor.movements || []).map(m => m.name);
     
-    // Aday havuzlarını oluştur (Tüm yazarlar arasından seçebiliriz ama aynı kategoriden olanları yine önceliklendirmeliyiz)
     const sameMovementAuthors = allAuthors.filter(a => 
       a.id !== correctAuthor.id && 
       (a.movements || []).some(m => correctMovements.includes(m.name))
@@ -89,7 +112,6 @@ export default function QuizScreen({ categories, onBack }) {
       !sameCategoryAuthors.some(sa => sa.id === a.id)
     );
 
-    // Öncelik sırasına göre doldur
     const combinedPool = [
       ...sameMovementAuthors.sort(() => Math.random() - 0.5),
       ...samePeriodAuthors.sort(() => Math.random() - 0.5),
@@ -111,14 +133,31 @@ export default function QuizScreen({ categories, onBack }) {
       correctAuthor,
       options
     });
+    
+    setPoolIndex(currentIndex + 1);
     setGameState('PLAYING');
-    setShowExplanation(false);
   };
 
   const handleStartQuiz = (m) => {
     setMode(m);
-    generateQuestion(m);
+    setPoolIndex(0);
+    setGameState('PLAYING');
   };
+
+  // Kategori veya mod değiştiğinde havuzu sıfırla ve yeni soru ver
+  React.useEffect(() => {
+    if (gameState === 'PLAYING') {
+      setPoolIndex(0);
+      generateQuestion();
+    }
+  }, [selectedCategory, mode]);
+
+  // Soru bittiyse veya havuz yeni oluştuyse ilk soruyu tetikle
+  React.useEffect(() => {
+    if (gameState === 'PLAYING' && !currentQuestion) {
+      generateQuestion();
+    }
+  }, [gameState, currentQuestion]);
 
   const handleAnswer = (authorId) => {
     if (answerState) return;
@@ -196,7 +235,10 @@ export default function QuizScreen({ categories, onBack }) {
                   <button 
                     key={cat.id}
                     className={`chip ${selectedCategory === cat.id ? 'active' : ''}`}
-                    onClick={() => setSelectedCategory(cat.id)}
+                    onClick={() => {
+                      setSelectedCategory(cat.id);
+                      setPoolIndex(0); // Havuzu sıfırla
+                    }}
                   >
                     {cat.name}
                   </button>

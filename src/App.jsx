@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/react';
 import literatureData from './data/literatureData.json';
 
 import MobileNav from './components/MobileNav';
+import { FavoritesSidebar } from './components/FavoritesSidebar';
 
 const allCategories = literatureData.categories;
 
@@ -55,6 +56,7 @@ function App() {
             <Trophy size={18} />
             <span>Quiz</span>
           </Link>
+          <FavoritesSidebar allCategories={allCategories} />
           <div className="header-badge">Beta v1.0</div>
         </div>
       </header>

@@ -5,25 +5,56 @@ import { useState, useEffect } from 'react';
  * İlk değer olarak initialValue ya da LS'deki değeri kullanır.
  */
 export function useLocalStorage(key, initialValue) {
+  // Initialize state with value from local storage or initialValue
   const [stored, setStored] = useState(() => {
     if (typeof window === 'undefined') return initialValue;
     try {
       const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch {
+      if (!item) return initialValue;
+      
+      const parsed = JSON.parse(item);
+      // Return parsed value if it exists, otherwise initialValue
+      return parsed !== null ? parsed : initialValue;
+    } catch (err) {
+      console.warn(`LocalStorage parse hatası (${key}):`, err);
       return initialValue;
     }
   });
 
+  // Cross-tab synchronization
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handleStorageChange = (e) => {
+      if (e.key === key) {
+        try {
+          const newValue = e.newValue ? JSON.parse(e.newValue) : initialValue;
+          setStored(newValue);
+        } catch (err) {
+          console.warn(`Cross-tab sync hatası (${key}):`, err);
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, [key, initialValue]);
+
+  // Robust setValue that handles functional updates and updates localStorage correctly
   const setValue = (value) => {
     try {
-      const toStore = value instanceof Function ? value(stored) : value;
-      setStored(toStore);
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem(key, JSON.stringify(toStore));
-      }
+      setStored((prev) => {
+        // Handle functional updates correctly to avoid stale closures
+        const toStore = value instanceof Function ? value(prev) : value;
+        
+        if (typeof window !== 'undefined') {
+          window.localStorage.setItem(key, JSON.stringify(toStore));
+        }
+        return toStore;
+      });
     } catch (err) {
-      console.warn('LocalStorage yazma hatası:', err);
+      console.warn(`LocalStorage yazma hatası (${key}):`, err);
+      // QuotaExceededError gibi durumlarda state'i yine de güncelle ama uyarı ver
     }
   };
 
