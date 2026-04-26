@@ -20,8 +20,8 @@ export function MovementModal({ movement, onClose }) {
       'Ç': 'c', 'Ğ': 'g', 'İ': 'i', 'Ö': 'o', 'Ş': 's', 'Ü': 'u',
       'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
       'à': 'a', 'â': 'a', 'ä': 'a',
-      'ô': 'o', 'ö': 'o', 'õ': 'o',
-      'ü': 'u', 'û': 'u', 'ù': 'u',
+      'ô': 'o', 'õ': 'o',
+      'û': 'u', 'ù': 'u',
       'ï': 'i', 'î': 'i',
       'ñ': 'n', 'ß': 'ss',
       'œ': 'oe', 'æ': 'ae'
@@ -82,7 +82,7 @@ export function MovementModal({ movement, onClose }) {
     });
   };
 
-  return createPortal(
+  return (typeof document !== 'undefined') ? createPortal(
     <div 
       className="modal-overlay active" 
       onClick={onClose} 
@@ -260,5 +260,5 @@ export function MovementModal({ movement, onClose }) {
       </motion.div>
     </div>,
     document.body
-  );
+  ) : null;
 }
