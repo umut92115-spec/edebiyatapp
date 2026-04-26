@@ -210,7 +210,7 @@ function AuthorInfoBox({ author, isEditing, isCumhuriyet, isTanzimat, periodId }
   );
 }
 
-export default function AuthorModal({ author: initialAuthor, period, onClose }) {
+export default function AuthorModal({ author: initialAuthor, period, onClose, isFullPage }) {
   const { wikipediaData, isLoading: wikiLoading, fetchAuthor, clearAuthor } = useWikipedia();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { isAuthorFavorite, toggleAuthorFavorite } = useAuthorFavorites();
