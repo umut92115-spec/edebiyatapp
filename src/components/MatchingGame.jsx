@@ -12,9 +12,8 @@ export default function MatchingGame({ categories }) {
   const [matchedWorks, setMatchedWorks] = useState(new Set());
   const [currentLevel, setCurrentLevel] = useState(1);
 
-  const [currentCategory, setCurrentCategory] = useState('ALL'); // 'ALL' or Category ID
+  const [currentCategory, setCurrentCategory] = useState('ALL');
 
-  // Veriden rastgele yazar ve eser seçimi
   const allAuthors = useMemo(() => {
     const authors = [];
     categories.forEach(cat => {
@@ -32,85 +31,76 @@ export default function MatchingGame({ categories }) {
   const [levelData, setLevelData] = useState({ authors: [], works: [] });
 
   const generateLevel = (catId = currentCategory) => {
-    // Kategoriye göre filtrele
     const filteredAuthors = catId === 'ALL' 
       ? allAuthors 
       : allAuthors.filter(a => a.categoryId === catId);
 
     if (filteredAuthors.length < 3) {
-      alert("Bu kategoride yeterli yazar bulunamadı! Lütfen başka bir kategori seçin.");
+      alert("Bu kategoride yeterli yazar bulunamadı!");
       setGameState('START');
       return;
     }
 
-    // 3 Rastgele yazar seç
+    // 3 Rastgele yazar
     const shuffledAuthors = [...filteredAuthors].sort(() => Math.random() - 0.5);
     const selectedAuthors = shuffledAuthors.slice(0, 3);
     
-    // Her yazardan 1 eser + 1 tane de çeldirici veya ekstra eser
+    // 5 Eser seç (Seçilen 3 yazardan karma)
     const selectedWorks = [];
-    selectedAuthors.forEach(author => {
-      const randomWork = author.works[Math.floor(Math.random() * author.works.length)];
-      selectedWorks.push({ ...randomWork, authorId: author.id, authorName: author.name });
-    });
-
-    // 4. Eser: Seçilen kategorideki yazarlardan birinin başka eseri
-    const fourthWorkSource = filteredAuthors[Math.floor(Math.random() * filteredAuthors.length)];
-    const fourthWork = fourthWorkSource.works[Math.floor(Math.random() * fourthWorkSource.works.length)];
-    selectedWorks.push({ ...fourthWork, authorId: fourthWorkSource.id, authorName: fourthWorkSource.name });
+    for (let i = 0; i < 5; i++) {
+      const randomAuthor = selectedAuthors[i % 3]; // Yazarları döndürerek eser seç
+      const randomWork = randomAuthor.works[Math.floor(Math.random() * randomAuthor.works.length)];
+      // Aynı eserin gelmemesi için kontrol (basit düzeyde)
+      selectedWorks.push({ 
+        ...randomWork, 
+        authorId: randomAuthor.id, 
+        authorName: randomAuthor.name,
+        uniqueKey: `${randomWork.id}_${i}_${Math.random()}` 
+      });
+    }
 
     setLevelData({
       authors: selectedAuthors,
       works: selectedWorks.sort(() => Math.random() - 0.5)
     });
-    setMatchedIds(new Set());
-    setMatchedAuthors(new Set());
     setMatchedWorks(new Set());
     setGameState('PLAYING');
   };
 
-  const handleDragEnd = (event, info, workId, correctAuthorId) => {
-    // Mouse/Touch pozisyonunu al
-    const dropX = info.point.x;
-    const dropY = info.point.y;
+  const handleDragEnd = (event, info, workUniqueKey, correctAuthorId) => {
+    const { x, y } = info.point;
 
-    // Yazar elemanlarını bul ve çarpışma kontrolü yap
     const authorElements = document.querySelectorAll('.drop-target');
     let droppedOnAuthorId = null;
 
     authorElements.forEach(el => {
       const rect = el.getBoundingClientRect();
       if (
-        dropX >= rect.left &&
-        dropX <= rect.right &&
-        dropY >= rect.top &&
-        dropY <= rect.bottom
+        x >= rect.left &&
+        x <= rect.right &&
+        y >= rect.top &&
+        y <= rect.bottom
       ) {
         droppedOnAuthorId = el.getAttribute('data-author-id');
       }
     });
 
     if (droppedOnAuthorId === correctAuthorId) {
-      // Doğru eşleşme!
-      setMatchedWorks(prev => new Set([...prev, workId]));
+      setMatchedWorks(prev => new Set([...prev, workUniqueKey]));
       setScore(s => s + 10);
     }
   };
 
   useEffect(() => {
     if (gameState === 'PLAYING') {
-      const totalPossibleMatches = levelData.works.filter(w => 
-        levelData.authors.some(a => a.id === w.authorId)
-      ).length;
-
-      if (matchedWorks.size === totalPossibleMatches && totalPossibleMatches > 0) {
+      if (matchedWorks.size === 5) {
         setTimeout(() => {
           setGameState('WON');
           setScore(s => s + 50);
         }, 600);
       }
     }
-  }, [matchedWorks, levelData, gameState]);
+  }, [matchedWorks, gameState]);
 
   return (
     <div className="matching-game-container animate-in">
@@ -118,67 +108,69 @@ export default function MatchingGame({ categories }) {
         .matching-game-container {
           max-width: 900px;
           margin: 0 auto;
-          padding: 20px;
-          min-height: 80vh;
+          padding: 15px;
+          min-height: 90vh;
           display: flex;
           flex-direction: column;
         }
-        .game-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 40px;
-        }
         .authors-row {
           display: flex;
-          justify-content: space-around;
-          gap: 20px;
-          margin-bottom: 60px;
-          min-height: 180px;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 15px;
+          margin-bottom: 40px;
         }
         .drop-target {
-          width: 160px;
-          height: 160px;
-          border-radius: 50%;
+          width: 130px;
+          height: 130px;
+          border-radius: 24px;
           border: 3px dashed var(--border);
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           text-align: center;
-          padding: 15px;
+          padding: 10px;
           background: var(--bg-card);
           transition: all 0.3s;
+          font-size: 0.9rem;
           position: relative;
         }
-        .drop-target.active {
-          border-color: var(--amber);
-          background: var(--amber-dim);
-          transform: scale(1.05);
+        @media (max-width: 600px) {
+          .drop-target {
+            width: 100px;
+            height: 100px;
+            font-size: 0.75rem;
+          }
+          .work-drag-card {
+            padding: 12px !important;
+            font-size: 0.85rem !important;
+          }
         }
         .drop-target.matched {
           border-color: var(--emerald);
           background: var(--emerald-dim);
-          opacity: 0;
-          transform: scale(0.8);
-          pointer-events: none;
+          transform: scale(0.95);
+          opacity: 0.6;
         }
         .works-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          gap: 12px;
           margin-top: auto;
+          padding-bottom: 30px;
         }
         .work-drag-card {
-          padding: 20px;
+          padding: 16px;
           background: var(--bg-card);
           border: 1px solid var(--border);
-          border-radius: 16px;
+          border-radius: 12px;
           cursor: grab;
           text-align: center;
           box-shadow: var(--shadow-sm);
           font-weight: 600;
-          z-index: 10;
+          touch-action: none;
+          user-select: none;
         }
         .work-drag-card:active {
           cursor: grabbing;
@@ -186,30 +178,25 @@ export default function MatchingGame({ categories }) {
         .author-name-tag {
           font-family: var(--font-display);
           font-weight: 700;
-          font-size: 1rem;
+          font-size: 0.9rem;
           margin-top: 8px;
-        }
-        .game-won-card {
-          text-align: center;
-          padding: 60px;
-          border-radius: 32px;
         }
         .cat-select-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 12px;
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          gap: 10px;
           width: 100%;
-          margin-top: 24px;
+          margin-top: 20px;
         }
         .cat-select-btn {
-          padding: 12px;
+          padding: 10px;
           border-radius: 12px;
           border: 1px solid var(--border);
           background: var(--bg-card);
           cursor: pointer;
           transition: all 0.2s;
           font-weight: 600;
-          font-size: 0.9rem;
+          font-size: 0.85rem;
         }
         .cat-select-btn.active {
           border-color: var(--amber);
@@ -218,7 +205,7 @@ export default function MatchingGame({ categories }) {
         }
       `}</style>
 
-      <div className="game-header">
+      <div className="game-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
         <button className="btn-back glass" onClick={() => navigate('/')}>
           <ArrowLeft size={18} /> Geri
         </button>
@@ -267,6 +254,7 @@ export default function MatchingGame({ categories }) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="game-won-card glass-premium"
+          style={{ textAlign: 'center', padding: '60px', borderRadius: '32px' }}
         >
           <Trophy size={80} color="var(--amber)" style={{ margin: '0 auto 24px' }} />
           <h2 style={{ fontSize: '2.5rem', marginBottom: '8px' }}>Tebrikler!</h2>
@@ -287,10 +275,10 @@ export default function MatchingGame({ categories }) {
         <>
           <div className="authors-row">
             {levelData.authors.map((author) => {
-              // Bu yazarın tüm eserleri eşleşti mi?
+              // Bu yazarın tüm eserleri (bu turdaki) eşleşti mi?
               const isMatched = levelData.works
                 .filter(w => w.authorId === author.id)
-                .every(w => matchedWorks.has(w.id));
+                .every(w => matchedWorks.has(w.uniqueKey));
 
               return (
                 <motion.div
@@ -299,11 +287,11 @@ export default function MatchingGame({ categories }) {
                   className={`drop-target glass ${isMatched ? 'matched' : ''}`}
                   layout
                 >
-                  <div className="author-photo-fallback" style={{ width: '60px', height: '60px', fontSize: '1.5rem' }}>
+                  <div className="author-photo-fallback" style={{ width: '50px', height: '50px', fontSize: '1.2rem' }}>
                     {author.name.charAt(0)}
                   </div>
                   <div className="author-name-tag">{author.name}</div>
-                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '4px' }}>
+                  <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', marginTop: '4px' }}>
                     {author.categoryName.replace(/^[\p{Emoji}\s]+/u, '')}
                   </div>
                 </motion.div>
@@ -314,27 +302,28 @@ export default function MatchingGame({ categories }) {
           <div className="works-grid">
             <AnimatePresence>
               {levelData.works.map((work) => {
-                if (matchedWorks.has(work.id)) return null;
+                if (matchedWorks.has(work.uniqueKey)) return null;
 
                 return (
                   <motion.div
-                    key={work.id}
+                    key={work.uniqueKey}
                     drag
                     dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-                    dragElastic={1}
-                    onDragEnd={(e, info) => handleDragEnd(e, info, work.id, work.authorId)}
-                    whileDrag={{ scale: 1.1, zIndex: 100, boxShadow: 'var(--shadow-lg)' }}
+                    dragElastic={0.1}
+                    dragMomentum={false}
+                    onDragEnd={(e, info) => handleDragEnd(e, info, work.uniqueKey, work.authorId)}
+                    whileDrag={{ scale: 1.05, zIndex: 100, boxShadow: 'var(--shadow-lg)' }}
                     className="work-drag-card glass-premium"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.3 } }}
                   >
-                    <div style={{ fontSize: '0.8rem', color: 'var(--amber)', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '4px', justifyContent: 'center' }}>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--amber)', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '4px', justifyContent: 'center' }}>
                       <Book size={14} /> Eser
                     </div>
-                    <div style={{ fontSize: '1.1rem' }}>{work.name}</div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '8px' }}>
-                      Tür: {work.type}
+                    <div style={{ fontSize: '1rem', lineHeight: '1.3' }}>{work.name}</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '8px' }}>
+                      {work.type}
                     </div>
                   </motion.div>
                 );
@@ -342,7 +331,7 @@ export default function MatchingGame({ categories }) {
             </AnimatePresence>
           </div>
 
-          <div className="game-instructions" style={{ marginTop: '40px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.9rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          <div className="game-instructions" style={{ marginTop: '30px', textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
             <HelpCircle size={16} /> Kartları yazarın üzerine sürükle ve bırak!
           </div>
         </>
