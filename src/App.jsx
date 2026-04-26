@@ -78,7 +78,6 @@ function App() {
             <ul className="footer-links">
               <li><Link to="/hakkimizda" className="footer-link">Hakkımızda</Link></li>
               <li><Link to="/iletisim" className="footer-link">İletişim</Link></li>
-              <li><Link to="/admin" className="footer-link" style={{ opacity: 0.5 }}>Yönetici Paneli</Link></li>
             </ul>
           </div>
         </div>

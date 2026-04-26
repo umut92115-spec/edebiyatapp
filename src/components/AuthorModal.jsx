@@ -347,314 +347,326 @@ export default function AuthorModal({ author: initialAuthor, period, onClose }) 
 
   const { categorySlug, periodSlug } = useParams();
 
-  return (
-    <div className="modal-overlay" ref={overlayRef} onClick={handleOverlayClick} role="dialog" aria-modal="true">
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9, y: 50 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 30 }}
-        className="modal-panel modal-panel-premium" 
-        style={{ '--accent': accentColor }}
-      >
-        <div className="modal-hero">
-          <div 
-            className="modal-hero-bg" 
-            style={{ 
-              backgroundImage: `url(${heroBgUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              filter: 'blur(20px) brightness(0.6)',
-              position: 'absolute',
-              inset: 0,
-              zIndex: -1
-            }} 
-          />
+  const content = (
+    <motion.div 
+      initial={isFullPage ? { opacity: 0 } : { opacity: 0, scale: 0.9, y: 50 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={isFullPage ? { opacity: 0 } : { opacity: 0, scale: 0.95, y: 30 }}
+      className={`modal-panel modal-panel-premium ${isFullPage ? 'is-full-page' : ''}`} 
+      style={{ '--accent': accentColor }}
+    >
+      <div className="modal-hero">
+        <div 
+          className="modal-hero-bg" 
+          style={{ 
+            backgroundImage: `url(${heroBgUrl})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'blur(20px) brightness(0.6)',
+            position: 'absolute',
+            inset: 0,
+            zIndex: -1
+          }} 
+        />
+        
+        <button className="modal-close glass" onClick={onClose} style={{ top: '24px', right: '24px', position: 'absolute', zIndex: 10 }}>
+          <X size={20} />
+        </button>
+
+        <div className="modal-hero-content">
+          <div className="modal-hero-photo-wrap">
+            {displayPhoto ? (
+              <img 
+                src={displayPhoto} 
+                alt={`${author.name} fotoğrafı`} 
+                className="modal-hero-photo" 
+                loading="lazy"
+              />
+            ) : (
+              <div className="author-photo-fallback" style={{ width: '100%', height: '100%', borderRadius: '0' }}>{author.name.charAt(0)}</div>
+            )}
+          </div>
           
-          <button className="modal-close glass" onClick={onClose} style={{ top: '24px', right: '24px', position: 'absolute', zIndex: 10 }}>
-            <X size={20} />
-          </button>
-
-          <div className="modal-hero-content">
-            <div className="modal-hero-photo-wrap">
-              {displayPhoto ? (
-                <img 
-                  src={displayPhoto} 
-                  alt={`${author.name} fotoğrafı`} 
-                  className="modal-hero-photo" 
-                  loading="lazy"
-                />
-              ) : (
-                <div className="author-photo-fallback" style={{ width: '100%', height: '100%', borderRadius: '0' }}>{author.name.charAt(0)}</div>
-              )}
-            </div>
+          <div className="modal-hero-text">
+            <Link 
+              to={`/${categorySlug}/${periodSlug}`}
+              className="modal-period-badge glass" 
+              style={{ marginBottom: '12px', textDecoration: 'none', color: 'inherit', display: 'inline-block' }}
+            >
+              {periodEmoji} {periodName}
+            </Link>
             
-            <div className="modal-hero-text">
-              <Link 
-                to={`/${categorySlug}/${periodSlug}`}
-                className="modal-period-badge glass" 
-                style={{ marginBottom: '12px', textDecoration: 'none', color: 'inherit', display: 'inline-block' }}
-              >
-                {periodEmoji} {periodName}
-              </Link>
-              
-              {isEditing ? (
-                <div className="edit-author-header-inputs">
+            {isEditing ? (
+              <div className="edit-author-header-inputs">
+                <input 
+                  className="edit-author-name"
+                  value={author.name}
+                  onChange={e => setAuthor({...author, name: e.target.value})}
+                  placeholder="Yazar Adı"
+                  style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid #fff', color: '#fff', marginBottom: '8px' }}
+                />
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                   <input 
-                    className="edit-author-name"
-                    value={author.name}
-                    onChange={e => setAuthor({...author, name: e.target.value})}
-                    placeholder="Yazar Adı"
-                    style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid #fff', color: '#fff', marginBottom: '8px' }}
+                    className="edit-author-image"
+                    value={author.image || ''}
+                    onChange={e => setAuthor({...author, image: e.target.value})}
+                    placeholder="Görsel URL (Boş bırakılabilir)"
+                    style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.3)', color: '#fff', fontSize: '0.8rem', padding: '6px 12px', borderRadius: '12px', flex: 1 }}
                   />
-                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                    <input 
-                      className="edit-author-image"
-                      value={author.image || ''}
-                      onChange={e => setAuthor({...author, image: e.target.value})}
-                      placeholder="Görsel URL (Boş bırakılabilir)"
-                      style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.3)', color: '#fff', fontSize: '0.8rem', padding: '6px 12px', borderRadius: '12px', flex: 1 }}
-                    />
-                    {author.image && (
-                      <button 
-                        onClick={() => setAuthor({...author, image: ''})}
-                        style={{ background: 'var(--rose)', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '12px', cursor: 'pointer', fontSize: '0.8rem' }}
-                      >
-                        ✕ Görseli Kaldır
-                      </button>
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <div className="modal-hero-text-content">
-                  <h1 className="modal-hero-name">{author.name} Eserleri</h1>
-                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
-                    {wikipediaData?.pageUrl && (
-                      <a href={wikipediaData.pageUrl} target="_blank" rel="noopener noreferrer" className="wiki-link glass" style={{ padding: '4px 12px', borderRadius: '20px', color: '#fff' }}>
-                        <Globe size={14} /> Wikipedia
-                      </a>
-                    )}
-                    
+                  {author.image && (
                     <button 
-                      className={`glass ${showNotes ? 'active' : ''}`} 
-                      onClick={() => setShowNotes(!showNotes)}
-                      style={{ color: showNotes ? 'var(--amber)' : '#000', border: 'none', padding: '4px 12px', borderRadius: '20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
+                      onClick={() => setAuthor({...author, image: ''})}
+                      style={{ background: 'var(--rose)', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '12px', cursor: 'pointer', fontSize: '0.8rem' }}
                     >
-                      <Edit3 size={14} /> {showNotes ? 'Notları Kapat' : 'Notlarım'}
+                      ✕ Görseli Kaldır
                     </button>
-
-                    <button 
-                      className={`glass ${isAuthorFavorite(author.id) ? 'active' : ''}`} 
-                      onClick={() => toggleAuthorFavorite(author.id)}
-                      style={{ color: isAuthorFavorite(author.id) ? 'var(--amber)' : '#000', border: 'none', padding: '4px 12px', borderRadius: '20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
-                    >
-                      <Star size={14} fill={isAuthorFavorite(author.id) ? 'currentColor' : 'none'} /> {isAuthorFavorite(author.id) ? 'Favorilerimde' : 'Favoriye Ekle'}
-                    </button>
-
-
-                  </div>
+                  )}
                 </div>
-              )}
-            </div>
+              </div>
+            ) : (
+              <div className="modal-hero-text-content">
+                <h1 className="modal-hero-name">{author.name} Eserleri</h1>
+                <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+                  {wikipediaData?.pageUrl && (
+                    <a href={wikipediaData.pageUrl} target="_blank" rel="noopener noreferrer" className="wiki-link glass" style={{ padding: '4px 12px', borderRadius: '20px', color: '#fff' }}>
+                      <Globe size={14} /> Wikipedia
+                    </a>
+                  )}
+                  
+                  <button 
+                    className={`glass ${showNotes ? 'active' : ''}`} 
+                    onClick={() => setShowNotes(!showNotes)}
+                    style={{ color: showNotes ? 'var(--amber)' : '#000', border: 'none', padding: '4px 12px', borderRadius: '20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
+                  >
+                    <Edit3 size={14} /> {showNotes ? 'Notları Kapat' : 'Notlarım'}
+                  </button>
+
+                  <button 
+                    className={`glass ${isAuthorFavorite(author.id) ? 'active' : ''}`} 
+                    onClick={() => toggleAuthorFavorite(author.id)}
+                    style={{ color: isAuthorFavorite(author.id) ? 'var(--amber)' : '#000', border: 'none', padding: '4px 12px', borderRadius: '20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
+                  >
+                    <Star size={14} fill={isAuthorFavorite(author.id) ? 'currentColor' : 'none'} /> {isAuthorFavorite(author.id) ? 'Favorilerimde' : 'Favoriye Ekle'}
+                  </button>
+
+
+                </div>
+              </div>
+            )}
           </div>
         </div>
+      </div>
 
-        {isEditing && (
-          <div className="edit-sticky-bar glass" style={{ padding: '12px 32px', display: 'flex', justifyContent: 'flex-end', gap: '12px', borderBottom: '1px solid var(--border)' }}>
-            <button className="btn-save-all" onClick={handleSaveAll} disabled={saving} style={{ background: 'var(--amber)', color: 'white', border: 'none', padding: '8px 20px', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold' }}>
-              {saving ? '...' : <><Save size={16} /> Değişiklikleri Kaydet</>}
-            </button>
-            <button className="btn-cancel-all" onClick={() => setIsEditing(false)} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', padding: '8px 20px', borderRadius: '20px', cursor: 'pointer' }}>
-              İptal
-            </button>
-            <button onClick={() => {
-              if (window.confirm(`${author.name} adlı yazarı silmek istediğinize emin misiniz?`)) handleDeleteAuthor();
-            }} style={{ background: 'var(--rose)', color: 'white', border: 'none', padding: '8px 20px', borderRadius: '20px', cursor: 'pointer' }}>
-              <Trash2 size={16} /> Sil
-            </button>
-          </div>
-        )}
+      {isEditing && (
+        <div className="edit-sticky-bar glass" style={{ padding: '12px 32px', display: 'flex', justifyContent: 'flex-end', gap: '12px', borderBottom: '1px solid var(--border)' }}>
+          <button className="btn-save-all" onClick={handleSaveAll} disabled={saving} style={{ background: 'var(--amber)', color: 'white', border: 'none', padding: '8px 20px', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold' }}>
+            {saving ? '...' : <><Save size={16} /> Değişiklikleri Kaydet</>}
+          </button>
+          <button className="btn-cancel-all" onClick={() => setIsEditing(false)} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', padding: '8px 20px', borderRadius: '20px', cursor: 'pointer' }}>
+            İptal
+          </button>
+          <button onClick={() => {
+            if (window.confirm(`${author.name} adlı yazarı silmek istediğinize emin misiniz?`)) handleDeleteAuthor();
+          }} style={{ background: 'var(--rose)', color: 'white', border: 'none', padding: '8px 20px', borderRadius: '20px', cursor: 'pointer' }}>
+            <Trash2 size={16} /> Sil
+          </button>
+        </div>
+      )}
 
-        {message && <div className={`modal-status-message ${message.type}`}>{message.text}</div>}
+      {message && <div className={`modal-status-message ${message.type}`}>{message.text}</div>}
 
-        <div className="modal-body" style={{ background: 'var(--bg-glass)', paddingTop: '40px' }}>
-          <div className="modal-content-grid">
-            <div className="modal-main-column">
-              <AnimatePresence>
-                {showNotes && !isEditing && (
-                  <motion.section 
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="modal-section" 
-                    style={{ marginBottom: '32px', overflow: 'hidden' }}
-                  >
-                    <div className="modal-section-title" style={{ color: 'var(--amber)' }}>
-                      <Edit3 size={16} /> Çalışma Notlarım
-                    </div>
-                    <div className="personal-notes-container" style={{ padding: '16px', borderRadius: '16px' }}>
-                      <textarea
-                        placeholder="Bu yazar hakkında kendine özel notlar al..."
-                        value={getAuthorNotes(author.id)}
-                        onChange={(e) => saveAuthorNotes(author.id, e.target.value)}
-                        style={{
-                          width: '100%',
-                          background: 'transparent',
-                          border: 'none',
-                          color: 'var(--text-primary)',
-                          fontFamily: 'inherit',
-                          fontSize: '0.95rem',
-                          minHeight: '120px',
-                          outline: 'none',
-                          resize: 'vertical'
-                        }}
-                      />
-                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '8px', textAlign: 'right' }}>
-                        ✍️ Notların sadece bu tarayıcıda saklanır.
-                      </div>
-                    </div>
-                  </motion.section>
-                )}
-              </AnimatePresence>
-
-              <section className="modal-section">
-                <h2 className="modal-section-title"><Info size={16} /> Yazar Hakkında</h2>
-                {isEditing ? (
-                  <textarea 
-                    className="edit-bio-textarea"
-                    placeholder="Yazar hakkında genel bilgiler..."
-                    value={author.bio || ''}
-                    onChange={e => setAuthor({...author, bio: e.target.value})}
-                    rows={6}
-                    style={{ width: '100%', padding: '16px', borderRadius: '12px' }}
-                  />
-                ) : (
-                  <div className="author-bio-text" style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
-                    {author.bio ? <p>{author.bio}</p> : <p className="empty-info">Henüz biyografi eklenmemiş.</p>}
+      <div className="modal-body" style={{ background: 'var(--bg-glass)', paddingTop: '40px' }}>
+        <div className="modal-content-grid">
+          <div className="modal-main-column">
+            <AnimatePresence>
+              {showNotes && !isEditing && (
+                <motion.section 
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  className="modal-section" 
+                  style={{ marginBottom: '32px', overflow: 'hidden' }}
+                >
+                  <div className="modal-section-title" style={{ color: 'var(--amber)' }}>
+                    <Edit3 size={16} /> Çalışma Notlarım
                   </div>
-                )}
-              </section>
-
-              <section className="modal-section" style={{ marginTop: '40px' }}>
-                <h2 className="modal-section-title"><Book size={16} /> Başlıca Eserleri <span className="works-count-badge">{author.works.length}</span></h2>
-                <div className="works-list">
-                   {author.works.map(work => (
-                    <div 
-                      key={work.id} 
-                      className={`work-card ${isEditing ? 'editing' : ''} glass`} 
-                      style={{ '--accent': accentColor, marginBottom: '12px' }}
-                    >
-                      {isEditing ? (
-                          <div className="work-edit-fields">
-                            <div className="edit-row">
-                              <input value={work.name} onChange={e => updateWork(work.id, 'name', e.target.value)} placeholder="Eser Adı" />
-                              <input value={work.type} onChange={e => updateWork(work.id, 'type', e.target.value)} placeholder="Tür" className="small" />
-                              <button onClick={() => removeWork(work.id)} title="Eseri Sil" style={{ background: 'var(--rose)', color: 'white', border: 'none', padding: '0 10px', borderRadius: '6px', cursor: 'pointer' }}>✕</button>
-                            </div>
-                            <div className="edit-row" style={{ marginTop: '8px' }}>
-                              <input 
-                                value={work.examInfo || ''} 
-                                onChange={e => updateWork(work.id, 'examInfo', e.target.value)} 
-                                placeholder="Sınav Bilgisi" 
-                                style={{ flex: 1, fontSize: '0.85rem', background: 'var(--amber-dim)', border: '1px solid var(--amber)' }}
-                              />
-                            </div>
-                            <textarea value={work.description || ''} onChange={e => updateWork(work.id, 'description', e.target.value)} placeholder="Açıklama" rows={2} style={{ marginTop: '8px' }} />
-                          </div>
-                      ) : (
-                        <>
-                          <div className="work-card-top">
-                            <div className="work-info">
-                              <div className="work-name" style={{ fontSize: '1.1rem' }}><strong>{work.name}</strong></div>
-                              <span className="work-type-badge glass">{work.type}</span>
-                            </div>
-                            <button className={`btn-fav glass ${isFavorite(author.id, work.id) ? 'active' : ''}`} onClick={() => toggleFavorite(author.id, work.id)}>
-                              {isFavorite(author.id, work.id) ? '⭐' : '☆'}
-                            </button>
-                          </div>
-                          {work.description && <p className="work-desc">{work.description}</p>}
-                          {isValidInfo(work.examInfo) && <div className="work-exam-badge glass">🎯 {work.examInfo}</div>}
-                        </>
-                      )}
-                    </div>
-                  ))}
-                </div>
-                {isEditing && (
-                  <button onClick={addWork} style={{ marginTop: '16px', background: 'var(--teal)', color: 'white', border: 'none', padding: '12px', borderRadius: '12px', cursor: 'pointer', fontWeight: 'bold', width: '100%' }}>
-                    ➕ Yeni Eser Ekle
-                  </button>
-                )}
-              </section>
-            </div>
-
-            <div className="modal-sidebar-column">
-              <AuthorInfoBox 
-                author={author} 
-                isEditing={isEditing} 
-                isCumhuriyet={isCumhuriyet} 
-                isTanzimat={isTanzimat} 
-                periodId={period?.id}
-              />
-              
-              {isEditing && (
-                <section className="modal-section admin-metadata-editor glass-premium" style={{ padding: '20px', borderRadius: '16px', marginBottom: '24px' }}>
-                  <div className="modal-section-title"><Settings size={16} /> Sınav & Akım Yönetimi</div>
-                  <div className="admin-field-group" style={{ marginBottom: '20px' }}>
-                    <label>ÖSYM Sorulma Sayısı</label>
-                    <input 
-                      type="number"
-                      value={author.examCount || 0}
-                      onChange={e => setAuthor({...author, examCount: parseInt(e.target.value) || 0})}
-                      style={{ width: '100px', padding: '8px', borderRadius: '8px', border: '1px solid var(--amber)', background: 'var(--amber-dim)' }}
+                  <div className="personal-notes-container" style={{ padding: '16px', borderRadius: '16px' }}>
+                    <textarea
+                      placeholder="Bu yazar hakkında kendine özel notlar al..."
+                      value={getAuthorNotes(author.id)}
+                      onChange={(e) => saveAuthorNotes(author.id, e.target.value)}
+                      style={{
+                        width: '100%',
+                        background: 'transparent',
+                        border: 'none',
+                        color: 'var(--text-primary)',
+                        fontFamily: 'inherit',
+                        fontSize: '0.95rem',
+                        minHeight: '120px',
+                        outline: 'none',
+                        resize: 'vertical'
+                      }}
                     />
-                  </div>
-                  <div className="admin-field-group" style={{ marginBottom: '20px' }}>
-                    <label>Akımlar / Topluluklar</label>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '12px' }}>
-                      {author.movements?.map((m, i) => (
-                        <span key={i} className="infobox-badge" style={{ background: m.color, color: '#fff', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          {m.name}
-                          <button onClick={() => removeMovement(m.name)} style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', padding: 0, display: 'flex' }}><X size={12} /></button>
-                        </span>
-                      ))}
-                      <button onClick={() => setShowTagSelect(!showTagSelect)} className="glass">+ Akım Ekle</button>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '8px', textAlign: 'right' }}>
+                      ✍️ Notların sadece bu tarayıcıda saklanır.
                     </div>
-                    {showTagSelect && (
-                      <div className="tag-selector-dropdown glass">
-                        {Object.keys(movementsData).map(mName => (
-                          <div key={mName} className="tag-option" onClick={() => addMovement(mName)}>{mName}</div>
-                        ))}
-                      </div>
+                  </div>
+                </motion.section>
+              )}
+            </AnimatePresence>
+
+            <section className="modal-section">
+              <h2 className="modal-section-title"><Info size={16} /> Yazar Hakkında</h2>
+              {isEditing ? (
+                <textarea 
+                  className="edit-bio-textarea"
+                  placeholder="Yazar hakkında genel bilgiler..."
+                  value={author.bio || ''}
+                  onChange={e => setAuthor({...author, bio: e.target.value})}
+                  rows={6}
+                  style={{ width: '100%', padding: '16px', borderRadius: '12px' }}
+                />
+              ) : (
+                <div className="author-bio-text" style={{ fontSize: '1.05rem', lineHeight: '1.8' }}>
+                  {author.bio ? <p>{author.bio}</p> : <p className="empty-info">Henüz biyografi eklenmemiş.</p>}
+                </div>
+              )}
+            </section>
+
+            <section className="modal-section" style={{ marginTop: '40px' }}>
+              <h2 className="modal-section-title"><Book size={16} /> Başlıca Eserleri <span className="works-count-badge">{author.works.length}</span></h2>
+              <div className="works-list">
+                 {author.works.map(work => (
+                  <div 
+                    key={work.id} 
+                    className={`work-card ${isEditing ? 'editing' : ''} glass`} 
+                    style={{ '--accent': accentColor, marginBottom: '12px' }}
+                  >
+                    {isEditing ? (
+                        <div className="work-edit-fields">
+                          <div className="edit-row">
+                            <input value={work.name} onChange={e => updateWork(work.id, 'name', e.target.value)} placeholder="Eser Adı" />
+                            <input value={work.type} onChange={e => updateWork(work.id, 'type', e.target.value)} placeholder="Tür" className="small" />
+                            <button onClick={() => removeWork(work.id)} title="Eseri Sil" style={{ background: 'var(--rose)', color: 'white', border: 'none', padding: '0 10px', borderRadius: '6px', cursor: 'pointer' }}>✕</button>
+                          </div>
+                          <div className="edit-row" style={{ marginTop: '8px' }}>
+                            <input 
+                              value={work.examInfo || ''} 
+                              onChange={e => updateWork(work.id, 'examInfo', e.target.value)} 
+                              placeholder="Sınav Bilgisi" 
+                              style={{ flex: 1, fontSize: '0.85rem', background: 'var(--amber-dim)', border: '1px solid var(--amber)' }}
+                            />
+                          </div>
+                          <textarea value={work.description || ''} onChange={e => updateWork(work.id, 'description', e.target.value)} placeholder="Açıklama" rows={2} style={{ marginTop: '8px' }} />
+                        </div>
+                    ) : (
+                      <>
+                        <div className="work-card-top">
+                          <div className="work-info">
+                            <div className="work-name" style={{ fontSize: '1.1rem' }}><strong>{work.name}</strong></div>
+                            <span className="work-type-badge glass">{work.type}</span>
+                          </div>
+                          <button className={`btn-fav glass ${isFavorite(author.id, work.id) ? 'active' : ''}`} onClick={() => toggleFavorite(author.id, work.id)}>
+                            {isFavorite(author.id, work.id) ? '⭐' : '☆'}
+                          </button>
+                        </div>
+                        {work.description && <p className="work-desc">{work.description}</p>}
+                        {isValidInfo(work.examInfo) && <div className="work-exam-badge glass">🎯 {work.examInfo}</div>}
+                      </>
                     )}
                   </div>
-                  <div className="admin-field-group">
-                    <label>Ödüller</label>
-                    <textarea 
-                      value={(author.awards || []).join(', ')}
-                      onChange={e => setAuthor({...author, awards: e.target.value.split(',').map(s => s.trim())})}
-                      placeholder="Örn: Nobel, Sedat Simavi"
-                      rows={2}
-                      style={{ width: '100%', padding: '8px', borderRadius: '8px' }}
-                    />
-                  </div>
-                </section>
+                ))}
+              </div>
+              {isEditing && (
+                <button onClick={addWork} style={{ marginTop: '16px', background: 'var(--teal)', color: 'white', border: 'none', padding: '12px', borderRadius: '12px', cursor: 'pointer', fontWeight: 'bold', width: '100%' }}>
+                  ➕ Yeni Eser Ekle
+                </button>
               )}
+            </section>
+          </div>
 
+          <div className="modal-sidebar-column">
+            <AuthorInfoBox 
+              author={author} 
+              isEditing={isEditing} 
+              isCumhuriyet={isCumhuriyet} 
+              isTanzimat={isTanzimat} 
+              periodId={period?.id}
+            />
+            
+            {isEditing && (
+              <section className="modal-section admin-metadata-editor glass-premium" style={{ padding: '20px', borderRadius: '16px', marginBottom: '24px' }}>
+                <div className="modal-section-title"><Settings size={16} /> Sınav & Akım Yönetimi</div>
+                <div className="admin-field-group" style={{ marginBottom: '20px' }}>
+                  <label>ÖSYM Sorulma Sayısı</label>
+                  <input 
+                    type="number"
+                    value={author.examCount || 0}
+                    onChange={e => setAuthor({...author, examCount: parseInt(e.target.value) || 0})}
+                    style={{ width: '100px', padding: '8px', borderRadius: '8px', border: '1px solid var(--amber)', background: 'var(--amber-dim)' }}
+                  />
+                </div>
+                <div className="admin-field-group" style={{ marginBottom: '20px' }}>
+                  <label>Akımlar / Topluluklar</label>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '12px' }}>
+                    {author.movements?.map((m, i) => (
+                      <span key={i} className="infobox-badge" style={{ background: m.color, color: '#fff', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        {m.name}
+                        <button onClick={() => removeMovement(m.name)} style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', padding: 0, display: 'flex' }}><X size={12} /></button>
+                      </span>
+                    ))}
+                    <button onClick={() => setShowTagSelect(!showTagSelect)} className="glass">+ Akım Ekle</button>
+                  </div>
+                  {showTagSelect && (
+                    <div className="tag-selector-dropdown glass">
+                      {Object.keys(movementsData).map(mName => (
+                        <div key={mName} className="tag-option" onClick={() => addMovement(mName)}>{mName}</div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div className="admin-field-group">
+                  <label>Ödüller</label>
+                  <textarea 
+                    value={(author.awards || []).join(', ')}
+                    onChange={e => setAuthor({...author, awards: e.target.value.split(',').map(s => s.trim())})}
+                    placeholder="Örn: Nobel, Sedat Simavi"
+                    rows={2}
+                    style={{ width: '100%', padding: '8px', borderRadius: '8px' }}
+                  />
+                </div>
+              </section>
+            )}
+
+            {wikipediaData?.extract && (
               <section className="modal-section wiki-section glass-premium" style={{ padding: '20px', borderRadius: '16px' }}>
                 <div className="modal-section-title"><Globe size={16} /> Wikipedia Özeti</div>
                 {wikiLoading ? (
                   <div>Yükleniyor...</div>
-                ) : wikipediaData?.extract ? (
+                ) : (
                   <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
                     {wikipediaData.extract.slice(0, 350)}…
                   </p>
-                ) : (
-                  <p>Wikipedia verisi bulunamadı.</p>
                 )}
               </section>
-            </div>
+            )}
           </div>
         </div>
-      </motion.div>
+      </div>
+    </motion.div>
+  );
+
+  if (isFullPage) {
+    return (
+      <div className="author-page-wrapper animate-in">
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <div className="modal-overlay" ref={overlayRef} onClick={handleOverlayClick} role="dialog" aria-modal="true">
+      {content}
     </div>
   );
 }

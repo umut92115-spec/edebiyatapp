@@ -305,23 +305,12 @@
                   "description": "Şiir."
                 },
                 {
-                  "id": "vatan-mersiyesi",
-                  "name": "Vatan Mersiyesi",
-                  "type": "Şiir",
-                  "description": "Şiir."
-                },
-                {
                   "id": "vaveyla",
                   "name": "Vaveyla",
                   "type": "Şiir",
                   "description": "Şiir."
                 },
-                {
-                  "id": "hurriyet-kasidesi-besalet-i-osmaniye-ve-hamiyyet-i-insaniyye",
-                  "name": "Hürriyet Kasidesi (Besalet-i Osmaniye ve Hamiyyet-i İnsaniyye)",
-                  "type": "Şiir",
-                  "description": "Namık Kemal'in en ünlü şiirlerinden olan bu kaside, vatan, hürriyet, millet ve adalet gibi kavramları coşkulu bir dille işler. Çağın değer yargılarını doğruluktan ve samimiyetten sapmış görerek devlet kapısından ayrılan şair, milletin hor görülmesinin onun şanına eksiklik getirmeyeceğini, cevherin yere düşmekle değerinden bir şey kaybetmeyeceğini belirtir."
-                }
+
               ]
             },
             {
@@ -1086,48 +1075,7 @@
                 }
               ]
             },
-            {
-              "id": "sampiasazade-sezai",
-              "name": "Sampiaşazade Sezai",
-              "bio": "",
-              "image": "",
-              "wikiPage": "",
-              "examCount": 0,
-              "movements": [],
-              "awards": [],
-              "works": [
-                {
-                  "id": "serguzest",
-                  "name": "Sergüzeşt",
-                  "type": "Roman",
-                  "description": "Romantizmden Realizme geçiş eseridir. Esaret temasını işler. Kafkasya'dan getirilen cariye Dilber'in acıklı hikâyesini anlatır."
-                },
-                {
-                  "id": "kucuk-seyler",
-                  "name": "Küçük Şeyler",
-                  "type": "Hikâye",
-                  "description": "Batılı anlamda ilk Türk hikâye kitabıdır."
-                },
-                {
-                  "id": "s-r",
-                  "name": "Şîr",
-                  "type": "Tiyatro",
-                  "description": "-"
-                },
-                {
-                  "id": "r-muzul-edep",
-                  "name": "Rûmuzul Edep",
-                  "type": "Düz Yazı",
-                  "description": "Seyahat notları ve hatıralarını içerir."
-                },
-                {
-                  "id": "iclal",
-                  "name": "İclal",
-                  "type": "Mersiye",
-                  "description": "Yeğeni İclal için yazdığı mersiyedir."
-                }
-              ]
-            },
+
             {
               "id": "muallim-naci",
               "name": "Muallim Naci",
@@ -1626,30 +1574,7 @@
                 }
               ]
             },
-            {
-              "id": "ebuzziya-tevfik",
-              "name": "Ebuzziya Tevfik",
-              "bio": "",
-              "image": "/assets/authors/ebuzziya-tevfik.webp",
-              "wikiPage": "",
-              "examCount": 0,
-              "movements": [
-                {
-                  "name": "Tanzimat Dönemi",
-                  "order": 0,
-                  "color": "#d97706"
-                }
-              ],
-              "awards": [],
-              "works": [
-                {
-                  "id": "numune-i-edebiyy-t-i-osm-niyye",
-                  "name": "Numüne-i Edebiyyât-ı Osmâniyye",
-                  "type": "Antoloji",
-                  "description": "Türk nesrindeki gelişmeyi göstermek amacıyla Batılı tarzda hazırlanmış ilk edebiyat antolojisidir. Tanzimat devri edebiyatçılarının sesini duyuran \"Mecmûa-i Ebüzziyâ\"yı da yayımlayan Ebüzziya Tevfik, \"Ecel-i Kaza\" adlı piyesinin ön sözünde tiyatronun edebiyatın önde gelen türlerinden biri olduğunu ancak İslam ülkelerinde bu türe gereken önemin verilmediğini vurgulamıştır."
-                }
-              ]
-            },
+
             {
               "id": "samipasazade-sezai",
               "name": "Samipaşazade Sezai",

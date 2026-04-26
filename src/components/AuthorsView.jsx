@@ -116,20 +116,24 @@ function AuthorsView({ categories }) {
         {personSchema && <script type="application/ld+json">{JSON.stringify(personSchema)}</script>}
       </Helmet>
       
-      <AuthorsScreen
-        period={period}
-        onSelectAuthor={handleSelectAuthor}
-        onBack={handleBack}
-      />
-      <AnimatePresence>
-        {authorSlug && author && (
-          <AuthorModal
-            author={author}
-            period={period}
-            onClose={handleCloseModal}
-          />
-        )}
-      </AnimatePresence>
+      {!authorSlug ? (
+        <AuthorsScreen
+          period={period}
+          onSelectAuthor={handleSelectAuthor}
+          onBack={handleBack}
+        />
+      ) : (
+        <AnimatePresence mode="wait">
+          {author && (
+            <AuthorModal
+              author={author}
+              period={period}
+              onClose={handleCloseModal}
+              isFullPage={true}
+            />
+          )}
+        </AnimatePresence>
+      )}
     </>
   );
 }
