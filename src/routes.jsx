@@ -8,6 +8,7 @@ import AdminDashboard from './components/AdminDashboard';
 import QuizScreen from './components/QuizScreen';
 import PeriodsView from './components/PeriodsView';
 import AuthorsView from './components/AuthorsView';
+import MatchingGame from './components/MatchingGame';
 
 // Static pages
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -24,6 +25,7 @@ export const routes = [
     children: [
       { index: true, element: <HomeScreen categories={allCategories} /> },
       { path: 'quiz', element: <QuizScreen categories={allCategories} /> },
+      { path: 'oyun', element: <MatchingGame categories={allCategories} /> },
       { path: 'admin', element: <AdminDashboard /> },
       { path: 'hakkimizda', element: <AboutPage /> },
       { path: 'iletisim', element: <ContactPage /> },

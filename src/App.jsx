@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { Trophy } from 'lucide-react';
+import { Trophy, Hand } from 'lucide-react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Analytics } from '@vercel/analytics/react';
 import literatureData from './data/literatureData.json';
@@ -55,6 +55,10 @@ function App() {
           <Link to="/quiz" className="header-quiz-btn desktop-only" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Trophy size={18} />
             <span>Quiz</span>
+          </Link>
+          <Link to="/oyun" className="header-quiz-btn desktop-only" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Hand size={18} color="var(--teal)" />
+            <span>Eşleştirme</span>
           </Link>
           <FavoritesSidebar allCategories={allCategories} />
           <div className="header-badge">Beta v1.0</div>

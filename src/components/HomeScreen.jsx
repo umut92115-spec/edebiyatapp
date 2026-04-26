@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { GlobalSearch } from './GlobalSearch';
-import { ChevronRight, Book, Trophy } from 'lucide-react';
+import { ChevronRight, Book, Trophy, Hand } from 'lucide-react';
 
 export default function HomeScreen({ categories, onSelectCategory, onSelectAuthor, onStartQuiz }) {
   const navigate = useNavigate();
@@ -123,7 +123,7 @@ export default function HomeScreen({ categories, onSelectCategory, onSelectAutho
           <GlobalSearch allCategories={categories} onSelectAuthor={handleSelectAuthor} />
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '48px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginBottom: '48px', flexWrap: 'wrap' }}>
           <button 
             className="btn-quiz-hero glass"
             onClick={handleStartQuiz}
@@ -141,7 +141,27 @@ export default function HomeScreen({ categories, onSelectCategory, onSelectAutho
               transition: 'all 0.3s'
             }}
           >
-            <Trophy size={20} color="var(--amber)" /> Edebiyat Quiz'e Başla
+            <Trophy size={20} color="var(--amber)" /> Edebiyat Quiz
+          </button>
+
+          <button 
+            className="btn-quiz-hero glass"
+            onClick={() => navigate('/oyun')}
+            style={{
+              padding: '12px 32px',
+              borderRadius: '30px',
+              border: '2px solid var(--teal)',
+              background: 'var(--teal-dim)',
+              color: 'var(--text-primary)',
+              fontWeight: '700',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
+            }}
+          >
+            <Hand size={20} color="var(--teal)" /> Eser Eşleştirme
           </button>
         </div>
 
