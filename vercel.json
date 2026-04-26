@@ -4,7 +4,9 @@
   "routes": [
     {
       "src": "/assets/(.*)",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" },
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      },
       "continue": true
     },
     {
@@ -13,6 +15,953 @@
     {
       "src": "/(.*)",
       "dest": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/blog/saf",
+      "destination": "/blog/saf-siir-anlayisi",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/i-brahim-şinasi",
+      "destination": "/yeni-turk-edebiyati/tanzimat/ibrahim-sinasi",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/ziya-paşa",
+      "destination": "/yeni-turk-edebiyati/tanzimat/ziya-pasa",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/namık-kemal",
+      "destination": "/yeni-turk-edebiyati/tanzimat/namik-kemal",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/ahmet-vefik-paşa",
+      "destination": "/yeni-turk-edebiyati/tanzimat/ahmet-vefik-pasa",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/şemsettin-sami",
+      "destination": "/yeni-turk-edebiyati/tanzimat/semsettin-sami",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/abdülhak-hamit-tarhan",
+      "destination": "/yeni-turk-edebiyati/tanzimat/abdulhak-hamit-tarhan",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/nabizade-nazım",
+      "destination": "/yeni-turk-edebiyati/tanzimat/nabizade-nazim",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/ahmet-cevdet-paşa",
+      "destination": "/yeni-turk-edebiyati/tanzimat/ahmet-cevdet-pasa",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/sadullah-paşa",
+      "destination": "/yeni-turk-edebiyati/tanzimat/sadullah-pasa",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/akif-paşa",
+      "destination": "/yeni-turk-edebiyati/tanzimat/akif-pasa",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/sadık-rıfat-paşa",
+      "destination": "/yeni-turk-edebiyati/tanzimat/sadik-rifat-pasa",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/ethem-pertev-paşa",
+      "destination": "/yeni-turk-edebiyati/tanzimat/ethem-pertev-pasa",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/mizancı-mehmet-murat",
+      "destination": "/yeni-turk-edebiyati/tanzimat/mizanci-mehmet-murat",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/beşir-fuad",
+      "destination": "/yeni-turk-edebiyati/tanzimat/besir-fuad",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/ömer-ali-bey",
+      "destination": "/yeni-turk-edebiyati/tanzimat/omer-ali-bey",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/samipaşazade-sezai",
+      "destination": "/yeni-turk-edebiyati/tanzimat/samipasazade-sezai",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/samipaszade-sezai",
+      "destination": "/yeni-turk-edebiyati/tanzimat/samipasazade-sezai",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/tanzimat/yusuf-k-mil-paşa",
+      "destination": "/yeni-turk-edebiyati/tanzimat/yusuf-kamil-pasa",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/servet-i-funun/cenap-şahabettin",
+      "destination": "/yeni-turk-edebiyati/servet-i-funun/cenap-sahabettin",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/servet-i-funun/halit-ziya-uşaklıgil",
+      "destination": "/yeni-turk-edebiyati/servet-i-funun/halit-ziya-usakligil",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/servet-i-funun/süleyman-nazif",
+      "destination": "/yeni-turk-edebiyati/servet-i-funun/suleyman-nazif",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/servet-i-funun/hüseyin-cahit-yalçın",
+      "destination": "/yeni-turk-edebiyati/servet-i-funun/huseyin-cahit-yalcin",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/servet-i-funun/hüseyin-siret-özsever",
+      "destination": "/yeni-turk-edebiyati/servet-i-funun/huseyin-siret-ozsever",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/servet-i-funun/ali-ekrem-bolayır",
+      "destination": "/yeni-turk-edebiyati/servet-i-funun/ali-ekrem-bolayir",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/servet-i-funun/i-smail-safa",
+      "destination": "/yeni-turk-edebiyati/servet-i-funun/ismail-safa",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/servet-i-funun/ahmet-hikmet-müftüoğlu",
+      "destination": "/yeni-turk-edebiyati/servet-i-funun/ahmet-hikmet-muftuoglu",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/servet-i-funun/ahmet-şuayp",
+      "destination": "/yeni-turk-edebiyati/servet-i-funun/ahmet-suayp",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/fecr-i-ati/ahmet-haşim",
+      "destination": "/yeni-turk-edebiyati/fecr-i-ati/ahmet-hasim",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/fecr-i-ati/emin-bülend-serdaroğlu",
+      "destination": "/yeni-turk-edebiyati/fecr-i-ati/emin-bulend-serdaroglu",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/fecr-i-ati/cemil-süleyman-alyanakoğlu",
+      "destination": "/yeni-turk-edebiyati/fecr-i-ati/cemil-suleyman-alyanakoglu",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/fecr-i-ati/i-zzet-melih-devrim",
+      "destination": "/yeni-turk-edebiyati/fecr-i-ati/izzet-melih-devrim",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/fecr-i-ati/hüseyin-rahmi-gürpınar",
+      "destination": "/yeni-turk-edebiyati/fecr-i-ati/huseyin-rahmi-gurpinar",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/fecr-i-ati/abdürreşid-i-brahim",
+      "destination": "/yeni-turk-edebiyati/fecr-i-ati/abdurresid-ibrahim",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/fecr-i-ati/fatma-aliye-hanım",
+      "destination": "/yeni-turk-edebiyati/fecr-i-ati/fatma-aliye-hanim",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/fecr-i-ati/zafer-hanım",
+      "destination": "/yeni-turk-edebiyati/fecr-i-ati/zafer-hanim",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/fecr-i-ati/ebubekir-hazım-tepeyran",
+      "destination": "/yeni-turk-edebiyati/fecr-i-ati/ebubekir-hazim-tepeyran",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/ali-canip-yöntem",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/ali-canip-yontem",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/ömer-seyfettin",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/omer-seyfettin",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/ziya-gökalp",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/ziya-gokalp",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/mehmet-fuat-köprülü",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/mehmet-fuat-koprulu",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/yakup-kadri-karaosmanoğlu",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/yakup-kadri-karaosmanoglu",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/halide-edip-adıvar",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/halide-edip-adivar",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/müfide-ferit-tek",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/mufide-ferit-tek",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/reşat-nuri-güntekin",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/resat-nuri-guntekin",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/falih-rıfkı-atay",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/falih-rifki-atay",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/aka-gündüz",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/aka-gunduz",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/hamdullah-suphi-tanrıöver",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/hamdullah-suphi-tanriover",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/yusuf-akçura",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/yusuf-akcura",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/rıza-tevfik-bölükbaşı",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/riza-tevfik-bolukbasi",
+      "permanent": true
+    },
+    {
+      "source": "/yeni-turk-edebiyati/milli-edebiyat/yahya-kemal-beyatlı",
+      "destination": "/yeni-turk-edebiyati/milli-edebiyat/yahya-kemal-beyatli",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/ahmet-hamdi-tanpınar",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/ahmet-hamdi-tanpinar",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/necip-fazıl-kısakürek",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/necip-fazil-kisakurek",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/nazım-hikmet",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/nazim-hikmet",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/cahit-sıtkı-tarancı",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/cahit-sitki-taranci",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/ahmet-muhip-dıranas",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/ahmet-muhip-diranas",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/fazıl-hüsnü-dağlarca",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/fazil-husnu-daglarca",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/behçet-necatigil",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/behcet-necatigil",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/cahit-zarifoğlu",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/cahit-zarifoglu",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/i-smet-özel",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/ismet-ozel",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/sait-faik-abasıyanık",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/sait-faik-abasiyanik",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/yaşar-kemal",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/yasar-kemal",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/tarık-buğra",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/tarik-bugra",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/oğuz-atay",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/oguz-atay",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/yusuf-atılgan",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/yusuf-atilgan",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/cemal-süreya",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/cemal-sureya",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/sezai-karakoç",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/sezai-karakoc",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/rasim-özdenören",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/rasim-ozdenoren",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/erdem-bayazıt",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/erdem-bayazit",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/sevinç-çokum",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/sevinc-cokum",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/mustafa-necati-sepetçioğlu",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/mustafa-necati-sepetcioglu",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/attila-i-lhan",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/attila-ilhan",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/rıfat-ilgaz",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/rifat-ilgaz",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/nurullah-ataç",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/nurullah-atac",
+      "permanent": true
+    },
+    {
+      "source": "/cumhuriyet-edebiyati/cumhuriyet-donemi/faruk-nafiz-çamlıbel",
+      "destination": "/cumhuriyet-edebiyati/cumhuriyet-donemi/faruk-nafiz-camlibel",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/yalvaç-ural",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/yalvac-ural",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/cemal-süreya",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/cemal-sureya",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/ziya-gökalp",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/ziya-gokalp",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/gülten-dayıoğlu",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/gulten-dayioglu",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/fazıl-hüsnü-dağlarca",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/fazil-husnu-daglarca",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/eflatun-cem-güney",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/eflatun-cem-guney",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/kayserili-doktor-rüşdü-bey",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/kayserili-doktor-rusdu-bey",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/nazım-hikmet",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/nazim-hikmet",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/rıfat-ilgaz",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/rifat-ilgaz",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/kemal-bilbaşar",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/kemal-bilbasar",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/yılmaz-boyunağa",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/yilmaz-boyunaga",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/behiç-ak",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/behic-ak",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/aytül-akal",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/aytul-akal",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/aytül-akal-ve-mavisel-yener",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/aytul-akal-ve-mavisel-yener",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/bilgin-adalı",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/bilgin-adali",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/ayla-çınaroğlu",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/ayla-cinaroglu",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/cahit-uçuk",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/cahit-ucuk",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/mustafa-ruhi-şirin",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/mustafa-ruhi-sirin",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/oğuz-tansel",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/oguz-tansel",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/can-göknil",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/can-goknil",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/sümbülzade-vehbi",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/sumbulzade-vehbi",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/çaylak-tevfik",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/caylak-tevfik",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/yusuf-k-mil-paşa",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/yusuf-kamil-pasa",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/vakanüvis-lütfü-ahmet-lütfi-efendi",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/vakanuvis-lutfu-ahmet-lutfi-efendi",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/ali-ulvi-elöve",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/ali-ulvi-elove",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/i-brahim-alaettin-gövsa",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/ibrahim-alaettin-govsa",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/nimet-çalapala-ve-rakım-çalapala",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/nimet-calapala-ve-rakim-calapala",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/ömer-seyfettin",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/omer-seyfettin",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/orhan-veli-kanık",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/orhan-veli-kanik",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/orhan-şaik-gökyay",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/orhan-saik-gokyay",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/aka-gündüz",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/aka-gunduz",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/kemalettin-tuğcu",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/kemalettin-tugcu",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/abdullah-ziya-kozanoğlu",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/abdullah-ziya-kozanoglu",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/mümtaz-zeki-taşkın",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/mumtaz-zeki-taskin",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/cahit-zarifoğlu",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/cahit-zarifoglu",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/tarık-dursun-kakınç",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/tarik-dursun-kakinc",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/muzaffer-i-zgü",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/muzaffer-izgu",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/i-brahim-zeki-burdurlu",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/ibrahim-zeki-burdurlu",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/talip-apaydın",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/talip-apaydin",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/yaşar-kemal",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/yasar-kemal",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/i-pek-ongun",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/ipek-ongun",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/nezihe-meriç",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/nezihe-meric",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/nez-he-meriç",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/nezihe-meric",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/nez-he-meric",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/nezihe-meric",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/şermin-yaşar",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/sermin-yasar",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/mevl-na-i-dris-zengin",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/mevlana-idris-zengin",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/çetin-öner",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/cetin-oner",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/ebubekir-hazım-tepeyran",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/ebubekir-hazim-tepeyran",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/ümit-kaftancıoğlu",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/umit-kaftancioglu",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/rakım-çalapala",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/rakim-calapala",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/turk-cocuk-edebiyati/nimet-çalapala",
+      "destination": "/cocuk-edebiyati/turk-cocuk-edebiyati/nimet-calapala",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/dunya-cocuk-edebiyati/antoine-de-saint-exup-ry",
+      "destination": "/cocuk-edebiyati/dunya-cocuk-edebiyati/antoine-de-saint-exupery",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/dunya-cocuk-edebiyati/grimm-kardeşler",
+      "destination": "/cocuk-edebiyati/dunya-cocuk-edebiyati/grimm-kardesler",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/dunya-cocuk-edebiyati/binbir-gece-masalları",
+      "destination": "/cocuk-edebiyati/dunya-cocuk-edebiyati/binbir-gece-masallari",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/dunya-cocuk-edebiyati/erich-k-stner",
+      "destination": "/cocuk-edebiyati/dunya-cocuk-edebiyati/erich-kastner",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/dunya-cocuk-edebiyati/selma-lagerlöf",
+      "destination": "/cocuk-edebiyati/dunya-cocuk-edebiyati/selma-lagerlof",
+      "permanent": true
+    },
+    {
+      "source": "/cocuk-edebiyati/dunya-cocuk-edebiyati/christine-nöstlinger",
+      "destination": "/cocuk-edebiyati/dunya-cocuk-edebiyati/christine-nostlinger",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/köroğlu",
+      "destination": "/halk-edebiyati/asik-tarzi/koroglu",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/öksüz-dede",
+      "destination": "/halk-edebiyati/asik-tarzi/oksuz-dede",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/karacaoğlan",
+      "destination": "/halk-edebiyati/asik-tarzi/karacaoglan",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/kayıkçı-kul-mustafa",
+      "destination": "/halk-edebiyati/asik-tarzi/kayikci-kul-mustafa",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/aşık-katibi",
+      "destination": "/halk-edebiyati/asik-tarzi/asik-katibi",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/kuloğlu",
+      "destination": "/halk-edebiyati/asik-tarzi/kuloglu",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/şık-ömer",
+      "destination": "/halk-edebiyati/asik-tarzi/asik-omer",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/sik-omer",
+      "destination": "/halk-edebiyati/asik-tarzi/asik-omer",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/ercişli-emrah",
+      "destination": "/halk-edebiyati/asik-tarzi/ercisli-emrah",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/dadaloğlu",
+      "destination": "/halk-edebiyati/asik-tarzi/dadaloglu",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/tokatlı-nuri",
+      "destination": "/halk-edebiyati/asik-tarzi/tokatli-nuri",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/türabi",
+      "destination": "/halk-edebiyati/asik-tarzi/turabi",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/sümmani",
+      "destination": "/halk-edebiyati/asik-tarzi/summani",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/aşık-şenlik",
+      "destination": "/halk-edebiyati/asik-tarzi/asik-senlik",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/kağızmanlı-hıfzı",
+      "destination": "/halk-edebiyati/asik-tarzi/kagizmanli-hifzi",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/aşık-reyhani",
+      "destination": "/halk-edebiyati/asik-tarzi/asik-reyhani",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/şık-veysel-şatıroğlu",
+      "destination": "/halk-edebiyati/asik-tarzi/asik-veysel-satiroglu",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/sik-veysel-satiroglu",
+      "destination": "/halk-edebiyati/asik-tarzi/asik-veysel-satiroglu",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/neşet-ertaş",
+      "destination": "/halk-edebiyati/asik-tarzi/neset-ertas",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/abdurrahim-karakoç",
+      "destination": "/halk-edebiyati/asik-tarzi/abdurrahim-karakoc",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/şeref-taşlıova",
+      "destination": "/halk-edebiyati/asik-tarzi/seref-tasliova",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/murat-çobanoğlu",
+      "destination": "/halk-edebiyati/asik-tarzi/murat-cobanoglu",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/şık-feymani-osman-taşkaya",
+      "destination": "/halk-edebiyati/asik-tarzi/asik-feymani-osman-taskaya",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/sik-feymani-osman-taskaya",
+      "destination": "/halk-edebiyati/asik-tarzi/asik-feymani-osman-taskaya",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/şık-mahzuni-şerif",
+      "destination": "/halk-edebiyati/asik-tarzi/asik-mahzuni-serif",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/sik-mahzuni-serif",
+      "destination": "/halk-edebiyati/asik-tarzi/asik-mahzuni-serif",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/talip-coşkun",
+      "destination": "/halk-edebiyati/asik-tarzi/talip-coskun",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/asik-tarzi/ali-i-zzet-özkan",
+      "destination": "/halk-edebiyati/asik-tarzi/ali-izzet-ozkan",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/şeyyad-hamza",
+      "destination": "/halk-edebiyati/dini-tasavvufi/seyyad-hamza",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/gülşehri",
+      "destination": "/halk-edebiyati/dini-tasavvufi/gulsehri",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/hacı-bektaş-ı-veli",
+      "destination": "/halk-edebiyati/dini-tasavvufi/haci-bektas-i-veli",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/balım-sultan",
+      "destination": "/halk-edebiyati/dini-tasavvufi/balim-sultan",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/hacı-bayramı-veli-numan",
+      "destination": "/halk-edebiyati/dini-tasavvufi/haci-bayrami-veli-numan",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/eşrefoğlu-rumi",
+      "destination": "/halk-edebiyati/dini-tasavvufi/esrefoglu-rumi",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/dede-ömer-ruşeni",
+      "destination": "/halk-edebiyati/dini-tasavvufi/dede-omer-ruseni",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/aziz-mahmut-hüdayi",
+      "destination": "/halk-edebiyati/dini-tasavvufi/aziz-mahmut-hudayi",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/niyazi-i-mısr",
+      "destination": "/halk-edebiyati/dini-tasavvufi/niyazi-i-misri",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/niyazi-i-misr",
+      "destination": "/halk-edebiyati/dini-tasavvufi/niyazi-i-misri",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/erzurumlu-i-brahim-hakkı",
+      "destination": "/halk-edebiyati/dini-tasavvufi/erzurumlu-ibrahim-hakki",
+      "permanent": true
+    },
+    {
+      "source": "/halk-edebiyati/dini-tasavvufi/aşık-kenzi",
+      "destination": "/halk-edebiyati/dini-tasavvufi/asik-kenzi",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/ispanyol-edebiyati/federico-garc-a-lorca",
+      "destination": "/dunya-edebiyati/ispanyol-edebiyati/federico-garcia-lorca",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/fransiz-edebiyati/moli-re",
+      "destination": "/dunya-edebiyati/fransiz-edebiyati/moliere",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/fransiz-edebiyati/alexandre-dumas-p-re",
+      "destination": "/dunya-edebiyati/fransiz-edebiyati/alexandre-dumas-pere",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/fransiz-edebiyati/honor-de-balzac",
+      "destination": "/dunya-edebiyati/fransiz-edebiyati/honore-de-balzac",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/fransiz-edebiyati/goncourt-kardeşler-edmond-ve-jules",
+      "destination": "/dunya-edebiyati/fransiz-edebiyati/goncourt-kardesler-edmond-ve-jules",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/fransiz-edebiyati/andr-gide",
+      "destination": "/dunya-edebiyati/fransiz-edebiyati/andre-gide",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/fransiz-edebiyati/antoine-de-saint-exup-ry",
+      "destination": "/dunya-edebiyati/fransiz-edebiyati/antoine-de-saint-exupery",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/hirvat-edebiyati/i-vo-andriç",
+      "destination": "/dunya-edebiyati/hirvat-edebiyati/ivo-andric",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/klasik-iran-edebiyati/sadi-i-şirazi",
+      "destination": "/dunya-edebiyati/klasik-iran-edebiyati/sadi-i-sirazi",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/alman-edebiyati/heinrich-böll",
+      "destination": "/dunya-edebiyati/alman-edebiyati/heinrich-boll",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/alman-edebiyati/wilhelm-grimm-grimm-kardeşler",
+      "destination": "/dunya-edebiyati/alman-edebiyati/wilhelm-grimm-grimm-kardesler",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/alman-edebiyati/günter-grass",
+      "destination": "/dunya-edebiyati/alman-edebiyati/gunter-grass",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/rus-edebiyati/aleksandr-puşkin",
+      "destination": "/dunya-edebiyati/rus-edebiyati/aleksandr-puskin",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/rus-edebiyati/i-van-turgenyev",
+      "destination": "/dunya-edebiyati/rus-edebiyati/ivan-turgenyev",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/rus-edebiyati/i-van-gonçarov",
+      "destination": "/dunya-edebiyati/rus-edebiyati/ivan-goncarov",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/rus-edebiyati/anton-çehov",
+      "destination": "/dunya-edebiyati/rus-edebiyati/anton-cehov",
+      "permanent": true
+    },
+    {
+      "source": "/dunya-edebiyati/latin-amerika-edebiyati/gabriel-garc-a-m-rquez",
+      "destination": "/dunya-edebiyati/latin-amerika-edebiyati/gabriel-garcia-marquez",
+      "permanent": true
     }
   ]
 }

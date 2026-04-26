@@ -64,11 +64,25 @@ const categoriesConfig = [
 ];
 
 function generateId(str) {
+  if (!str) return '';
   const map = {
     'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
-    'Ç': 'c', 'Ğ': 'g', 'İ': 'i', 'Ö': 'o', 'Ş': 's', 'Ü': 'u'
+    'Ç': 'c', 'Ğ': 'g', 'İ': 'i', 'Ö': 'o', 'Ş': 's', 'Ü': 'u',
+    'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
+    'à': 'a', 'â': 'a', 'ä': 'a',
+    'ô': 'o', 'ö': 'o', 'õ': 'o',
+    'ü': 'u', 'û': 'u', 'ù': 'u',
+    'ï': 'i', 'î': 'i',
+    'ñ': 'n', 'ß': 'ss',
+    'œ': 'oe', 'æ': 'ae'
   };
-  return str.split('').map(char => map[char] || char).join('')
+  
+  let result = str.split('').map(char => map[char] || char).join('');
+  
+  return result
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[ıİ]/g, 'i')
     .toLowerCase()
     .replace(/[^a-z0-9]/g, '-')
     .replace(/-+/g, '-')

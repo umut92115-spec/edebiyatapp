@@ -8,13 +8,27 @@ import { Calendar, User, ChevronRight, BookOpen, PenTool, Scroll as ScrollIcon }
 
 export default function BlogPage() {
   const slugify = (text) => {
+    if (!text) return '';
     const map = {
       'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
       'Ç': 'c', 'Ğ': 'g', 'İ': 'i', 'Ö': 'o', 'Ş': 's', 'Ü': 'u',
-      'â': 'a', 'î': 'i', 'û': 'u', 'Â': 'a', 'Î': 'i', 'Û': 'u'
+      'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
+      'à': 'a', 'â': 'a', 'ä': 'a',
+      'ô': 'o', 'ö': 'o', 'õ': 'o',
+      'ü': 'u', 'û': 'u', 'ù': 'u',
+      'ï': 'i', 'î': 'i',
+      'ñ': 'n', 'ß': 'ss',
+      'œ': 'oe', 'æ': 'ae'
     };
-    if (!text) return '';
-    return text.split('').map(char => map[char] || char).join('').toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    let result = text.split('').map(char => map[char] || char).join('');
+    return result
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[ıİ]/g, 'i')
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
   };
 
   const getRepresentativeImage = (post) => {

@@ -10,7 +10,8 @@ export default function BlogPostPage() {
   const { postId } = useParams();
   
   const redirectionMap = {
-    'saf-iir': 'saf-siir',
+    'saf': 'saf-siir-anlayisi',
+    'saf-iir': 'saf-siir-anlayisi',
     'fecr-i-ti': 'fecr-i-ati',
     'sik-edebiyati': 'asik-edebiyati',
     'k-edebiyat': 'asik-edebiyati',
@@ -31,7 +32,26 @@ export default function BlogPostPage() {
     // 1. Try to find movement/tag that matches this post
     const slugify = (text) => {
       if (!text) return '';
-      return text.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[ıı]/g, 'i').replace(/[İİ]/g, 'i').toLowerCase().replace(/[ğ]/g, 'g').replace(/[ü]/g, 'u').replace(/[ş]/g, 's').replace(/[ö]/g, 'o').replace(/[ç]/g, 'c').replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+      const map = {
+        'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
+        'Ç': 'c', 'Ğ': 'g', 'İ': 'i', 'Ö': 'o', 'Ş': 's', 'Ü': 'u',
+        'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
+        'à': 'a', 'â': 'a', 'ä': 'a',
+        'ô': 'o', 'ö': 'o', 'õ': 'o',
+        'ü': 'u', 'û': 'u', 'ù': 'u',
+        'ï': 'i', 'î': 'i',
+        'ñ': 'n', 'ß': 'ss',
+        'œ': 'oe', 'æ': 'ae'
+      };
+      let result = text.split('').map(char => map[char] || char).join('');
+      return result
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[ıİ]/g, 'i')
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
     };
 
     // Find authors whose movement name matches the post category or id
