@@ -20,6 +20,7 @@ export default function QuizScreen({ categories, onBack }) {
   const [answerState, setAnswerState] = useState(null); // null, 'CORRECT', 'WRONG'
   const [streak, setStreak] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('ALL');
+  const [showExplanation, setShowExplanation] = useState(false);
 
   // Veriden rastgele yazar ve eser seçimi
   const allAuthors = useMemo(() => {
@@ -111,6 +112,7 @@ export default function QuizScreen({ categories, onBack }) {
       options
     });
     setGameState('PLAYING');
+    setShowExplanation(false);
   };
 
   const handleStartQuiz = (m) => {
@@ -123,6 +125,7 @@ export default function QuizScreen({ categories, onBack }) {
 
     const isCorrect = authorId === currentQuestion.correctAuthor.id;
     setAnswerState(isCorrect ? 'CORRECT' : 'WRONG');
+    setShowExplanation(true);
     
     if (isCorrect) {
       setStreak(s => s + 1);
@@ -131,11 +134,10 @@ export default function QuizScreen({ categories, onBack }) {
     }
 
     updateScore(isCorrect);
+  };
 
-    // Otomatik sonraki soruya geç
-    setTimeout(() => {
-      generateQuestion();
-    }, 1500);
+  const handleNextQuestion = () => {
+    generateQuestion();
   };
 
   return (
@@ -231,7 +233,7 @@ export default function QuizScreen({ categories, onBack }) {
             animate={{ opacity: 1, scale: 1 }}
             className="quiz-play-screen"
           >
-            <div className="question-card glass">
+            <div className="question-card glass-premium">
               <span className="question-label">Bu eser kime ait?</span>
               <h2 className="question-work-name">"{currentQuestion.work.name}"</h2>
               {currentQuestion.work.type && (
@@ -242,9 +244,15 @@ export default function QuizScreen({ categories, onBack }) {
             <div className="options-grid">
               {currentQuestion.options.map(option => {
                 const isCorrect = option.id === currentQuestion.correctAuthor.id;
+                const isSelected = answerState && option.id === (answerState === 'CORRECT' ? currentQuestion.correctAuthor.id : null); // Simple check for visual feedback
+                
                 let btnClass = "option-btn glass";
                 if (answerState) {
                   if (isCorrect) btnClass += " correct";
+                  else if (option.id !== currentQuestion.correctAuthor.id && answerState === 'WRONG') {
+                    // We don't track which one they clicked specifically in state yet, 
+                    // but we can color the correct one and show feedback.
+                  }
                 }
 
                 return (
@@ -261,15 +269,42 @@ export default function QuizScreen({ categories, onBack }) {
               })}
             </div>
 
-            {answerState === 'WRONG' && (
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="wrong-feedback"
-              >
-                <XCircle size={20} /> Üzgünüm, doğru cevap: <strong>{currentQuestion.correctAuthor.name}</strong>
-              </motion.div>
-            )}
+            <AnimatePresence>
+              {showExplanation && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="explanation-card glass-premium"
+                >
+                  <div className="explanation-header">
+                    {answerState === 'CORRECT' ? (
+                      <span className="feedback-badge success"><CheckCircle2 size={16} /> Doğru!</span>
+                    ) : (
+                      <span className="feedback-badge error"><XCircle size={16} /> Yanlış</span>
+                    )}
+                    <h3>{currentQuestion.correctAuthor.name}</h3>
+                  </div>
+                  
+                  <div className="explanation-content">
+                    {currentQuestion.work.description ? (
+                      <p className="work-desc">
+                        <strong>Eser Hakkında:</strong> {currentQuestion.work.description}
+                      </p>
+                    ) : (
+                      <p className="author-bio">
+                        {currentQuestion.correctAuthor.bio && (
+                          <><strong>Yazar Hakkında:</strong> {currentQuestion.correctAuthor.bio.slice(0, 200)}...</>
+                        )}
+                      </p>
+                    )}
+                  </div>
+
+                  <button className="btn-next-quiz" onClick={handleNextQuestion}>
+                    Sıradaki Soru <ArrowLeft size={18} style={{ transform: 'rotate(180deg)' }} />
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>
@@ -460,15 +495,79 @@ export default function QuizScreen({ categories, onBack }) {
         .option-btn.correct .feedback-icon {
           color: #22c55e;
         }
-        .wrong-feedback {
-          margin-top: 24px;
-          text-align: center;
-          color: #be123c;
+        .explanation-card {
+          margin-top: 32px;
+          padding: 32px;
+          border-radius: 24px;
+          border: 1px solid var(--border);
+          text-align: left;
+          animation: slideUp 0.4s ease-out;
+        }
+        .explanation-header {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin-bottom: 16px;
+        }
+        .explanation-header h3 {
+          font-family: var(--font-display);
+          font-size: 1.5rem;
+          margin: 0;
+        }
+        .feedback-badge {
+          padding: 4px 12px;
+          border-radius: 99px;
+          font-size: 0.8rem;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          text-transform: uppercase;
+        }
+        .feedback-badge.success {
+          background: #dcfce7;
+          color: #166534;
+        }
+        .feedback-badge.error {
+          background: #fee2e2;
+          color: #991b1b;
+        }
+        .explanation-content {
+          font-size: 1rem;
+          line-height: 1.6;
+          color: var(--text-secondary);
+          margin-bottom: 24px;
+        }
+        .btn-next-quiz {
+          width: 100%;
+          padding: 16px;
+          background: var(--amber);
+          color: white;
+          border: none;
+          border-radius: 12px;
+          font-weight: 700;
+          font-size: 1.1rem;
+          cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 8px;
-          font-size: 1.1rem;
+          gap: 12px;
+          transition: all 0.2s;
+        }
+        .btn-next-quiz:hover {
+          background: var(--gold);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(193, 127, 42, 0.2);
+        }
+        .wrong-feedback {
+          display: none; /* Replaced by explanation card */
+        }
+        @media (max-width: 768px) {
+          .quiz-start-screen h1 { font-size: 2.2rem; }
+          .quiz-modes { grid-template-columns: 1fr; }
+          .question-work-name { font-size: 1.8rem; }
+          .options-grid { grid-template-columns: 1fr; }
+          .quiz-header { padding: 0; }
         }
       `}</style>
     </div>
