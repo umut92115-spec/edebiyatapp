@@ -60,7 +60,7 @@ export default function AboutPage() {
           <Heart style={{ color: 'var(--rose)', marginBottom: '16px' }} size={24} />
           <h3 style={{ marginBottom: '12px' }}>Neden Biz?</h3>
           <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-            YKS, AYT and school exams, preparing students for the most up-to-date and most refined information with an interactive user experience.
+            YKS, AYT ve okul sınavlarına hazırlanan öğrencilere, en güncel ve en rafine bilgileri interaktif bir kullanıcı deneyimiyle sunuyoruz.
           </p>
         </div>
       </div>

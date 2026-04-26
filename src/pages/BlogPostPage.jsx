@@ -8,7 +8,21 @@ import { ArrowLeft, Calendar, User, Tag, Clock, Image as ImageIcon } from 'lucid
 
 export default function BlogPostPage() {
   const { postId } = useParams();
-  const post = blogData.find(p => p.id === postId);
+  
+  const redirectionMap = {
+    'saf-iir': 'saf-siir',
+    'fecr-i-ti': 'fecr-i-ati',
+    'sik-edebiyati': 'asik-edebiyati',
+    'k-edebiyat': 'asik-edebiyati',
+    'be-hececiler': 'bes-hececiler',
+    't-rk-ocuk-edebiyat': 'turk-cocuk-edebiyati',
+    'd-nya-ocuk-edebiyat': 'dunya-cocuk-edebiyati',
+    'toplumcu-ger-ek-iler': 'toplumcu-gercekci-siir',
+    'garip-ak-m': 'garip-hareketi'
+  };
+
+  const effectivePostId = redirectionMap[postId] || postId;
+  const post = blogData.find(p => p.id === effectivePostId);
 
   // Get author images for this blog post
   const getAuthorImages = () => {
@@ -16,8 +30,8 @@ export default function BlogPostPage() {
     
     // 1. Try to find movement/tag that matches this post
     const slugify = (text) => {
-      const map = { 'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u', 'Ç': 'C', 'Ğ': 'G', 'İ': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U' };
-      return text.split('').map(char => map[char] || char).join('').toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+      if (!text) return '';
+      return text.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[ıı]/g, 'i').replace(/[İİ]/g, 'i').toLowerCase().replace(/[ğ]/g, 'g').replace(/[ü]/g, 'u').replace(/[ş]/g, 's').replace(/[ö]/g, 'o').replace(/[ç]/g, 'c').replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
     };
 
     // Find authors whose movement name matches the post category or id

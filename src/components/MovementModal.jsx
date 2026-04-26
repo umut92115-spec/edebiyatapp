@@ -14,15 +14,8 @@ export function MovementModal({ movement, onClose }) {
   const movementColor = movement.color || 'var(--amber)';
 
   const slugify = (text) => {
-    const map = {
-      'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
-      'Ç': 'C', 'Ğ': 'G', 'İ': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U'
-    };
-    return text.split('').map(char => map[char] || char).join('')
-      .toLowerCase()
-      .replace(/[^a-z0-9]/g, '-')
-      .replace(/-+/g, '-')
-      .replace(/^-|-$/g, '');
+    if (!text) return '';
+    return text.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[ıı]/g, 'i').replace(/[İİ]/g, 'i').toLowerCase().replace(/[ğ]/g, 'g').replace(/[ü]/g, 'u').replace(/[ş]/g, 's').replace(/[ö]/g, 'o').replace(/[ç]/g, 'c').replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
   };
 
   const blogId = slugify(movementName.trim());

@@ -3,11 +3,11 @@ import literatureData from './data/literatureData.json';
 import App from './App';
 
 // Lazy loaded components
-const HomeScreen = lazy(() => import('./components/HomeScreen'));
-const AdminDashboard = lazy(() => import('./components/AdminDashboard'));
-const QuizScreen = lazy(() => import('./components/QuizScreen'));
-const PeriodsView = lazy(() => import('./components/PeriodsView'));
-const AuthorsView = lazy(() => import('./components/AuthorsView'));
+import HomeScreen from './components/HomeScreen';
+import AdminDashboard from './components/AdminDashboard';
+import QuizScreen from './components/QuizScreen';
+import PeriodsView from './components/PeriodsView';
+import AuthorsView from './components/AuthorsView';
 
 // Static pages
 const AboutPage = lazy(() => import('./pages/AboutPage'));
