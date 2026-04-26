@@ -25,12 +25,12 @@ function AuthorsView({ categories }) {
 
   // SEO Titles & Descriptions
   const pageTitle = authorSlug && author 
-    ? `🖋️ ${authorName} Eserleri ve Hayatı — ${cleanPeriodName} | Türk Edebiyatı Atlası`
-    : `🖋️ ${cleanPeriodName} Yazarları ve Eserleri | Türk Edebiyatı Atlası`;
+    ? `${authorName} Eserleri ve Hayatı — ${cleanPeriodName} | Türk Edebiyatı Atlası`
+    : `${cleanPeriodName} Yazarları ve Eserleri | Türk Edebiyatı Atlası`;
   
   const pageDesc = authorSlug && author
-    ? `${authorName}'nın tüm eserleri, hayatı ve ${cleanPeriodName} edebiyatındaki yeri. 🖋️`
-    : `${cleanPeriodName} döneminin temsilci yazarları, eserleri ve genel özellikleri. 🖋️`;
+    ? `${authorName}'nın tüm eserleri, hayatı ve ${cleanPeriodName} edebiyatındaki yeri.`
+    : `${cleanPeriodName} döneminin temsilci yazarları, eserleri ve genel özellikleri.`;
 
   // JSON-LD Person Schema
   const personSchema = authorSlug && author ? {

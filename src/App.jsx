@@ -59,9 +59,7 @@ function App() {
       </header>
 
       <main className="main-content" id="main-content">
-        <Suspense fallback={<div className="screen-loading">Yükleniyor...</div>}>
-          <Outlet />
-        </Suspense>
+        <Outlet />
       </main>
 
       <footer className="app-footer">

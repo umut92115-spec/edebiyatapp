@@ -309,8 +309,7 @@
                   "name": "Vaveyla",
                   "type": "Şiir",
                   "description": "Şiir."
-                },
-
+                }
               ]
             },
             {
@@ -1075,7 +1074,6 @@
                 }
               ]
             },
-
             {
               "id": "muallim-naci",
               "name": "Muallim Naci",
@@ -1574,7 +1572,6 @@
                 }
               ]
             },
-
             {
               "id": "samipasazade-sezai",
               "name": "Samipaşazade Sezai",
@@ -5666,7 +5663,7 @@
     },
     {
       "id": "cumhuriyet-edebiyati",
-      "name": "🏛️ Cumhuriyet Edebiyatı",
+      "name": "🏛 Cumhuriyet Edebiyatı",
       "periods": [
         {
           "id": "cumhuriyet-donemi",
@@ -15182,9 +15179,9 @@
       "periods": [
         {
           "id": "eski-yunan-edebiyati",
-          "name": "🏛️ Eski Yunan Edebiyatı",
+          "name": "🏛 Eski Yunan Edebiyatı",
           "description": {
-            "name": "🏛️ Eski Yunan Edebiyatı",
+            "name": "🏛 Eski Yunan Edebiyatı",
             "description": "Antik Yunan döneminde ortaya çıkan felsefi, lirik ve epik eserlerin bütünü.",
             "wikipedia": "https://tr.wikipedia.org/wiki/Antik_Yunan_edebiyat%C4%B1"
           },
@@ -17441,9 +17438,9 @@
         },
         {
           "id": "norvec-edebiyati",
-          "name": "🏔️ Norveç Edebiyatı",
+          "name": "🏔 Norveç Edebiyatı",
           "description": {
-            "name": "🏔️ Norveç Edebiyatı",
+            "name": "🏔 Norveç Edebiyatı",
             "description": "İskandinav kültürünün izlerini taşıyan Norveç edebi eserleri.",
             "wikipedia": "https://tr.wikipedia.org/wiki/Norve%C3%A7_edebiyat%C4%B1"
           },
@@ -17609,9 +17606,9 @@
         },
         {
           "id": "danimarka-edebiyati",
-          "name": "🧜‍♀️ Danimarka Edebiyatı",
+          "name": "🧜 Danimarka Edebiyatı",
           "description": {
-            "name": "🧜‍♀️ Danimarka Edebiyatı",
+            "name": "🧜 Danimarka Edebiyatı",
             "description": "Masallar ve destanlarla öne çıkan Danimarka edebiyatı.",
             "wikipedia": "https://tr.wikipedia.org/wiki/Danimarka_edebiyat%C4%B1"
           },

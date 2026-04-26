@@ -137,7 +137,7 @@ export default function BlogPostPage() {
     <div style={{ background: 'var(--bg-base)', minHeight: '100vh', paddingBottom: '100px' }}>
       <article style={{ maxWidth: '850px', margin: '0 auto', padding: '60px 20px' }}>
         <Helmet>
-          <title>🖋️ {post.title} | Türk Edebiyatı Atlası</title>
+          <title>{post.title} | Türk Edebiyatı Atlası</title>
           <meta name="description" content={post.excerpt} />
           <link rel="canonical" href={currentUrl} />
           <meta property="og:title" content={post.title} />

@@ -50,7 +50,7 @@ export default function PeriodsScreen({ category, onSelectPeriod, onBack }) {
       <p className="page-subtitle">
         📚 {category.name.replace(/^📚\s*/, '')}
       </p>
-      <h1 className="page-title">Edebi Dönemler</h1>
+      <h1 className="page-title">{cleanCatName} Yazarları ve Eserleri</h1>
       <p className="page-subtitle">
         Bir dönemi seçerek o dönemin yazarlarını incele.
       </p>

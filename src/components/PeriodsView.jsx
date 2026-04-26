@@ -12,8 +12,8 @@ function PeriodsView({ categories }) {
   const cleanCatName = category?.name?.replace(/^[\p{Emoji}\s]+/u, '') ?? '';
   const currentUrl = `https://edebiyatapp.vercel.app${location.pathname}`;
 
-  const pageTitle = `🖋️ ${cleanCatName} Yazarları ve Eserleri | Türk Edebiyatı Atlası`;
-  const pageDesc = `${cleanCatName} döneminin temsilci yazarları, eserleri ve genel özellikleri. 🖋️`;
+  const pageTitle = `${cleanCatName} Yazarları ve Eserleri | Türk Edebiyatı Atlası`;
+  const pageDesc = `${cleanCatName} döneminin temsilci yazarları, eserleri ve genel özellikleri.`;
 
   if (!category) {
     return <div className="screen-error">Kategori bulunamadı.</div>;
@@ -43,7 +43,7 @@ function PeriodsView({ categories }) {
   const eduSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalResource",
-    "name": `${cleanCatName} Edebiyatı`,
+    "name": cleanCatName.endsWith('Edebiyatı') ? cleanCatName : `${cleanCatName} Edebiyatı`,
     "description": pageDesc,
     "educationalLevel": "Lise",
     "inLanguage": "tr"

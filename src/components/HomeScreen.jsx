@@ -20,8 +20,8 @@ export default function HomeScreen({ categories, onSelectCategory, onSelectAutho
     }
   });
 
-  const pageTitle = "🖋️ Türk Edebiyatı Dönemleri — Yazarlar ve Eserler | Türk Edebiyatı Atlası";
-  const pageDesc = "Türk edebiyatının tüm dönemleri, yazarları ve eserleri. 🖋️ YKS AYT edebiyat için interaktif kaynak.";
+  const pageTitle = "Türk Edebiyatı Dönemleri — Yazarlar ve Eserler | Türk Edebiyatı Atlası";
+  const pageDesc = "Türk edebiyatının tüm dönemleri, yazarları ve eserleri. YKS AYT edebiyat için interaktif kaynak.";
   const currentUrl = "https://edebiyatapp.vercel.app";
 
   // JSON-LD BreadcrumbList Schema
