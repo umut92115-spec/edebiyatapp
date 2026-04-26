@@ -21,6 +21,13 @@ function App() {
     }
   }, [location]);
 
+  // Scroll to top on route change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
+
   // SSR-safe way to check for home without hooks
   // This is only for the initial HTML render. Hydration will take care of the rest.
   return (

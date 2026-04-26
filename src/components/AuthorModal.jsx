@@ -241,12 +241,19 @@ export default function AuthorModal({ author: initialAuthor, period, onClose, is
   useEffect(() => {
     const handler = (e) => { if (e.key === 'Escape' && !isEditing) onClose(); };
     document.addEventListener('keydown', handler);
-    document.body.style.overflow = 'hidden';
+    
+    // Only lock scroll if it's a modal, not a full page
+    if (!isFullPage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
     return () => {
       document.removeEventListener('keydown', handler);
       document.body.style.overflow = '';
     };
-  }, [onClose, isEditing]);
+  }, [onClose, isEditing, isFullPage]);
 
   const handleOverlayClick = (e) => {
     if (e.target === overlayRef.current && !isEditing) onClose();
