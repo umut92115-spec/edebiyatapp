@@ -67,9 +67,30 @@ export default function MatchingGame({ categories }) {
     setGameState('PLAYING');
   };
 
-  const handleDragEnd = (event, info, workUniqueKey, correctAuthorId) => {
+  const handleDrag = (event, info) => {
     const { x, y } = info.point;
+    const authorElements = document.querySelectorAll('.drop-target');
+    
+    authorElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (
+        x >= rect.left &&
+        x <= rect.right &&
+        y >= rect.top &&
+        y <= rect.bottom
+      ) {
+        el.classList.add('drag-over');
+      } else {
+        el.classList.remove('drag-over');
+      }
+    });
+  };
 
+  const handleDragEnd = (event, info, workUniqueKey, correctAuthorId) => {
+    // Tüm drag-over sınıflarını temizle
+    document.querySelectorAll('.drop-target').forEach(el => el.classList.remove('drag-over'));
+    
+    const { x, y } = info.point;
     const authorElements = document.querySelectorAll('.drop-target');
     let droppedOnAuthorId = null;
 
@@ -117,63 +138,74 @@ export default function MatchingGame({ categories }) {
           display: flex;
           justify-content: center;
           flex-wrap: wrap;
-          gap: 15px;
-          margin-bottom: 40px;
+          gap: 25px;
+          margin-bottom: 50px;
         }
         .drop-target {
-          width: 130px;
-          height: 130px;
-          border-radius: 24px;
-          border: 3px dashed var(--border);
+          width: 160px;
+          height: 160px;
+          border-radius: 32px;
+          border: 4px dashed var(--border);
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           text-align: center;
-          padding: 10px;
+          padding: 15px;
           background: var(--bg-card);
-          transition: all 0.3s;
-          font-size: 0.9rem;
+          transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          font-size: 1rem;
           position: relative;
+        }
+        /* Sürükleme sırasında üzerine gelindiğinde */
+        .drop-target.drag-over {
+          border-color: var(--amber);
+          background: var(--amber-dim);
+          transform: scale(1.1);
+          border-style: solid;
+          box-shadow: 0 0 30px rgba(193, 127, 42, 0.2);
         }
         @media (max-width: 600px) {
           .drop-target {
-            width: 100px;
-            height: 100px;
-            font-size: 0.75rem;
+            width: 135px;
+            height: 135px;
+            font-size: 0.8rem;
           }
           .work-drag-card {
-            padding: 12px !important;
-            font-size: 0.85rem !important;
+            padding: 14px !important;
+            font-size: 0.9rem !important;
           }
         }
         .drop-target.matched {
           border-color: var(--emerald);
           background: var(--emerald-dim);
-          transform: scale(0.95);
-          opacity: 0.6;
+          transform: scale(0.9);
+          opacity: 0.5;
+          pointer-events: none;
         }
         .works-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-          gap: 12px;
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+          gap: 15px;
           margin-top: auto;
-          padding-bottom: 30px;
+          padding-bottom: 40px;
         }
         .work-drag-card {
-          padding: 16px;
+          padding: 20px;
           background: var(--bg-card);
-          border: 1px solid var(--border);
-          border-radius: 12px;
+          border: 2px solid var(--border);
+          border-radius: 16px;
           cursor: grab;
           text-align: center;
           box-shadow: var(--shadow-sm);
-          font-weight: 600;
+          font-weight: 700;
           touch-action: none;
           user-select: none;
+          transition: box-shadow 0.2s;
         }
         .work-drag-card:active {
           cursor: grabbing;
+          box-shadow: var(--shadow-lg);
         }
         .author-name-tag {
           font-family: var(--font-display);
@@ -311,6 +343,7 @@ export default function MatchingGame({ categories }) {
                     dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
                     dragElastic={0.1}
                     dragMomentum={false}
+                    onDrag={(e, info) => handleDrag(e, info)}
                     onDragEnd={(e, info) => handleDragEnd(e, info, work.uniqueKey, work.authorId)}
                     whileDrag={{ scale: 1.05, zIndex: 100, boxShadow: 'var(--shadow-lg)' }}
                     className="work-drag-card glass-premium"
