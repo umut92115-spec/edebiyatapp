@@ -34,6 +34,18 @@ const getDynamicRoutesAndPriorities = () => {
         });
       });
     });
+    // Blog postlarını ekle
+    try {
+      const blogData = JSON.parse(fs.readFileSync('./src/data/blogData.json', 'utf-8'));
+      blogData.forEach(post => {
+        const blogPath = `/blog/${post.id}`;
+        routes.push(blogPath);
+        priorities[blogPath] = 0.6;
+      });
+    } catch (e) {
+      console.warn('Blog verisi okunamadı, sitemap/ssg için blog rotaları eklenemedi.');
+    }
+
     return { routes, priorities };
   } catch (e) {
     return { routes: [], priorities: { '/': 1.0 } };
