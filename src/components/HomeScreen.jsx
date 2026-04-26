@@ -154,9 +154,9 @@ export default function HomeScreen({ categories, onSelectCategory, onSelectAutho
               aria-label={`${cat.name} kategorisini aç`}
             >
               <div className="card-icon-wrapper">
-                <Book className="card-icon" size={32} />
+                <span className="category-emoji">{cat.name.match(/\p{Emoji}/u)?.[0] || '📚'}</span>
               </div>
-              <div className="card-title">{cat.name.replace(/^[\p{Emoji}\s]+/u, '')}</div>
+              <div className="card-title">{cat.name.replace(/\p{Emoji}/u, '').trim()}</div>
               <div className="card-meta">
                 {cat.periods.length} dönem &bull;{' '}
                 {cat.periods.reduce((sum, p) => sum + p.authors.length, 0)} yazar

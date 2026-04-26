@@ -28,6 +28,13 @@ function App() {
       <Helmet>
         <meta name="google-site-verification" content="AhxNlnpyVY7QJPb8_MkFHI_3DfpMYKLExbqf-0bDXEA" />
       </Helmet>
+
+      <div className="bg-decorations" aria-hidden="true">
+        <div className="ambient-blob blob-1"></div>
+        <div className="ambient-blob blob-2"></div>
+        <div className="ambient-blob blob-3"></div>
+      </div>
+
       <header className="app-header">
         <div className="header-left">
           <Link to="/" className="logo" style={{ textDecoration: 'none', color: 'inherit' }}>
